@@ -1,0 +1,326 @@
+<div class="relative w-full h-screen mt-16">
+  <video class="absolute top-0 left-0 w-full h-full object-cover" #videoPlayer autoplay muted loop>
+    <source src="assets/video.mp4" type="video/mp4" />
+  </video>
+
+  <div class="flex flex-col items-center justify-center h-full relative z-10 p-8 space-y-16">
+    <!-- logo at the top -->
+    <img
+      src="assets/ImpactInsurance_Logo4-300x110.png"
+      alt="Overlay Image"
+      class="w-[350px] h-[125px] mt-4"
+    />
+
+    <!-- Get A Quote -->
+    <div class="flex flex-col items-center gap-5">
+      <h1 class="text-blue text-4xl font-bold">Get A Quote</h1>
+      <h2 class="text-mediumGray text-4xl font-normal text-center">Compare, choose, save</h2>
+    </div>
+
+    <!-- SVG icons in a grid -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-11 mt-8">
+      <div class="flex flex-col items-center">
+        <a href="https://impactco.ca/quote">
+          <img
+            src="../assets/svg/automobile.svg"
+            class="w-[82px] h-[78px]"
+            alt="car svg"
+          />
+          <p class="uppercase text-[0.85rem] font-bold text-center mt-2">auto</p>
+        </a>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <a href="https://impactco.ca/quote">
+          <img
+            src="../assets/svg/condo.svg"
+            class="w-[82px] h-[78px]"
+            alt="condo svg"
+          />
+          <p class="uppercase text-[0.85rem] font-bold text-center mt-2">condo</p>
+        </a>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <a href="https://impactco.ca/quote">
+          <img
+            src="../assets/svg/home.svg"
+            class="w-[90px] h-[83px]"
+            alt="home svg"
+          />
+          <p class="uppercase text-[0.85rem] font-bold text-center mt-2">home</p>
+        </a>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <a href="https://impactco.ca/quote">
+          <img
+            src="../assets/svg/tenant.svg"
+            class="w-[82px] h-[78px]"
+            alt="home svg"
+          />
+          <p class="uppercase text-[0.85rem] font-bold text-center mt-2">tenant</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="mt-16">
+  <h1 class="flex justify-center text-center text-3xl font-medium px-2">
+    What our clients think about us!
+  </h1>
+
+  <div class="stars-rating mt-6">
+    <fa-icon class="text-blue text-5xl" [icon]="faStar"></fa-icon>
+    <fa-icon class="text-blue text-5xl" [icon]="faStar"></fa-icon>
+    <fa-icon class="text-blue text-5xl" [icon]="faStar"></fa-icon>
+    <fa-icon class="text-blue text-5xl" [icon]="faStar"></fa-icon>
+    <fa-icon class="text-blue text-5xl" [icon]="faStarHalfStroke"></fa-icon>
+  </div>
+
+  <h3 class="text-center text-2xl mt-6 px-2">
+    <strong class="text-orange">Our Mission: </strong>
+    <span class="text-mediumGray"
+      >Your satisfaction, with the best protection at the best price.</span>
+  </h3>
+
+  <div class="flex justify-center w-full overflow-hidden mt-6">
+    <swiper-container class="mySwiper" slides-per-view="auto" loop="true" [spaceBetween]="0"
+      autoplay-delay="3500" autoplay-disable-on-interaction="false" space-between="20"
+      class="w-full max-w-[85%] h-full overflow-hidden"
+    >
+      <swiper-slide *ngFor="let card of cards" class="w-full sm:w-1/2 md:w-1/2 md-sm:w-1/2 md-md:w-1/2 lg:w-1/3">
+      <div class="card px-4">
+          <div class="card-header">
+            <h5 class="font-medium">{{ card.name }}</h5>
+            <p class="username">{{ card.username }}</p>
+          </div>
+          <div class="card-body">
+            <p>{{ card.review }}</p>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+</div> 
+
+
+  <div class="mt-16">
+  <h1 class="text-center text-3xl font-medium leading-snug">
+    <span class="text-orange">We're Here</span> To Guide You <br />
+    Every Step Of The Way
+  </h1>
+  
+  <h5 class="flex justify-center text-center text-2xl font-normal mt-5 mb-6">
+    Discover our coverage
+  </h5>
+
+  <div class="bg-lightBlue pt-3 pb-12">
+
+    <div class="flex flex-row justify-center gap-16 mt-10 mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+        <div
+            class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl"
+          >
+            <a href="https://impactco.ca/quote">
+              <img
+                src="../assets/svg/automobile.svg"
+                class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
+                alt="home svg"
+              />
+              <p class="uppercase text-[0.85rem] font-bold text-center">
+                Automobile
+              </p>
+            </a>
+          </div>
+
+          <div
+            class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl"
+          >
+            <a href="https://impactco.ca/quote">
+              <img
+                src="../assets/svg/home.svg"
+                class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
+                alt="home svg"
+              />
+              <p class="uppercase text-[0.85rem] font-bold text-center">Home</p>
+            </a>
+          </div>
+
+          <div
+            class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl"
+          >
+            <a href="https://impactco.ca/quote">
+              <img
+                src="../assets/svg/commercial-auto.svg"
+                class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
+                alt="home svg"
+              />
+              <p class="uppercase text-[0.85rem] font-bold text-center">
+                Commercial Auto
+              </p>
+            </a>
+          </div>
+
+          <div
+            class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl"
+          >
+            <a href="https://impactco.ca/quote">
+              <img
+                src="../assets/svg/life-insurrance.svg"
+                class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
+                alt="home svg"
+              />
+              <p class="uppercase text-[0.85rem] font-bold text-center">
+                Life Insurrance
+              </p>
+            </a>
+          </div>
+          </div>
+    </div>
+
+
+    <div class="flex flex-row justify-center gap-16 mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+      <div
+        class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl"
+      >
+        <a href="https://impactco.ca/quote">
+          <img
+            src="../assets/svg/condo.svg"
+            class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
+            alt="Condo svg"
+          />
+          <p class="uppercase text-[0.85rem] font-bold text-center relative">
+            Condo
+          </p>
+        </a>
+      </div>
+
+      <div
+        class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl"
+      >
+        <a href="https://impactco.ca/quote">
+          <img
+            src="../assets/svg/commerce.svg"
+            class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
+            alt="Commerce svg"
+          />
+          <p class="uppercase text-[0.85rem] font-bold text-center relative">
+            Commerce
+          </p>
+        </a>
+      </div>
+
+      <div
+        class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl"
+      >
+        <a href="https://impactco.ca/quote">
+          <img
+            src="../assets/svg/moto.svg"
+            class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
+            alt="Commerce svg"
+          />
+          <p class="uppercase text-[0.85rem] font-bold text-center relative">
+            Moto
+          </p>
+        </a>
+      </div>
+
+      <div
+        class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl"
+      >
+        <a href="https://impactco.ca/quote">
+          <img
+            src="../assets/svg/condo.svg"
+            class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
+            alt="Commerce svg"
+          />
+          <p class="uppercase text-[0.85rem] font-bold text-center relative">
+            Other Insurrance
+          </p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+
+<div class="flex flex-col md:flex-row lg:flex-row justify-center mt-6 mb-6 max-w-[70%] mx-auto space-y-5 md:space-y-0 md:space-x-5">
+  <video class="w-full md:w-1/2 lg:w-1/3" #constructionVideoPlayer autoplay loop muted>
+    <source src="assets/Construction_Insurance.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="flex flex-col justify-center items-center">
+    <h1 class="text-3xl font-medium mb-5">Submit a claim?</h1>
+    <p class="flex flex-col items-baseline">
+      We are available
+      <span> by phone at 1 (833) 361-1133 </span>
+      <span> or by mail at info@impactco.ca </span>
+    </p>
+  </div>
+</div>
+
+
+<section class="bg-lightBlue pb-[2.7rem]">
+  <div class="flex flex-col justify-center max-w-[90%] mt-10 mx-auto text-center">
+    <h1 class="text-mediumGray text-4xl mt-8 mb-4">
+      <span class="text-orange">24/7</span> Emergency Contact Information
+    </h1>
+    <h6 class="mb-4">
+      IN CASE OF EMERGENCY, A 24/7 CLAIMS SERVICE IS AVAILABLE WITH ALL OUR INSURANCE COMPANIES
+    </h6>
+
+      <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-1 mx-auto">
+
+      <button class="bg-white !mx-0 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded-2xl w-[17rem] h-[3.5rem]">
+        Economical 1-800-607-2424
+      </button>
+
+      <button class="bg-white !mx-0 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded-2xl w-[17rem] h-[3.5rem]">
+        INTACT Assurance 1-866-464-2424
+      </button>
+
+      <button class="bg-white !mx-0 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded-2xl w-[17rem] h-[3.5rem]">
+        OPTIMUM Assurance 1-800-361-7653
+      </button>
+
+
+
+      <button class="bg-white !mx-0 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded-2xl w-[17rem] h-[3.5rem]">
+        PAFCO 1-877-463-2727
+      </button>
+
+      <button class="bg-white !mx-0 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded-2xl w-[17rem] h-[3.5rem]">
+        PROMUTUEL Assurance 1-877-668-8835
+      </button>
+
+      <button class="bg-white !mx-0 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded-2xl w-[17rem] h-[3.5rem]">
+        RSA Assurance 1-800-319-9993
+      </button>
+
+
+
+      <button class="bg-white !mx-0 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded-2xl w-[17rem] h-[3.5rem]">
+        AVIVA 1-866-692-8482
+      </button>
+
+      <button class="bg-white !mx-0 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded-2xl w-[17rem] h-[3.5rem]">
+        Echelon Assurance 1-888-662-0222
+      </button>
+
+      <button class="bg-white !mx-0 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded-2xl w-[17rem] h-[3.5rem]">
+        UNIQUE Assurance 1-800-463-4800
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<app-chat-conversation [chatVisible]="chatVisible" (chatClosed)="closeChat()"></app-chat-conversation>
+<app-chat (chatStarted)="onChatStarted()" ></app-chat>

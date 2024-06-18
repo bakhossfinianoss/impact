@@ -1,0 +1,64 @@
+<nav class="bg-blue p-4 sm:pt-4 md:p-2 lg:p-2">
+  <div class="container mx-auto flex justify-between items-center">
+      <div class="hidden md:flex space-x-4">
+        <a routerLink="/" class="text-white hover:text-darkGray">Personal</a>
+        <a routerLink="/about" class="text-white hover:text-darkGray"
+          >Commercial</a
+        >
+      </div>
+
+      <button
+        class="md:hidden text-white hover:text-darkGray focus:outline-none"
+        (click)="toggleMenu()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"
+          />
+        </svg>
+      </button>
+
+      <img src="assets/footer-logo.png" class="w-1/4 md:w-1/12 lg:w-1/19"/>
+
+    <div class="flex !justify-end space-x-2">
+      <div class="button-container">
+        <button id="quoteButton" class="button-primary">Quote</button>
+      </div>
+
+      <div class="button-container">
+        <button class="button-primary"> EN </button>
+        <button class="button-secondary"> FR </button>
+      </div>
+    </div>
+
+    </div>
+    <div [ngClass]="{ block: menuOpen, hidden: !menuOpen }" class="md:hidden">
+      <a routerLink="/" class="block text-white hover:text-darkGray px-2 py-1"
+        >Home</a
+      >
+      <a
+        routerLink="/about"
+        class="block text-white hover:text-darkGray px-2 py-1"
+        >About</a
+      >
+      <a
+        routerLink="/services"
+        class="block text-white hover:text-darkGray px-2 py-1"
+        >Services</a
+      >
+      <a
+        routerLink="/contact"
+        class="block text-white hover:text-darkGray px-2 py-1"
+        >Contact</a
+      >
+    </div>
+  </nav>

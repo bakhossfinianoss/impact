@@ -1,0 +1,90 @@
+.video-background {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    z-index: -1;
+}
+
+.parent-container { /* Adjust this to your actual parent container class if any */
+  overflow: hidden;
+  width: 100%;
+}
+
+.swiper-wrapper-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden; /* Prevent horizontal scrolling */
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease-in-out;
+  padding: 0; /* Ensure no padding */
+}
+
+.swiper-slide:hover {
+  transform: scale(1.05);
+}
+
+.card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgb(206 232 242);
+  width: 90%;
+  max-width: 600px;
+  padding: 20px;
+  text-align: left;
+  transition: all 0.3s ease-in-out;
+  height: 14rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.card-header {
+  margin-bottom: 15px;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1em;
+  color: #333;
+}
+
+.card-header .username {
+  margin: 0;
+  color: #0883a6;
+  font-style: italic;
+}
+
+.card-body {
+  color: #555;
+  line-height: 1.6;
+}
+
+.card-body p {
+  font-size: 0.8em;
+}
+
+h1 {
+  color: #0581A5;
+}
+
+.stars-rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px; /* Adjust the size as needed */
+  color: #007bff; /* Adjust the color as needed */
+}
+
+.stars-rating i {
+  margin: 0 2px;
+}
+
+
