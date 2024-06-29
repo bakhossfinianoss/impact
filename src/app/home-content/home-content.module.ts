@@ -4,7 +4,8 @@ import { HomeContentComponent } from './home-content.component';
 import { MatTableModule } from '@angular/material/table';
 import { HomeContentRoutingModule } from './home-content-routing.module';
 import { CommonModule } from '@angular/common';
-import { ChatModule } from '../chat/chat.module';
+import { EmergencyContactInformationComponent } from './emergency-contact-information/emergency-contact-information.component';
+import { EmergencyContactInformationModule } from './emergency-contact-information/emergency-contact-information.module';
 
 @NgModule({
   declarations: [HomeContentComponent],
@@ -12,8 +13,8 @@ import { ChatModule } from '../chat/chat.module';
     CommonModule,
     FontAwesomeModule,
     MatTableModule,
-    ChatModule,
-    HomeContentRoutingModule
+    HomeContentRoutingModule,
+    EmergencyContactInformationModule
   ],
   exports: [HomeContentComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

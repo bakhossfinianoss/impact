@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { faStar,faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
+import { environment } from 'src/environments/environment';
 import { register } from 'swiper/element/bundle';
 
 register();
@@ -24,16 +25,24 @@ export class HomeContentComponent implements OnInit, AfterViewInit {
   faStarHalfStroke = faStarHalfStroke;
   currentIndex = 0;
   transformStyle = `translateX(0%)`;
-  chatVisible = false;
   @ViewChild('videoPlayer') videoPlayer!: ElementRef;
   @ViewChild('constructionVideoPlayer') constructionVideoPlayer!: ElementRef;
+
+  automobile = `${environment.baseHref}assets/svg/automobile.svg`;
+  condo = `${environment.baseHref}assets/svg/condo.svg`;
+  home = `${environment.baseHref}assets/svg/home.svg`;
+  tenant = `${environment.baseHref}assets/svg/tenant.svg`;
+  commercialAuto = `${environment.baseHref}assets/svg/commercial-auto.svg`;
+  lifeInsurrance = `${environment.baseHref}assets/svg/life-insurrance.svg`;
+  commerce = `${environment.baseHref}assets/svg/commerce.svg`;
+  moto = `${environment.baseHref}assets/svg/moto.svg`;
 
   ngOnInit(): void {
     setInterval(() => {
       this.showNextCard();
     }, 3000);
   }
-  
+
   ngAfterViewInit() {
     const video: HTMLVideoElement = this.videoPlayer.nativeElement;
     video.muted = true;
@@ -49,7 +58,7 @@ export class HomeContentComponent implements OnInit, AfterViewInit {
       console.error('Error attempting to play video:', error);
     });
 
-  } 
+  }
 
 
   cards = [
@@ -79,20 +88,11 @@ export class HomeContentComponent implements OnInit, AfterViewInit {
       review: 'A wonderful experience from start to finish. The team was very helpful and responsive.'
     }
   ];
-  
+
 
   showNextCard(): void {
     this.currentIndex = (this.currentIndex + 1) % this.cards.length;
     this.transformStyle = `translateX(-${this.currentIndex * 100 / 3}%)`;
   }
 
-
-  onChatStarted() {
-    this.chatVisible = true;
-  }
-
-  closeChat() {
-    this.chatVisible = false;
-  }
-  
 }

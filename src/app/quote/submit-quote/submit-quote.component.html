@@ -1,25 +1,46 @@
-<div class="form-container ml-auto">
-  <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" class="form-control" ngModel required>
-    </div>
+<div class="flex flex-col sm:flex-col md:flex-col lg:flex-row w-full justify-around mb-[82px]">
 
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" class="form-control" ngModel required>
-    </div>
+  <div class="block w-full text-center sm:text-center sm:w-full md:w-full md:text-center lg:w-1/3 lg:text-left h-1/3 mt-28 -mb-[19px]">
+    <img src="assets/ImpactInsurance_Logo4-300x110.png" class="m-auto sm:m-auto md:m-auto lg:m-0"/>
 
-    <div class="form-group">
-      <label for="subject">Subject:</label>
-      <input type="text" id="subject" name="subject" class="form-control" ngModel required>
-    </div>
+    <h2 class="text-3xl font-medium mt-10 text-blue"> Get A Quote. </h2>
 
-    <div class="form-group">
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" class="form-control" rows="5" ngModel required></textarea>
-    </div>
+    <h5 class="text-2xl font-medium mt-6 text-mediumGray"> <del> NO HASSLES. NO OBLIGATIONS. </del> </h5>
+    <p class="text-1xl font-medium text-blue"> Compare, Choose, Save </p>
 
-    <button type="submit" class="btn-submit" [disabled]="!contactForm.form.valid">Submit</button>
-  </form>
+    <p class="text-1xl mt-4 font-medium text-mediumGray"> All our brokers are certified professionals.
+        Get the best advice possible. Impact Assurance offers a wide range of insurance options.
+        Please fill in the form to get started and a member of our team will contact you directly
+        to get the information required to ensure you get the best possible quote.
+    </p>
+  </div>
+
+  <div class="bg-lightBlue mt-28 p-5 w-full sm:w-full md:w-full lg:w-3/6 rounded-[12px] shadow-2xl -mb-[19px]">
+    <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" class="form-control" ngModel required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" class="form-control" ngModel required>
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" class="form-control" ngModel required>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" class="form-control" rows="5" ngModel required></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit" [disabled]="!contactForm.form.valid">Submit</button>
+    </form>
+  </div>
+
 </div>
+
+<app-emergency-contact-information></app-emergency-contact-information>

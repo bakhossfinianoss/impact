@@ -2,4 +2,5 @@
 <router-outlet></router-outlet>
 <app-footer></app-footer>
 
-
+<app-chat-conversation [chatVisible]="chatVisible" (chatClosed)="closeChat()"></app-chat-conversation>
+<app-chat (chatStarted)="onChatStarted()" ></app-chat>
