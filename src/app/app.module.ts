@@ -10,7 +10,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatModule } from './chat/chat.module';
 import { PersonalComponent } from './personal/personal.component';
-import { BackOfficeComponent } from './back-office/back-office/back-office.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorInterceptor } from './back-office/interceptor.interceptor';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -21,8 +22,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    PersonalComponent,
-    BackOfficeComponent
+    PersonalComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +38,13 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [TranslateService],
+  providers: [TranslateService ,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

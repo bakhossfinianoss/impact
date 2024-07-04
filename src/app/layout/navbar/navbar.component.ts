@@ -1,14 +1,25 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/back-office/login/login.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
-  selectedLanguage = 'English'; 
+export class NavbarComponent implements OnInit {
+
+  selectedLanguage = 'English';
   menuOpen = false;
   private lastScrollTop = 0;
+  showComponent = true;
+
+  constructor(private loginService: LoginService) {}
+
+  ngOnInit(): void {
+    this.loginService.showComponent$.subscribe( res => {
+      this.showComponent = res;
+    })
+  }
 
   toggleLanguage() {
     this.selectedLanguage = this.selectedLanguage === 'English' ? 'Arabic' : 'English';
@@ -17,7 +28,6 @@ export class NavbarComponent {
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
-
 
   @HostListener('window:scroll', [])
   onWindowScroll() {

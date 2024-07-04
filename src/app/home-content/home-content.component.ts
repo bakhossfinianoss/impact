@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { faStar,faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
 import { register } from 'swiper/element/bundle';
+import { LoginService } from '../back-office/login/login.service';
 
 register();
 

@@ -12,19 +12,12 @@ export class LoginComponent implements OnInit {
   username: string = '';
   password: string = '';
 
-  constructor(private loginService: LoginService, private router: Router) { }
+  constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {}
 
 
   onSubmit(): void {
-    this.loginService.login(this.username, this.password).subscribe(
-      () => {
-        this.router.navigate(['/protected']);
-      },
-      error => {
-        console.error('Login error', error);
-      }
-    );
+    this.loginService.login(this.username, this.password);
   }
 }

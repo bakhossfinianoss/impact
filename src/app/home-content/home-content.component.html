@@ -14,7 +14,7 @@
     <!-- Get A Quote -->
     <div class="flex flex-col items-center gap-5">
       <h1 class="text-blue text-4xl font-bold">Get A Quote</h1>
-      <h2 class="text-mediumGray text-4xl font-normal text-center">Compare, choose, save</h2>
+      <h2 class="text-mediumGray text-4xl font-normal text-center">Compare, choose, <br> save</h2>
     </div>
 
     <!-- SVG icons in a grid -->
@@ -23,7 +23,7 @@
         <a href="https://impactco.ca/quote">
           <img
             [src]="automobile"
-            class="w-[82px] h-[78px]"
+            class="w-[82px] h-[78px] relative top-[0.9rem]"
             alt="car svg"
           />
           <p class="uppercase text-[0.85rem] font-bold text-center mt-2">auto</p>
@@ -45,10 +45,10 @@
         <a href="https://impactco.ca/quote">
           <img
             [src]="home"
-            class="w-[90px] h-[83px]"
+            class="w-[90px] h-[83px] relative top-[4px]"
             alt="home svg"
           />
-          <p class="uppercase text-[0.85rem] font-bold text-center mt-2">home</p>
+          <p class="uppercase text-[0.85rem] font-bold text-center relative top-[2px]">home</p>
         </a>
       </div>
 
@@ -56,10 +56,10 @@
         <a href="https://impactco.ca/quote">
           <img
             [src]="tenant"
-            class="w-[82px] h-[78px]"
+            class="w-[82px] h-[78px] relative -top-[4px]"
             alt="home svg"
           />
-          <p class="uppercase text-[0.85rem] font-bold text-center mt-2">tenant</p>
+          <p class="uppercase text-[0.85rem] font-bold text-center mt-2 relative -top-[1px]">tenant</p>
         </a>
       </div>
     </div>

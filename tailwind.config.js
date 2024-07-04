@@ -5,10 +5,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'blue': '#0883a6', 
+        'blue': '#0883a6',
         'lightBlue': '#cee8f2',
         'darkGray': '#555454',
         'mediumGray': '#4b4f58',
+        'lightGray': '#d3d3d361',
         'orange': '#f37e2a'
       },
         screens: {
