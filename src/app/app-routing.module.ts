@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: 'quote', loadChildren: () => import('./quote/quote.module').then(m => m.QuoteModule) },
   { path: 'business-insurrance', loadChildren: () => import('./inssurance-pages/business-inssurance/business-insurrance.module').then(m => m.BusinessInsurranceModule)},
   { path: 'login-dashboard', loadChildren: () => import('./back-office/login/login.module').then(m => m.LoginModule)},
-  { path: 'back-office', loadChildren: () => import('./back-office/back-office/back-office.module').then(m => m.BackOfficeModule), canActivate:[MemberAuthGuard]},
+  { path: 'back-office', loadChildren: () => import('./back-office/back-office/back-office.module').then(m => m.BackOfficeModule)},
+  // { path: 'back-office', loadChildren: () => import('./back-office/back-office/back-office.module').then(m => m.BackOfficeModule), canActivate:[MemberAuthGuard]},
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 

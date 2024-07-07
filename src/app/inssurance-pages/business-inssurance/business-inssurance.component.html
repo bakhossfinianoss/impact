@@ -1,25 +1,25 @@
+<div class="flex flex-col md:flex-row md:space-x-4 mt-16 mx-3">
 
-<div class="flex flex-col md:flex-row md:space-x-4 mt-16">
   <!-- Sidebar -->
   <div class="w-full md:w-1/4 bg-white p-4 shadow-lg mb-4 md:mb-0">
     <div class="flex flex-col space-y-4">
-      <a href="#" class="flex items-center space-x-2 hover:bg-blue-100 p-2 rounded">
+      <a (click)="showContent('businessOwnerPolicy')" class="flex items-center space-x-2 hover:bg-blue-100 p-2 rounded">
         <img src="path/to/icon1.svg" alt="Business Owner Policy" class="w-6 h-6">
         <span class="text-sm md:text-base">Business Owner Policy</span>
       </a>
-      <a href="#" class="flex items-center space-x-2 hover:bg-blue-100 p-2 rounded">
+      <a (click)="showContent('generalLiabilityInsurance')" class="flex items-center space-x-2 hover:bg-blue-100 p-2 rounded">
         <img src="path/to/icon2.svg" alt="General Liability Insurance" class="w-6 h-6">
         <span class="text-sm md:text-base">General Liability Insurance</span>
       </a>
-      <a href="#" class="flex items-center space-x-2 hover:bg-blue-100 p-2 rounded">
+      <a (click)="showContent('professionalLiabilityInsurance')" class="flex items-center space-x-2 hover:bg-blue-100 p-2 rounded">
         <img src="path/to/icon3.svg" alt="Professional Liability Insurance" class="w-6 h-6">
         <span class="text-sm md:text-base">Professional Liability Insurance</span>
       </a>
-      <a href="#" class="flex items-center space-x-2 hover:bg-blue-100 p-2 rounded">
+      <a (click)="showContent('commercialPropertyInsurance')" class="flex items-center space-x-2 hover:bg-blue-100 p-2 rounded">
         <img src="path/to/icon4.svg" alt="Commercial Property Insurance" class="w-6 h-6">
         <span class="text-sm md:text-base">Commercial Property Insurance</span>
       </a>
-      <a href="#" class="flex items-center space-x-2 hover:bg-blue-100 p-2 rounded">
+      <a (click)="showContent('commercialAutoInsurance')" class="flex items-center space-x-2 hover:bg-blue-100 p-2 rounded">
         <img src="path/to/icon5.svg" alt="Commercial Auto Insurance" class="w-6 h-6">
         <span class="text-sm md:text-base">Commercial Auto Insurance</span>
       </a>
@@ -28,24 +28,167 @@
 
   <!-- Main Content -->
   <div class="w-full md:w-3/4 bg-white p-6 md:p-8 shadow-lg">
-    <h1 class="text-xl md:text-2xl font-bold mb-4">The great benefit to purchasing a business owner’s policy in Quebec...</h1>
-    <p class="mb-4 text-sm md:text-base">
-      The great benefit to purchasing a business owner’s policy in Quebec, as opposed to purchasing each coverage individually, is that a BOP is typically sold for less premium than the total cost of each individual coverage lumped together...
-    </p>
-    <button class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-200">Get a quote</button>
-    <div class="mt-4 space-y-2">
-      <button class="w-full bg-gray-200 py-2 px-4 rounded flex justify-between items-center hover:bg-gray-300 transition duration-200">
-        <span class="text-sm md:text-base">What a “Business Owner Policy” in Quebec May Cover?</span>
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-        </svg>
-      </button>
-      <button class="w-full bg-gray-200 py-2 px-4 rounded flex justify-between items-center hover:bg-gray-300 transition duration-200">
-        <span class="text-sm md:text-base">Quebec Business Owner Policy Costs & Calculations: How It Works?</span>
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-        </svg>
-      </button>
+    <div *ngIf="currentContent === 'businessOwnerPolicy'" class="content">
+      <h1 class="text-xl md:text-2xl font-bold mb-4">
+        <span *ngIf="!isLoggedIn()">The great benefit to purchasing a business owner’s policy in Quebec...</span>
+        <app-back-office *ngIf="isLoggedIn()" [text]="'The great benefit to purchasing a business owner’s policy in Quebec...'"></app-back-office>
+      </h1>
+      <p class="mb-4 text-sm md:text-base">
+        <span *ngIf="!isLoggedIn()">The great benefit to purchasing a business owner’s policy in Quebec, as opposed to purchasing each coverage individually, is that a BOP is typically sold for less premium than the total cost of each individual coverage lumped together...</span>
+        <app-back-office *ngIf="isLoggedIn()" [text]="'The great benefit to purchasing a business owner’s policy in Quebec, as opposed to purchasing each coverage individually, is that a BOP is typically sold for less premium than the total cost of each individual coverage lumped together...'"></app-back-office>
+      </p>
+      <button class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-200">Get a quote</button>
+      <div class="mt-4 space-y-2">
+        <button (click)="toggleAccordion('businessOwnerPolicyDetails')" class="w-full bg-gray-200 py-2 px-4 rounded flex justify-between items-center hover:bg-gray-300 transition duration-200">
+          <span class="text-sm md:text-base">What a “Business Owner Policy” in Quebec May Cover?</span>
+          <svg class="w-4 h-4 transform" [ngClass]="{'rotate-180': isOpen('businessOwnerPolicyDetails')}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div *ngIf="isOpen('businessOwnerPolicyDetails')" class="mt-2 p-4 bg-gray-100 rounded">
+          <p>Business owner policies will cover different perils and assets, varying from one policy to the next. The point of purchasing a comprehensive BOP is that it is specifically designed to cover the risks that your business may be exposed to, whether that’s due to its physical location, its industry, its operations, etc. Here are just a few of the items that your business owner policy insurance may include:</p>
+          <h2 class="text-lg font-semibold mt-2">Commercial General Liability</h2>
+          <p>CGL, or commercial general liability insurance, is an insurance policy designed to protect businesses from third-party liability claims alleging property damage or bodily injury as a result of your business’ operations or at a client’s site while your employees are doing work. This is the most integral form of coverage a business can purchase, as it offers basic liability coverage against claims that could otherwise put your company out of work for good.</p>
+        </div>
+
+        <button (click)="toggleAccordion('businessOwnerPolicyCosts')" class="w-full bg-gray-200 py-2 px-4 rounded flex justify-between items-center hover:bg-gray-300 transition duration-200">
+          <span class="text-sm md:text-base">Quebec Business Owner Policy Costs & Calculations: How It Works?</span>
+          <svg class="w-4 h-4 transform" [ngClass]="{'rotate-180': isOpen('businessOwnerPolicyCosts')}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div *ngIf="isOpen('businessOwnerPolicyCosts')" class="mt-2 p-4 bg-gray-100 rounded">
+          <p>Details about the costs and calculations for Quebec Business Owner Policy...</p>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="currentContent === 'generalLiabilityInsurance'" class="content">
+      <h1 class="text-xl md:text-2xl font-bold mb-4">
+        <span *ngIf="!isLoggedIn()">General Liability Insurance in Quebec...</span>
+        <app-back-office *ngIf="isLoggedIn()" [text]="'General Liability Insurance in Quebec...'"></app-back-office>
+      </h1>
+      <p class="mb-4 text-sm md:text-base">
+        <span *ngIf="!isLoggedIn()">General liability insurance (GLI) can help cover claims that your business caused bodily injury or property damage. It can help cover medical expenses and attorney fees resulting from bodily injuries and property damage for which your business may be legally responsible.</span>
+        <app-back-office *ngIf="isLoggedIn()" [text]="'General liability insurance (GLI) can help cover claims that your business caused bodily injury or property damage. It can help cover medical expenses and attorney fees resulting from bodily injuries and property damage for which your business may be legally responsible.'"></app-back-office>
+      </p>
+      <button class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-200">Get a quote</button>
+      <div class="mt-4 space-y-2">
+        <button (click)="toggleAccordion('generalLiabilityInsuranceDetails')" class="w-full bg-gray-200 py-2 px-4 rounded flex justify-between items-center hover:bg-gray-300 transition duration-200">
+          <span class="text-sm md:text-base">What Does General Liability Insurance Cover?</span>
+          <svg class="w-4 h-4 transform" [ngClass]="{'rotate-180': isOpen('generalLiabilityInsuranceDetails')}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div *ngIf="isOpen('generalLiabilityInsuranceDetails')" class="mt-2 p-4 bg-gray-100 rounded">
+          <p>Details about what General Liability Insurance covers...</p>
+        </div>
+        <button (click)="toggleAccordion('generalLiabilityInsuranceCosts')" class="w-full bg-gray-200 py-2 px-4 rounded flex justify-between items-center hover:bg-gray-300 transition duration-200">
+          <span class="text-sm md:text-base">Costs & Calculations: How It Works?</span>
+          <svg class="w-4 h-4 transform" [ngClass]="{'rotate-180': isOpen('generalLiabilityInsuranceCosts')}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div *ngIf="isOpen('generalLiabilityInsuranceCosts')" class="mt-2 p-4 bg-gray-100 rounded">
+          <p>Details about the costs and calculations for General Liability Insurance...</p>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="currentContent === 'professionalLiabilityInsurance'" class="content">
+      <h1 class="text-xl md:text-2xl font-bold mb-4">
+        <span *ngIf="!isLoggedIn()">Professional Liability Insurance in Quebec...</span>
+        <app-back-office *ngIf="isLoggedIn()" [text]="'Professional Liability Insurance in Quebec...'"></app-back-office>
+      </h1>
+      <p class="mb-4 text-sm md:text-base">
+        <span *ngIf="!isLoggedIn()">Professional liability insurance, also known as errors and omissions (E&O) insurance, helps protect your business if you're sued for negligently performing your services, even if you haven't made a mistake.</span>
+        <app-back-office *ngIf="isLoggedIn()" [text]="'Professional liability insurance, also known as errors and omissions (E&O) insurance, helps protect your business if you re sued for negligently performing your services, even if you haven t made a mistake.'"></app-back-office>
+      </p>
+      <button class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-200">Get a quote</button>
+      <div class="mt-4 space-y-2">
+        <button (click)="toggleAccordion('professionalLiabilityInsuranceDetails')" class="w-full bg-gray-200 py-2 px-4 rounded flex justify-between items-center hover:bg-gray-300 transition duration-200">
+          <span class="text-sm md:text-base">What Does Professional Liability Insurance Cover?</span>
+          <svg class="w-4 h-4 transform" [ngClass]="{'rotate-180': isOpen('professionalLiabilityInsuranceDetails')}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div *ngIf="isOpen('professionalLiabilityInsuranceDetails')" class="mt-2 p-4 bg-gray-100 rounded">
+          <p>Details about what Professional Liability Insurance covers...</p>
+        </div>
+        <button (click)="toggleAccordion('professionalLiabilityInsuranceCosts')" class="w-full bg-gray-200 py-2 px-4 rounded flex justify-between items-center hover:bg-gray-300 transition duration-200">
+          <span class="text-sm md:text-base">Costs & Calculations: How It Works?</span>
+          <svg class="w-4 h-4 transform" [ngClass]="{'rotate-180': isOpen('professionalLiabilityInsuranceCosts')}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div *ngIf="isOpen('professionalLiabilityInsuranceCosts')" class="mt-2 p-4 bg-gray-100 rounded">
+          <p>Details about the costs and calculations for Professional Liability Insurance...</p>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="currentContent === 'commercialPropertyInsurance'" class="content">
+      <h1 class="text-xl md:text-2xl font-bold mb-4">
+        <span *ngIf="!isLoggedIn()">Commercial Property Insurance in Quebec...</span>
+        <app-back-office *ngIf="isLoggedIn()" [text]="'Commercial Property Insurance in Quebec...'"></app-back-office>
+      </h1>
+      <p class="mb-4 text-sm md:text-base">
+        <span *ngIf="!isLoggedIn()">Commercial property insurance helps protect your business' physical assets, including your building, tools, equipment, inventory, furniture, and personal property. It can help cover the costs to repair or replace property damaged by fire, theft, vandalism, and certain weather events.</span>
+        <app-back-office *ngIf="isLoggedIn()" [text]="'Commercial property insurance helps protect your business physical assets, including your building, tools, equipment, inventory, furniture, and personal property. It can help cover the costs to repair or replace property damaged by fire, theft, vandalism, and certain weather events.'"></app-back-office>
+      </p>
+      <button class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-200">Get a quote</button>
+      <div class="mt-4 space-y-2">
+        <button (click)="toggleAccordion('commercialPropertyInsuranceDetails')" class="w-full bg-gray-200 py-2 px-4 rounded flex justify-between items-center hover:bg-gray-300 transition duration-200">
+          <span class="text-sm md:text-base">What Does Commercial Property Insurance Cover?</span>
+          <svg class="w-4 h-4 transform" [ngClass]="{'rotate-180': isOpen('commercialPropertyInsuranceDetails')}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div *ngIf="isOpen('commercialPropertyInsuranceDetails')" class="mt-2 p-4 bg-gray-100 rounded">
+          <p>Details about what Commercial Property Insurance covers...</p>
+        </div>
+        <button (click)="toggleAccordion('commercialPropertyInsuranceCosts')" class="w-full bg-gray-200 py-2 px-4 rounded flex justify-between items-center hover:bg-gray-300 transition duration-200">
+          <span class="text-sm md:text-base">Costs & Calculations: How It Works?</span>
+          <svg class="w-4 h-4 transform" [ngClass]="{'rotate-180': isOpen('commercialPropertyInsuranceCosts')}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div *ngIf="isOpen('commercialPropertyInsuranceCosts')" class="mt-2 p-4 bg-gray-100 rounded">
+          <p>Details about the costs and calculations for Commercial Property Insurance...</p>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="currentContent === 'commercialAutoInsurance'" class="content">
+      <h1 class="text-xl md:text-2xl font-bold mb-4">
+        <span *ngIf="!isLoggedIn()">Commercial Auto Insurance in Quebec...</span>
+        <app-back-office *ngIf="isLoggedIn()" [text]="'Commercial Auto Insurance in Quebec...'"></app-back-office>
+      </h1>
+      <p class="mb-4 text-sm md:text-base">
+        <span *ngIf="!isLoggedIn()">Commercial auto insurance helps protect your business' vehicles, including cars, trucks, and vans. It can help cover medical expenses and repair costs resulting from accidents, theft, and other incidents involving your business' vehicles.</span>
+        <app-back-office *ngIf="isLoggedIn()" [text]="'Commercial auto insurance helps protect your business vehicles, including cars, trucks, and vans. It can help cover medical expenses and repair costs resulting from accidents, theft, and other incidents involving your business vehicles.'"></app-back-office>
+      </p>
+      <button class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-200">Get a quote</button>
+      <div class="mt-4 space-y-2">
+        <button (click)="toggleAccordion('commercialAutoInsuranceDetails')" class="w-full bg-gray-200 py-2 px-4 rounded flex justify-between items-center hover:bg-gray-300 transition duration-200">
+          <span class="text-sm md:text-base">What Does Commercial Auto Insurance Cover?</span>
+          <svg class="w-4 h-4 transform" [ngClass]="{'rotate-180': isOpen('commercialAutoInsuranceDetails')}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div *ngIf="isOpen('commercialAutoInsuranceDetails')" class="mt-2 p-4 bg-gray-100 rounded">
+          <p>Details about what Commercial Auto Insurance covers...</p>
+        </div>
+        <button (click)="toggleAccordion('commercialAutoInsuranceCosts')" class="w-full bg-gray-200 py-2 px-4 rounded flex justify-between items-center hover:bg-gray-300 transition duration-200">
+          <span class="text-sm md:text-base">Costs & Calculations: How It Works?</span>
+          <svg class="w-4 h-4 transform" [ngClass]="{'rotate-180': isOpen('commercialAutoInsuranceCosts')}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div *ngIf="isOpen('commercialAutoInsuranceCosts')" class="mt-2 p-4 bg-gray-100 rounded">
+          <p>Details about the costs and calculations for Commercial Auto Insurance...</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

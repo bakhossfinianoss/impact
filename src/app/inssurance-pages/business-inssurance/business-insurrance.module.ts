@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BusinessInsurranceRoutingModule } from './business-inssurance-routing.module';
 import { BusinessInssuranceComponent } from './business-inssurance.component';
 import { FormsModule } from '@angular/forms';
+import { BackOfficeModule } from 'src/app/back-office/back-office/back-office.module';
 
 
 @NgModule({
@@ -10,7 +11,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     BusinessInsurranceRoutingModule,
-    FormsModule
+    FormsModule,
+    BackOfficeModule
   ],
   exports: [BusinessInssuranceComponent]
 })

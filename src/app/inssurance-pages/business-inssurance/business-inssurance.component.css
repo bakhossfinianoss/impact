@@ -1,0 +1,7 @@
+a:hover {
+    cursor: pointer;
+}
+
+.rotate-180 {
+    transform: rotate(180deg);
+}
