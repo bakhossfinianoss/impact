@@ -2,7 +2,8 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { faStar,faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
 import { register } from 'swiper/element/bundle';
-import { LoginService } from '../back-office/login/login.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DynamicPopupComponent } from '../dynamic-popup/dynamic-popup.component';
 
 register();
 
@@ -20,7 +21,7 @@ export interface PeriodicElement {
 })
 export class HomeContentComponent implements OnInit, AfterViewInit {
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   faStar = faStar
   faStarHalfStroke = faStarHalfStroke;
@@ -96,4 +97,14 @@ export class HomeContentComponent implements OnInit, AfterViewInit {
     this.transformStyle = `translateX(-${this.currentIndex * 100 / 3}%)`;
   }
 
+
+  myRenewal() {
+    const dialogRef = this.dialog.open(DynamicPopupComponent, {
+      data: { /* data can be passed here */ }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 }

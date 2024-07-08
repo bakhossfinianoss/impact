@@ -12,6 +12,7 @@ import { ChatModule } from './chat/chat.module';
 import { PersonalComponent } from './personal/personal.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorInterceptor } from './back-office/interceptor.interceptor';
+import { DynamicPopupModule } from './dynamic-popup/dynamic-popup.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -22,7 +23,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    PersonalComponent
+    PersonalComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +31,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     HttpClientModule,
     ChatModule,
+    DynamicPopupModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

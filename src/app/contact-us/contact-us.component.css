@@ -1,0 +1,42 @@
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555454;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.form-control:focus {
+  border-color: #0883a6;
+  outline: none;
+}
+
+.btn-submit {
+  background-color: #0883a6;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-submit:disabled {
+  background-color: #4b4f58;
+  cursor: not-allowed;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background-color: #0883a6;
+}

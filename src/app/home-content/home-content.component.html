@@ -8,12 +8,12 @@
     <img
       src="assets/ImpactInsurance_Logo4-300x110.png"
       alt="Overlay Image"
-      class="w-[350px] h-[125px] mt-4"
+      class="w-[350px] h-[125px] mt-4 hidden md:block"
     />
 
     <!-- Get A Quote -->
     <div class="flex flex-col items-center gap-5">
-      <h1 class="text-blue text-4xl font-bold">Get A Quote</h1>
+      <h1 class="text-blue text-4xl font-bold get-quote">Get A Quote</h1>
       <h2 class="text-mediumGray text-4xl font-normal text-center">Compare, choose, <br> save</h2>
     </div>
 
@@ -66,6 +66,9 @@
   </div>
 </div>
 
+<div class="mt-16 flex justify-center text-center">
+    <button class="btn-my-renewal uppercase" (click)="myRenewal()"> my renewal </button>
+</div>
 
 <div class="mt-16">
   <h1 class="flex justify-center text-center text-3xl font-medium px-2">

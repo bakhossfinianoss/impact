@@ -87,4 +87,19 @@ h1 {
   margin: 0 2px;
 }
 
+.btn-my-renewal {
+  background-color: #0883a6;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+@media (max-width: 640px) {
+  .get-quote {
+    margin-top: -35% !important;
+  }
+}
 
