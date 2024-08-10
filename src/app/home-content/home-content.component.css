@@ -24,6 +24,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: auto;
   transition: transform 0.3s ease-in-out;
   padding: 0; /* Ensure no padding */
 }
@@ -32,11 +33,24 @@
   transform: scale(1.05);
 }
 
+.partners-card {
+  background: #fff;
+  border-radius: 65px;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  text-align: left;
+  transition: all 0.3s ease-in-out;
+  height: 8.5rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .card {
   background: #fff;
   border-radius: 15px;
-  box-shadow: 0 4px 20px rgb(206 232 242);
-  width: 90%;
+  box-shadow: 4px 4px 4px rgb(206 232 242);
+  width: 99%;
   max-width: 600px;
   padding: 20px;
   text-align: left;
@@ -95,6 +109,10 @@ h1 {
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+}
+
+.letter-sp { 
+  letter-spacing: 5px;
 }
 
 @media (max-width: 640px) {

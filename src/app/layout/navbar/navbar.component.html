@@ -1,10 +1,34 @@
 <nav class="bg-blue p-4 sm:pt-4 md:p-2 lg:p-2" *ngIf="showComponent">
+
   <div class="container mx-auto flex justify-between items-center">
+
       <div class="hidden md:flex space-x-4">
-        <a routerLink="/" class="text-white hover:text-darkGray">Personal</a>
-        <a routerLink="/about" class="text-white hover:text-darkGray"
-          >Commercial</a
-        >
+        
+        <div class="relative group">
+          <a routerLink="/" class="text-white hover:text-darkGray">Personal</a>
+          <div class="absolute left-0 mt-2 w-48 hidden group-hover:block bg-white shadow-lg rounded-lg">
+            <a [routerLink]="['/personal-insurance', { tag: 'CAR' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Car Insurance</a>
+            <a [routerLink]="['/personal-insurance', { tag: 'HOUSE' }]" class="block px-4 py-2 text-black hover:bg-gray-200">House Insurance</a>
+            <a [routerLink]="['/personal-insurance', { tag: 'RECREATIONAL' }]" class="block px-4 py-2 text-black hover:bg-gray-200">Recreational Vehicule</a>
+            <a [routerLink]="['/personal-insurance', { tag: 'TRAVEL' }]" class="block px-4 py-2 text-black hover:bg-gray-200">Travel Insurance</a>
+            <a [routerLink]="['/personal-insurance', { tag: 'FAQ' }]" class="block px-4 py-2 text-black hover:bg-gray-200">FAQ</a>
+          </div>
+        </div>
+
+        <div class="relative group">
+           <a routerLink="/" class="text-white hover:text-darkGray">Business</a>
+           <div class="absolute left-0 mt-2 w-48 hidden group-hover:block bg-white shadow-lg rounded-lg">
+            <a [routerLink]="['/business-insurance', { tag: 'General' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Commercial General Liability</a>
+            <a [routerLink]="['/business-insurance', { tag: 'Property' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Commercial Property Insurance</a>
+            <a [routerLink]="['/business-insurance', { tag: 'Shop' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Auto Shop Insurance</a>
+            <a [routerLink]="['/business-insurance', { tag: 'Administrator' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Administrator</a>
+            <a [routerLink]="['/business-insurance', { tag: 'Condominium' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Condominium Insurance</a>
+            <a [routerLink]="['/business-insurance', { tag: 'Cargo' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Cargo Insurance</a>
+            <a [routerLink]="['/business-insurance', { tag: 'Credit' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Credit Insurance</a>
+            <a [routerLink]="['/business-insurance', { tag: 'Entertainement' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Entertainement Industry</a>
+        </div>
+        </div>
+        <a routerLink="/" class="text-white hover:text-darkGray">Life&Financial</a>
       </div>
 
       <button
@@ -41,24 +65,47 @@
     </div>
 
     </div>
+
+    <!-- Mobile Navigation -->
     <div [ngClass]="{ block: menuOpen, hidden: !menuOpen }" class="md:hidden">
-      <a routerLink="/" class="block text-white hover:text-darkGray px-2 py-1"
-        >Home</a
-      >
-      <a
-        routerLink="/about"
-        class="block text-white hover:text-darkGray px-2 py-1"
-        >About</a
-      >
-      <a
-        routerLink="/services"
-        class="block text-white hover:text-darkGray px-2 py-1"
-        >Services</a
-      >
-      <a
-        routerLink="/contact"
-        class="block text-white hover:text-darkGray px-2 py-1"
-        >Contact</a
-      >
+      <!-- Personal Dropdown -->
+      <div class="relative group">
+        <a routerLink="/" class="block text-white hover:text-darkGray px-2 py-1">Personal</a>
+        <div class="absolute left-0 mt-2 w-48 hidden group-hover:block bg-white shadow-lg rounded-lg">
+          <a [routerLink]="['/personal-insurance', { tag: 'CAR' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Car Insurance</a>
+          <a [routerLink]="['/personal-insurance', { tag: 'HOUSE' }]" class="block px-4 py-2 text-black hover:bg-gray-200">House Insurance</a>
+          <a [routerLink]="['/personal-insurance', { tag: 'RECREATIONAL' }]" class="block px-4 py-2 text-black hover:bg-gray-200">Recreational Vehicule</a>
+          <a [routerLink]="['/personal-insurance', { tag: 'TRAVEL' }]" class="block px-4 py-2 text-black hover:bg-gray-200">Travel Insurance</a>
+          <a [routerLink]="['/personal-insurance', { tag: 'FAQ' }]" class="block px-4 py-2 text-black hover:bg-gray-200">FAQ</a>
+        </div>
+      </div>
+
+      <!-- Business Dropdown -->
+      <div class="relative group">
+        <a routerLink="/" class="block text-white hover:text-darkGray px-2 py-1">Business</a>
+        <div class="absolute left-0 mt-2 w-48 hidden group-hover:block bg-white shadow-lg rounded-lg">
+          <a [routerLink]="['/business-insurance', { tag: 'General' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Commercial General Liability</a>
+          <a [routerLink]="['/business-insurance', { tag: 'Property' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Commercial Property Insurance</a>
+          <a [routerLink]="['/business-insurance', { tag: 'Shop' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Auto Shop Insurance</a>
+          <a [routerLink]="['/business-insurance', { tag: 'Administrator' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Administrator</a>
+          <a [routerLink]="['/business-insurance', { tag: 'Condominium' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Condominium Insurance</a>
+          <a [routerLink]="['/business-insurance', { tag: 'Cargo' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Cargo Insurance</a>
+          <a [routerLink]="['/business-insurance', { tag: 'Credit' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Credit Insurance</a>
+          <a [routerLink]="['/business-insurance', { tag: 'Entertainement' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Entertainement Industry</a>
+        </div>
+      </div>
+      <!-- Life & Financial Dropdown -->
+      <div class="relative group">
+        <a routerLink="/" class="block text-white hover:text-darkGray px-2 py-1">Life & Financial</a>
+        <div class="absolute left-0 mt-2 w-48 hidden group-hover:block bg-white shadow-lg rounded-lg">
+          <a routerLink="/life-insurance" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Life Insurance</a>
+          <a routerLink="/financial-planning" class="block px-4 py-2 text-black hover:bg-gray-200">Financial Planning</a>
+          <a routerLink="/other-financial" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-b-lg">Other Financial</a>
+        </div>
+      </div>
+      <!-- Contact Link -->
+      <a routerLink="/contact" class="block text-white hover:text-darkGray px-2 py-1">Contact</a>
     </div>
+
+
   </nav>

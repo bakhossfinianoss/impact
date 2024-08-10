@@ -90,11 +90,10 @@
   </h3>
 
   <div class="flex justify-center w-full overflow-hidden mt-6">
-    <swiper-container class="mySwiper" slides-per-view="auto" loop="true" [spaceBetween]="0"
-      autoplay-delay="3500" autoplay-disable-on-interaction="false" space-between="20"
-      class="w-full max-w-[85%] h-full overflow-hidden"
-    >
-      <swiper-slide *ngFor="let card of cards" class="w-full sm:w-1/2 md:w-1/2 md-sm:w-1/2 md-md:w-1/2 lg:w-1/3">
+    <swiper-container class="w-11/12 h-full overflow-hidden"
+        [spaceBetween]="10" [breakpoints]="cardBreakpoints"
+        autoplay-delay="3500" autoplay-disable-on-interaction="false">
+      <swiper-slide *ngFor="let card of cards">
       <div class="card px-4">
           <div class="card-header">
             <h5 class="font-medium">{{ card.name }}</h5>
@@ -111,12 +110,11 @@
 
 
   <div class="mt-16">
-  <h1 class="text-center text-3xl font-medium leading-snug">
-    <span class="text-orange">We're Here</span> To Guide You <br />
-    Every Step Of The Way
+  <h1 class="text-center text-4xl font-medium leading-snug">
+    <span class="text-orange">Our Services</span> 
   </h1>
 
-  <h5 class="flex justify-center text-center text-2xl font-normal mt-5 mb-6">
+  <h5 class="flex justify-center text-center text-2xl font-medium mb-6 letter-sp">
     Discover our coverage
   </h5>
 
@@ -269,5 +267,31 @@
   </div>
 </div>
 
-<app-emergency-contact-information></app-emergency-contact-information>
+
+<div class="mt-16">
+    <h1 class="flex justify-center text-center text-3xl font-medium px-2 letter-sp">
+      <strong class="text-orange">Our</strong> <span class="text-mediumGray"> Partners </span>
+    </h1>
+    <div class="flex justify-center w-full overflow-hidden mt-6 bg-lightBlue pt-10 pb-10">
+      <swiper-container class="w-11/12 h-full overflow-hidden"
+        [spaceBetween]="20" [breakpoints]="breakpoints"
+        autoplay-delay="3500" autoplay-disable-on-interaction="false">
+        <swiper-slide *ngFor="let p of partners">
+        <div class="partners-card px-4">
+            <div class="card-header">
+              <h5 class="font-medium text-mediumGray">{{ p.name }}</h5>
+            </div>
+            <div class="card-body">
+              <img [src]="p.logo" [class] width="45%" height="45%" 
+              [ngStyle]="{
+                'margin-top': p.name === 'Industrielle Alliance' ? '-15px' : 'initial',
+                'width': p.name === 'Industrielle Alliance' ? '42%' : '45%',
+                'margin-left': '60px'}"/>
+            </div>
+          </div>
+        </swiper-slide>
+      </swiper-container>
+    </div>
+</div>
+
 

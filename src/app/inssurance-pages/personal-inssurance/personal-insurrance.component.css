@@ -1,0 +1,14 @@
+a:hover {
+    cursor: pointer;
+    background-color: #0883a6;
+    color: white;
+}
+
+.selected {
+    background-color: #0883a6;
+    color: white;
+}
+
+.rotate-180 {
+    transform: rotate(180deg);
+}

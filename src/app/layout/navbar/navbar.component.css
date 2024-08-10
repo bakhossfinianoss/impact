@@ -1,66 +1,116 @@
 .button-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  .button-container button {
-    flex: 1;
-    padding: 5px 15px 5px 15px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .button-container button:first-child {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-right: 1px solid #555454; /* Line in the middle using darkGray */
-  }
-  
-  .button-container button:last-child {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
-  
-  .button-primary {
-    background-color: #cee8f2; 
-    color: #4b4f58;
-  }
-  
-  .button-secondary {
-    background-color: #f37e2a; /* orange */
-    color: white;
-  }
+  display: flex;
+  align-items: center;
+}
 
-  nav {
-    position: fixed;
-    margin-top: 0;
-    top: 0;
-    margin-bottom: 0;
-    width: 100%;
-    left: 0;
-    z-index: 999999;
-  }
+.button-container button {
+  flex: 1;
+  padding: 5px 15px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-  #quoteButton {
-    transition: opacity 0.5s ease-in-out;
-    opacity: 1;
-  }
+.button-container button:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-right: 1px solid #555454; /* Line in the middle using darkGray */
+}
 
-  #quoteButton.hidden {
-    opacity: 0;
-  }
+.button-container button:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
 
-  @keyframes jump {
-    0%, 100% {
+.button-primary {
+  background-color: #cee8f2; 
+  color: #4b4f58;
+}
+
+.button-secondary {
+  background-color: #f37e2a; /* orange */
+  color: white;
+}
+
+nav {
+  position: fixed;
+  margin-top: 0;
+  top: 0;
+  margin-bottom: 0;
+  width: 100%;
+  left: 0;
+  z-index: 999999;
+}
+
+#quoteButton {
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+#quoteButton.hidden {
+  opacity: 0;
+}
+
+@keyframes jump {
+  0%, 100% {
       transform: translateY(0);
-    }
-    50% {
+  }
+  50% {
       transform: translateY(-20px);
-    }
   }
+}
 
-  #quoteButton.jumping {
-    animation: jump 0.6s;
-  }
+#quoteButton.jumping {
+  animation: jump 0.6s;
+}
+
+nav .relative.group .absolute {
+  padding: 10px; /* Add padding to the container */
+  margin-top: 0px; /* Add some margin to space it out from the link */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Add a soft shadow */
+  border-radius: 12px; /* Add border-radius for rounded corners */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition */
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none; /* Prevent interaction when hidden */
+  max-height: 70vh; /* Maximum height of 70% of the viewport height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  scroll-behavior: smooth; /* Smooth scrolling */
+}
+
+/* Custom scrollbar styles */
+nav .relative.group .absolute::-webkit-scrollbar {
+  width: 8px;
+}
+
+nav .relative.group .absolute::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+  border: 2px solid #f0f0f0; /* Add border to thumb */
+}
+
+nav .relative.group .absolute::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+}
+
+nav .relative.group:hover .absolute {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto; /* Allow interaction when visible */
+}
+
+nav .relative.group .absolute a {
+  padding: 10px 15px; /* Add padding to the links */
+  margin: 2px 0; /* Add margin between links */
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+  display: block;
+  text-decoration: none; /* Remove underline */
+  font-size: 14px; /* Adjust font size */
+}
+
+nav .relative.group .absolute a:hover {
+  background-color: #f0f0f0; /* Light gray background on hover */
+  color: #333; /* Slightly darker text on hover */
+}

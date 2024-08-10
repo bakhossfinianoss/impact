@@ -39,6 +39,20 @@ export class HomeContentComponent implements OnInit, AfterViewInit {
   commerce = `${environment.baseHref}assets/svg/commerce.svg`;
   moto = `${environment.baseHref}assets/svg/moto.svg`;
 
+  cardBreakpoints = {
+    320: { slidesPerView: 1 },  // Extra small screens (<= 320px)
+    640: { slidesPerView: 2 },  // Small screens (<= 640px)
+    768: { slidesPerView: 2 },  // Medium screens (<= 768px)
+    1024: { slidesPerView: 3 }  // Large screens (<= 1024px and above)
+  };
+
+  breakpoints = {
+    320: { slidesPerView: 1 },  // Extra small screens (<= 320px)
+    640: { slidesPerView: 2 },  // Small screens (<= 640px)
+    768: { slidesPerView: 3 },  // Medium screens (<= 768px)
+    1024: { slidesPerView: 4 }  // Large screens (<= 1024px and above)
+  };
+
   ngOnInit(): void {
     setInterval(() => {
       this.showNextCard();
@@ -91,12 +105,45 @@ export class HomeContentComponent implements OnInit, AfterViewInit {
     }
   ];
 
+  partners = [
+    {
+      logo: 'assets/partners-logo/SUM.jpg',
+      name: 'Sum assurance'
+    },
+    {
+      logo: 'assets/partners-logo/SGL_TravelInsurance.svg',
+      name: 'Securiglobe'
+    },
+    {
+      logo: 'assets/partners-logo/IA_Financial_Group-Logo.wine.png',
+      name: 'Industrielle Alliance'
+    },
+    {
+      logo: 'assets/partners-logo/paflogo.svg',
+      name: 'PAFCO'
+    },
+    {
+      logo: 'assets/partners-logo/logo-promutuel.png',
+      name: 'Promutuel assurance'
+    },
+    {
+      logo: 'assets/partners-logo/logo-fr.svg',
+      name: 'Intact insurance'
+    },
+    {
+      logo: 'assets/partners-logo/logo-april.svg',
+      name: 'April'
+    },
+    {
+      logo: 'assets/partners-logo/lunique-logo-en-2.svg',
+      name: `L'unique`
+    }
+  ]
 
   showNextCard(): void {
     this.currentIndex = (this.currentIndex + 1) % this.cards.length;
     this.transformStyle = `translateX(-${this.currentIndex * 100 / 3}%)`;
   }
-
 
   myRenewal() {
     const dialogRef = this.dialog.open(DynamicPopupComponent, {

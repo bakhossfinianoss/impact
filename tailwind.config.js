@@ -17,7 +17,7 @@ module.exports = {
           'md-md': '770px',
           'md-768': '768px',
           'md-640': '640px'
-        },
+        }
     },
   },
   plugins: [],
