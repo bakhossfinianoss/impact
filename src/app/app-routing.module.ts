@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'home', loadChildren: () => import('./home-content/home-content.module').then(m => m.HomeContentModule) },
   { path: 'quote', loadChildren: () => import('./quote/quote.module').then(m => m.QuoteModule) },
   { path: 'contact-us', loadChildren: () => import('./contact-us/contact-us.module').then(m => m.ContactUsModule) },
+  { path: 'about-us', loadChildren: () => import('./about-us/about-us.module').then(m => m.AboutUsModule) },
   // { path: 'business-insurance', loadChildren: () => import('./inssurance-pages/business-inssurance/business-insurrance.module').then(m => m.BusinessInsurranceModule)},
   { path: 'personal-insurance', loadChildren: () => import('./inssurance-pages/personal-inssurance/personal-insurrance.module').then(m => m.PersonalInsurranceModule)},
   { path: 'login-dashboard', loadChildren: () => import('./back-office/login/login.module').then(m => m.LoginModule)},

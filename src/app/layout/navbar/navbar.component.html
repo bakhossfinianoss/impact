@@ -51,8 +51,9 @@
         </svg>
       </button>
 
-      <img src="assets/footer-logo.png" class="w-1/4 md:w-1/12 lg:w-1/19"/>
-
+      <a [routerLink]="['/home']" class="w-1/4 md:w-1/12 lg:w-1/19">
+        <img src="assets/footer-logo.png" />
+      </a>
     <div class="flex !justify-end space-x-2">
       <div class="button-container">
         <button id="quoteButton" class="button-primary" [routerLink]="'/quote'">Quote</button>
@@ -69,7 +70,7 @@
     <!-- Mobile Navigation -->
     <div [ngClass]="{ block: menuOpen, hidden: !menuOpen }" class="md:hidden">
       <!-- Personal Dropdown -->
-      <div class="relative group">
+      <div class="relative group my-1">
         <a routerLink="/" class="block text-white hover:text-darkGray px-2 py-1">Personal</a>
         <div class="absolute left-0 mt-2 w-48 hidden group-hover:block bg-white shadow-lg rounded-lg">
           <a [routerLink]="['/personal-insurance', { tag: 'CAR' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Car Insurance</a>
@@ -81,7 +82,7 @@
       </div>
 
       <!-- Business Dropdown -->
-      <div class="relative group">
+      <div class="relative group my-1">
         <a routerLink="/" class="block text-white hover:text-darkGray px-2 py-1">Business</a>
         <div class="absolute left-0 mt-2 w-48 hidden group-hover:block bg-white shadow-lg rounded-lg">
           <a [routerLink]="['/business-insurance', { tag: 'General' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Commercial General Liability</a>
@@ -95,7 +96,7 @@
         </div>
       </div>
       <!-- Life & Financial Dropdown -->
-      <div class="relative group">
+      <div class="relative group my-1">
         <a routerLink="/" class="block text-white hover:text-darkGray px-2 py-1">Life & Financial</a>
         <div class="absolute left-0 mt-2 w-48 hidden group-hover:block bg-white shadow-lg rounded-lg">
           <a routerLink="/life-insurance" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Life Insurance</a>
@@ -103,9 +104,13 @@
           <a routerLink="/other-financial" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-b-lg">Other Financial</a>
         </div>
       </div>
-      <!-- Contact Link -->
-      <a routerLink="/contact" class="block text-white hover:text-darkGray px-2 py-1">Contact</a>
-    </div>
 
+      <!-- Language Switcher -->
+      <div class="flex mt-2 px-2">
+        <button class="px-3 py-1 bg-lightGray text-mediumGray hover:bg-blue hover:text-white rounded-l-lg">EN</button>
+        <button class="px-3 py-1 bg-lightGray text-mediumGray hover:bg-blue hover:text-white rounded-r-lg">FR</button>
+      </div>
+
+    </div>
 
   </nav>
