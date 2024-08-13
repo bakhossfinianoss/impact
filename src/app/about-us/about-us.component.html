@@ -1,4 +1,4 @@
-<div class="container mx-auto p-6 mt-14">
+<div class="container mx-auto p-6 mt-14" *ngIf="currentLanguage === 'en'">
     <!-- About Impact Assurances -->
     <section class="mb-10">
       <h1 class="text-3xl font-bold mb-2 text-blue">About Impact Assurances</h1>
@@ -42,7 +42,7 @@
   
     <!-- Join Our Team -->
     <section class="bg-lightBlue p-6 rounded-lg mb-10 shadow-md">
-      <h2 class="text-2xl font-semibold mb-3 text-blue">Join Our Team</h2>
+      <h2 class="text-2xl font-semibold mb-3 text-blue"> Join Our Team </h2>
       <p class="text-sm text-mediumGray">At Impact Assurances, we believe in fostering a dynamic and supportive work environment. We are always looking for passionate and talented individuals to join our team. If you are dedicated to providing excellent service and seeking to grow your career in the insurance industry, we would love to hear from you.</p>
     </section>
   
@@ -59,3 +59,65 @@
     </section>
   </div>
   
+
+<!--frensh-->
+<div class="container mx-auto p-6 mt-14" *ngIf="currentLanguage === 'fr'">
+    <!-- À propos de Impact Assurances -->
+    <section class="mb-10">
+      <h1 class="text-3xl font-bold mb-2 text-blue">À propos de Impact Assurances</h1>
+      <p class="text-md text-darkGray max-w-2xl">Bienvenue chez Impact Assurances, où votre tranquillité d’esprit est notre priorité. En tant que courtier d’assurances de premier plan, nous nous engageons à fournir des solutions d’assurance personnalisées qui répondent à vos besoins uniques. Notre devise: Soyez bien assuré!</p>
+    </section>
+  
+    <!-- Notre Mission -->
+    <section class="bg-lightBlue p-6 rounded-lg mb-10 shadow-md">
+      <h2 class="text-2xl font-semibold mb-3 text-blue">Notre Mission</h2>
+      <p class="text-sm text-mediumGray">Notre mission est de fournir des services d’assurance exceptionnels qui protègent et améliorent la vie de nos clients. Nous croyons en l’apport de valeur grâce à un service personnalisé, des conseils d’experts et des produits d’assurance innovants qui sécurisent votre avenir.</p>
+    </section>
+  
+    <!-- Qui Nous Sommes -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-3 text-blue">Qui Nous Sommes</h2>
+      <p class="text-sm text-mediumGray">Impact Assurances a été fondé par des professionnels de l’assurance expérimentés, dévoués à une approche centrée sur le client. Avec une connaissance approfondie du secteur, notre équipe vous guide à travers les complexités de l’assurance avec aisance et confiance.</p>
+    </section>
+  
+    <!-- Ce Que Nous Faisons -->
+    <section class="bg-lightBlue p-6 rounded-lg mb-10 shadow-md">
+      <h2 class="text-2xl font-semibold mb-3 text-blue">Ce Que Nous Faisons</h2>
+      <ul class="list-disc pl-6 text-sm text-mediumGray">
+        <li class="mb-1"><strong>Assurance vie et financier :</strong> Sécurisez l’avenir de votre famille avec nos polices d’assurance vie.</li>
+        <li class="mb-1"><strong>Assurance auto :</strong> Conduisez en toute confiance avec notre couverture d’assurance auto.</li>
+        <li class="mb-1"><strong>Assurance habitation :</strong> Protégez votre maison et vos biens avec notre assurance habitation fiable.</li>
+        <li class="mb-1"><strong>Assurance entreprise :</strong> Sauvegardez votre entreprise avec nos solutions d’assurance entreprise personnalisées.</li>
+      </ul>
+    </section>
+  
+    <!-- Pourquoi Choisir Impact Assurances? -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-3 text-blue">Pourquoi Choisir Impact Assurances?</h2>
+      <ul class="list-disc pl-6 text-sm text-mediumGray">
+        <li class="mb-1"><strong>Service personnalisé :</strong> Nous comprenons vos besoins spécifiques et fournissons des solutions sur mesure.</li>
+        <li class="mb-1"><strong>Conseils d’experts :</strong> Nos professionnels compétents offrent des conseils avisés et un accompagnement.</li>
+        <li class="mb-1"><strong>Couverture complète :</strong> Nous proposons une large gamme de produits d’assurance pour une couverture totale.</li>
+        <li class="mb-1"><strong>Partenariats de confiance :</strong> Nous collaborons avec des prestataires d’assurance de premier plan pour offrir les meilleures options.</li>
+        <li class="mb-1"><strong>Orientation client :</strong> Votre satisfaction est notre priorité, et nous nous engageons à fournir un service exceptionnel.</li>
+      </ul>
+    </section>
+  
+    <!-- Rejoignez Notre Équipe -->
+    <section class="bg-lightBlue p-6 rounded-lg mb-10 shadow-md">
+      <h2 class="text-2xl font-semibold mb-3 text-blue"> Rejoignez Notre Équipe </h2>
+      <p class="text-sm text-mediumGray">Chez Impact Assurances, nous croyons en la promotion d’un environnement de travail dynamique et solidaire. Nous recherchons toujours des personnes passionnées et talentueuses pour rejoindre notre équipe. Si vous êtes dédié à offrir un excellent service et souhaitez développer votre carrière dans le secteur de l’assurance, nous serions ravis de vous entendre.</p>
+    </section>
+  
+    <!-- Notre Engagement Envers Vous -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-3 text-blue">Notre Engagement Envers Vous</h2>
+      <p class="text-sm text-mediumGray">Nous nous engageons à établir des relations durables avec nos clients, basées sur la confiance, l’intégrité et l’excellence. Notre objectif est de rendre le processus d’assurance aussi simple et sans stress que possible, en vous assurant de disposer de la couverture nécessaire lorsque cela compte le plus.</p>
+    </section>
+  
+    <!-- Contactez-Nous -->
+    <section class="bg-blue text-white p-6 rounded-lg shadow-md -mb-16">
+      <h2 class="text-2xl font-semibold mb-3">Contactez-Nous</h2>
+      <p class="text-sm">Pour plus d’informations ou pour discuter de vos besoins en assurance, n’hésitez pas à nous contacter. Nous sommes là pour vous aider à chaque étape.</p>
+    </section>
+  </div>

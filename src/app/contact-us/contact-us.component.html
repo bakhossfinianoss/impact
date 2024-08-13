@@ -3,49 +3,65 @@
   <div class="block w-full text-center sm:text-center sm:w-full md:w-full md:text-center lg:w-1/3 lg:text-left h-1/3 mt-28 -mb-5">
     <img src="assets/ImpactInsurance_Logo4-300x110.png" class="m-auto sm:m-auto md:m-auto lg:m-0"/>
 
-    <h5 class="text-2xl font-medium mt-6 text-mediumGray"> We are here to help </h5>
+    <h5 class="text-2xl font-medium mt-6 text-mediumGray">
+      {{ getTranslation('We_are_here_to_help') }}
+    </h5>
 
-    <p class="text-1xl font-medium text-blue mt-4"> Location </p>
-    <p class="text-1xl text-mediumGray"> 260- 5375 rue Paré, Mont-Royal, Quebec, H4P 1P7 </p>
+    <p class="text-1xl font-medium text-blue mt-4">
+      {{ getTranslation('Location') }}
+    </p>
+    <p class="text-1xl text-mediumGray">
+      260- 5375 rue Paré, Mont-Royal, Quebec, H4P 1P7
+    </p>
 
     <div class="mt-4 mx-5">
       <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.536035812756!2d-73.65524508444084!3d45.49207967910132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91a1a2d7d3ed3%3A0x6bf262fb3f3ec0e6!2s260-5375%20Rue%20Par%C3%A9%2C%20Mont-Royal%2C%20QC%20H4P%201P7%2C%20Canada!5e0!3m2!1sen!2s!4v1626899096142!5m2!1sen!2s"
-      width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.536035812756!2d-73.65524508444084!3d45.49207967910132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91a1a2d7d3ed3%3A0x6bf262fb3f3ec0e6!2s260-5375%20Rue%20Par%C3%A9%2C%20Mont-Royal%2C%20QC%20H4P%201P7%2C%20Canada!5e0!3m2!1sen!2s!4v1626899096142!5m2!1sen!2s"
+        width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 
-    <p class="text-1xl font-medium text-blue mt-4"> Phone Number </p>
-    <p class="text-1xl text-mediumGray"> +123-456-7890 </p>
+    <p class="text-1xl font-medium text-blue mt-4">
+      {{ getTranslation('Phone_Number') }}
+    </p>
+    <p class="text-1xl text-mediumGray">
+      +123-456-7890
+    </p>
 
-    <p class="text-1xl font-medium text-blue mt-4"> Email </p>
-    <p class="text-1xl text-mediumGray"> contact@impactassurance.com </p>
+    <p class="text-1xl font-medium text-blue mt-4">
+      {{ getTranslation('Email') }}
+    </p>
+    <p class="text-1xl text-mediumGray">
+      contact@impactassurance.com
+    </p>
 
-    <p class="text-1xl mt-4 font-medium text-mediumGray"> Feel free to reach out to us with any questions or concerns you may have. We're here to assist you. </p>
+    <p class="text-1xl mt-4 font-medium text-mediumGray">
+      {{ getTranslation('Feel_free_to_reach_out') }}
+    </p>
   </div>
 
   <div class="bg-lightBlue mt-28 p-5 w-full sm:w-full md:w-full lg:w-3/6 rounded-[12px] shadow-2xl -mb-[19px] max-h-[90vh]">
     <form>
       <div class="form-group">
-        <label for="name">Name:</label>
+        <label for="name">{{ getTranslation('Name') }}:</label>
         <input type="text" id="name" name="name" class="form-control" ngModel required>
       </div>
 
       <div class="form-group">
-        <label for="email">Email:</label>
+        <label for="email">{{ getTranslation('Email') }}:</label>
         <input type="email" id="email" name="email" class="form-control" ngModel required>
       </div>
 
       <div class="form-group">
-        <label for="subject">Subject:</label>
+        <label for="subject">{{ getTranslation('Subject') }}:</label>
         <input type="text" id="subject" name="subject" class="form-control" ngModel required>
       </div>
 
       <div class="form-group">
-        <label for="message">Message:</label>
+        <label for="message">{{ getTranslation('Message') }}:</label>
         <textarea id="message" name="message" class="form-control" rows="5" ngModel required></textarea>
       </div>
 
-      <button type="submit" class="btn-submit">Submit</button>
+      <button type="submit" class="btn-submit">{{ getTranslation('Submit') }}</button>
     </form>
   </div>
 

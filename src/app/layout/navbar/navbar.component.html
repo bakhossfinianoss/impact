@@ -60,8 +60,8 @@
       </div>
 
       <div class="button-container !hidden md:!block">
-        <button class="button-primary"> EN </button>
-        <button class="button-secondary"> FR </button>
+        <button class="button-primary" (click)="switchLanguage('en')"> EN </button>
+        <button class="button-secondary" (click)="switchLanguage('fr')"> FR </button>
       </div>
     </div>
 
@@ -107,8 +107,10 @@
 
       <!-- Language Switcher -->
       <div class="flex mt-2 px-2">
-        <button class="px-3 py-1 bg-lightGray text-mediumGray hover:bg-blue hover:text-white rounded-l-lg">EN</button>
-        <button class="px-3 py-1 bg-lightGray text-mediumGray hover:bg-blue hover:text-white rounded-r-lg">FR</button>
+        <button class="px-3 py-1 bg-lightGray text-mediumGray hover:bg-blue hover:text-white rounded-l-lg" 
+              (click)="switchLanguage('en')">EN</button>
+        <button class="px-3 py-1 bg-lightGray text-mediumGray hover:bg-blue hover:text-white rounded-r-lg" 
+              (click)="switchLanguage('fr')">FR</button>
       </div>
 
     </div>

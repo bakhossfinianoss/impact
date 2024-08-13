@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/back-office/login/login.service';
+import { LanguageService } from '../language/language.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,13 +13,18 @@ export class NavbarComponent implements OnInit {
   menuOpen = false;
   private lastScrollTop = 0;
   showComponent = true;
+  currentLanguage!: string;
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService,
+    private languageService: LanguageService
+  ) {}
 
   ngOnInit(): void {
     this.loginService.showComponent$.subscribe( res => {
       this.showComponent = res;
     })
+
+    this.currentLanguage = this.languageService.getLanguage();
   }
 
   toggleLanguage() {
@@ -47,4 +53,8 @@ export class NavbarComponent implements OnInit {
     this.lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
   }
 
+  switchLanguage(language: string) {
+    this.languageService.setLanguage(language);
+  }
 }
+

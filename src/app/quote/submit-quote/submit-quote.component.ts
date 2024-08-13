@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SubmitQuoteService } from '../submit-quote.service';
+import { LanguageService } from 'src/app/layout/language/language.service';
 
 @Component({
   selector: 'app-submit-quote',
@@ -7,10 +8,17 @@ import { SubmitQuoteService } from '../submit-quote.service';
   styleUrls: ['./submit-quote.component.css']
 })
 export class SubmitQuoteComponent implements OnInit {
+  currentLanguage: string = 'en';
 
-  constructor(private submitQuoteService : SubmitQuoteService){}
+  constructor(private submitQuoteService : SubmitQuoteService,
+    private languageService: LanguageService
+  ){}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.languageService.currentLanguage$.subscribe(language => {
+      this.languageService.loadTranslations(language);
+    });
+  }
 
   onSubmit(form: any) {
     console.log(form)
@@ -23,4 +31,8 @@ export class SubmitQuoteComponent implements OnInit {
 
   }
 
+  getTranslation(key: string): string {
+    return this.languageService.getTranslation(key);
+  }
+  
 }
