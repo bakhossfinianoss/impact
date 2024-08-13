@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,15 @@ export class LanguageService {
   private languageSubject = new BehaviorSubject<string>(localStorage.getItem('language') || 'en');
   currentLanguage$ = this.languageSubject.asObservable();
   translations: any = {};
+  lang = `${environment.baseHref}assets/lang`;
 
+  
   constructor(private http: HttpClient) {
     this.loadTranslations('en'); // Load default language
   }
 
   loadTranslations(language: string) {
-    this.http.get(`/assets/lang/${language}.json`).subscribe((translations: any) => {
+    this.http.get(`${this.lang}/${language}.json`).subscribe((translations: any) => {
       this.translations = translations;
     });
   }
