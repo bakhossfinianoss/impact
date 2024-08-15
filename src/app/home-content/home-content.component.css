@@ -121,3 +121,15 @@ h1 {
   }
 }
 
+@media (min-width: 767px) {
+    .click-here {
+      align-self: flex-start !important;
+    }
+}
+
+@media (max-width: 767px) {
+  .submit-claim {
+    align-items: center !important;
+
+  }
+}

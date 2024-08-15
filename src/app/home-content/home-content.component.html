@@ -252,21 +252,20 @@
   </div>
 </div>
 
-
-<div class="flex flex-col md:flex-row lg:flex-row justify-center mt-6 mb-6 max-w-[70%] mx-auto space-y-5 md:space-y-0 md:space-x-5">
-  <video class="w-full md:w-1/2 lg:w-1/3" #constructionVideoPlayer autoplay loop muted>
-    <source src="assets/Construction_Insurance.mp4" type="video/mp4">
-    Your browser does not support the video tag.
+  <div class="flex flex-col md:flex-row lg:flex-row justify-center mt-6 mb-6 max-w-[70%] mx-auto space-y-5 md:space-y-0 md:space-x-5">
+    <video class="w-full md:w-1/2 lg:w-1/3" #constructionVideoPlayer autoplay loop muted playsinline controls>
+      <source src="assets/Construction_Insurance.mp4" type="video/mp4">
+      Your browser does not support the video tag.
   </video>
 
   <div class="flex flex-col justify-center items-center">
     <h1 class="text-3xl font-medium mb-5">{{ getTranslation('Submit_A_Claim') }}</h1>
-    <button class="self-start bg-blue-500 text-white font-bold 
+    <button class="click-here bg-blue-500 text-white font-bold 
           py-2 px-4 rounded-lg shadow-lg bg-orange transition duration-300 ease-in-out transform hover:-translate-y-1"
             (click)="submitClaim()">
             {{ getTranslation('Click_here') }}
   </button>
-      <p class="flex flex-col items-baseline self-start" style="margin-top: 20px;">
+      <p class="flex flex-col items-baseline submit-claim" style="margin-top: 20px;">
       {{ getTranslation('We_Are_Available') }}
       <span>{{ getTranslation('Or_By_Phone') }}</span>
       <span>{{ getTranslation('Or_By_Mail') }}</span>

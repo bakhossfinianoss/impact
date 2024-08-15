@@ -1,0 +1,8 @@
+@media screen and (max-width: 560px) {
+    ::ng-deep #cdk-overlay-0 {
+        overflow-y: auto;
+        max-height: 50%;
+        min-width: 80vw;
+      }
+}
+  
