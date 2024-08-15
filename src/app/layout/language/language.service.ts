@@ -11,14 +11,14 @@ export class LanguageService {
   private languageSubject = new BehaviorSubject<string>(localStorage.getItem('language') || 'en');
   currentLanguage$ = this.languageSubject.asObservable();
   translations: any = {};
-  lang = `${environment.baseHref}assets/lang`;
+  lang = `${environment.baseHref}assets/lang/`;
 
   constructor(private http: HttpClient) {
     this.loadTranslations('en'); // Load default language
   }
   
   loadTranslations(language: string) {
-    const url = `${this.lang}${language}.json`; // Do not add an extra "/" here
+    const url = `${this.lang}${language}.json`; 
     this.http.get(url).subscribe((translations: any) => {
       this.translations = translations;
     });

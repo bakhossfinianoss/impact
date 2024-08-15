@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
   menuOpen = false;
   private lastScrollTop = 0;
   showComponent = true;
-  currentLanguage!: string;
+  currentLanguage: string = 'en';
 
   constructor(private loginService: LoginService,
     private languageService: LanguageService
@@ -24,7 +24,10 @@ export class NavbarComponent implements OnInit {
       this.showComponent = res;
     })
 
-    this.currentLanguage = this.languageService.getLanguage();
+    this.languageService.currentLanguage$.subscribe(language => {
+      this.languageService.loadTranslations(language);
+      this.currentLanguage = language;
+    });
   }
 
   toggleLanguage() {
@@ -55,6 +58,10 @@ export class NavbarComponent implements OnInit {
 
   switchLanguage(language: string) {
     this.languageService.setLanguage(language);
+  }
+
+  getTranslation(key: string): string {
+    return this.languageService.getTranslation(key);
   }
 }
 

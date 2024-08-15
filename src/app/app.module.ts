@@ -13,6 +13,7 @@ import { PersonalComponent } from './personal/personal.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorInterceptor } from './back-office/interceptor.interceptor';
 import { DynamicPopupModule } from './dynamic-popup/dynamic-popup.module';
+import { SubmitClaimModule } from './submit-claim/submit-claim.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -32,6 +33,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     ChatModule,
     DynamicPopupModule,
+    SubmitClaimModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

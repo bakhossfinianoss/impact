@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="input-area">
-    <input type="text" [(ngModel)]="userMessage" (keydown.enter)="sendMessage()" placeholder="Type your message...">
-    <button (click)="sendMessage()">Send</button>
+    <input type="text" [(ngModel)]="userMessage" (keydown.enter)="sendMessage()" placeholder="{{ getTranslation('Type_your_message') }}...">
+    <button (click)="sendMessage()"> {{ getTranslation('Send') }} </button>
   </div>
 </div>

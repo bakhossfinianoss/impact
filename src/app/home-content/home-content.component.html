@@ -13,8 +13,8 @@
 
     <!-- Get A Quote -->
     <div class="flex flex-col items-center gap-5">
-      <h1 class="text-blue text-4xl font-bold get-quote">Get A Quote</h1>
-      <h2 class="text-mediumGray text-4xl font-normal text-center">Compare, choose, <br> save</h2>
+      <h1 class="text-blue text-4xl font-bold get-quote">{{ getTranslation('Get_A_Quote') }}</h1>
+      <h2 class="text-mediumGray text-4xl font-normal text-center">{{ getTranslation('Compare_Choose_Save') }}</h2>
     </div>
 
     <!-- SVG icons in a grid -->
@@ -26,7 +26,7 @@
             class="w-[82px] h-[78px] relative top-[0.9rem]"
             alt="car svg"
           />
-          <p class="uppercase text-[0.85rem] font-bold text-center mt-2">auto</p>
+          <p class="uppercase text-[0.85rem] font-bold text-center mt-2">{{ getTranslation('Auto') }}</p>
         </a>
       </div>
 
@@ -37,7 +37,7 @@
             class="w-[82px] h-[78px]"
             alt="condo svg"
           />
-          <p class="uppercase text-[0.85rem] font-bold text-center mt-2">condo</p>
+          <p class="uppercase text-[0.85rem] font-bold text-center mt-2">{{ getTranslation('Condo') }}</p>
         </a>
       </div>
 
@@ -48,7 +48,7 @@
             class="w-[90px] h-[83px] relative top-[4px]"
             alt="home svg"
           />
-          <p class="uppercase text-[0.85rem] font-bold text-center relative top-[2px]">home</p>
+          <p class="uppercase text-[0.85rem] font-bold text-center relative top-[2px]">{{ getTranslation('Home') }}</p>
         </a>
       </div>
 
@@ -59,7 +59,7 @@
             class="w-[82px] h-[78px] relative -top-[4px]"
             alt="home svg"
           />
-          <p class="uppercase text-[0.85rem] font-bold text-center mt-2 relative -top-[1px]">tenant</p>
+          <p class="uppercase text-[0.85rem] font-bold text-center mt-2 relative -top-[1px]">{{ getTranslation('Tenant') }}</p>
         </a>
       </div>
     </div>
@@ -67,12 +67,12 @@
 </div>
 
 <div class="mt-16 flex justify-center text-center">
-    <button class="btn-my-renewal uppercase" (click)="myRenewal()"> my renewal </button>
+    <button class="btn-my-renewal uppercase" (click)="myRenewal()">{{ getTranslation('My_Renewal') }}</button>
 </div>
 
 <div class="mt-16">
   <h1 class="flex justify-center text-center text-3xl font-medium px-2">
-    What our clients think about us!
+    {{ getTranslation('What_Our_Clients_Think_About_Us') }}
   </h1>
 
   <div class="stars-rating mt-6">
@@ -84,168 +84,170 @@
   </div>
 
   <h3 class="text-center text-2xl mt-6 px-2">
-    <strong class="text-orange">Our Mission: </strong>
-    <span class="text-mediumGray"
-      >Your satisfaction, with the best protection at the best price.</span>
+    <strong class="text-orange">{{ getTranslation('Our_Mission') }}</strong>
+    <span class="text-mediumGray">{{ getTranslation('Your_Satisfaction') }}</span>
   </h3>
-
-  <div class="flex justify-center w-full overflow-hidden mt-6">
+  <div class="flex justify-center w-full overflow-hidden mt-6" *ngIf="currentLanguage === 'en'">
     <swiper-container class="w-11/12 h-full overflow-hidden"
         [spaceBetween]="10" [breakpoints]="cardBreakpoints"
         autoplay-delay="3500" autoplay-disable-on-interaction="false">
-      <swiper-slide *ngFor="let card of cards">
-      <div class="card px-4">
-          <div class="card-header">
-            <h5 class="font-medium">{{ card.name }}</h5>
-            <p class="username">{{ card.username }}</p>
-          </div>
-          <div class="card-body">
-            <p>{{ card.review }}</p>
-          </div>
-        </div>
-      </swiper-slide>
+          <swiper-slide *ngFor="let card of cards">
+            <div class="card px-4">
+                <div class="card-header">
+                  <h5 class="font-medium">{{ card.name }}</h5>
+                  <p class="username">{{ card.username }}</p>
+                </div>
+                <div class="card-body">
+                  <p>{{ card.review }}</p>
+                </div>
+              </div>
+            </swiper-slide>
+    </swiper-container>
+  </div>
+
+
+  <div class="flex justify-center w-full overflow-hidden mt-6" *ngIf="currentLanguage === 'fr'">
+    <swiper-container class="w-11/12 h-full overflow-hidden"
+        [spaceBetween]="10" [breakpoints]="cardBreakpoints"
+        autoplay-delay="3500" autoplay-disable-on-interaction="false">
+          <swiper-slide *ngFor="let card of cardsFr">
+            <div class="card px-4">
+                <div class="card-header">
+                  <h5 class="font-medium">{{ card.name }}</h5>
+                  <p class="username">{{ card.username }}</p>
+                </div>
+                <div class="card-body">
+                  <p>{{ card.review }}</p>
+                </div>
+              </div>
+            </swiper-slide>
     </swiper-container>
   </div>
 </div>
 
-
-  <div class="mt-16">
+<div class="mt-16">
   <h1 class="text-center text-4xl font-medium leading-snug">
-    <span class="text-orange">Our Services</span> 
+    <span class="text-orange">{{ getTranslation('Our_Services') }}</span> 
   </h1>
 
   <h5 class="flex justify-center text-center text-2xl font-medium mb-6 letter-sp">
-    Discover our coverage
+    {{ getTranslation('Discover_Our_Coverage') }}
   </h5>
 
   <div class="bg-lightBlue pt-3 pb-12">
 
     <div class="flex flex-row justify-center gap-16 mt-10 mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
-        <div
-            class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl"
-          >
-            <a [routerLink]="['/quote']">
-              <img
-                [src]="automobile"
-                class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
-                alt="home svg"
-              />
-              <p class="uppercase text-[0.85rem] font-bold text-center">
-                Automobile
-              </p>
-            </a>
-          </div>
-
-          <div
-            class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl"
-          >
-            <a [routerLink]="['/quote']">
-              <img
-                [src]="home"
-                class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
-                alt="home svg"
-              />
-              <p class="uppercase text-[0.85rem] font-bold text-center">Home</p>
-            </a>
-          </div>
-
-          <div
-            class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl"
-          >
-            <a [routerLink]="['/quote']">
-              <img
-                [src]="commercialAuto"
-                class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
-                alt="home svg"
-              />
-              <p class="uppercase text-[0.85rem] font-bold text-center">
-                Commercial Auto
-              </p>
-            </a>
-          </div>
-
-          <div
-            class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl"
-          >
-            <a [routerLink]="['/quote']">
-              <img
-                [src]="lifeInsurrance"
-                class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
-                alt="home svg"
-              />
-              <p class="uppercase text-[0.85rem] font-bold text-center">
-                Life Insurrance
-              </p>
-            </a>
-          </div>
-          </div>
+        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
+          <a [routerLink]="['/quote']">
+            <img
+              [src]="automobile"
+              class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
+              alt="home svg"
+            />
+            <p class="uppercase text-[0.85rem] font-bold text-center">
+              {{ getTranslation('Automobile') }}
+            </p>
+          </a>
+        </div>
+    
+        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
+          <a [routerLink]="['/quote']">
+            <img
+              [src]="home"
+              class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
+              alt="home svg"
+            />
+            <p class="uppercase text-[0.85rem] font-bold text-center">
+              {{ getTranslation('Home') }}
+            </p>
+          </a>
+        </div>
+    
+        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
+          <a [routerLink]="['/quote']">
+            <img
+              [src]="commercialAuto"
+              class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
+              alt="home svg"
+            />
+            <p class="uppercase text-[0.85rem] font-bold text-center">
+              {{ getTranslation('Commercial_Auto') }}
+            </p>
+          </a>
+        </div>
+    
+        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
+          <a [routerLink]="['/quote']">
+            <img
+              [src]="lifeInsurrance"
+              class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
+              alt="home svg"
+            />
+            <p class="uppercase text-[0.85rem] font-bold text-center">
+              {{ getTranslation('Life_Insurance') }}
+            </p>
+          </a>
+        </div>
+      </div>
     </div>
-
-
+    
     <div class="flex flex-row justify-center gap-16 mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
-      <div
-        class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl"
-      >
-        <a [routerLink]="['/quote']">
-          <img
-            [src]="condo"
-            class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
-            alt="Condo svg"
-          />
-          <p class="uppercase text-[0.85rem] font-bold text-center relative">
-            Condo
-          </p>
-        </a>
-      </div>
-
-      <div
-        class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl"
-      >
-        <a [routerLink]="['/quote']">
-          <img
-            [src]="commerce"
-            class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
-            alt="Commerce svg"
-          />
-          <p class="uppercase text-[0.85rem] font-bold text-center relative">
-            Commerce
-          </p>
-        </a>
-      </div>
-
-      <div
-        class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl"
-      >
-        <a [routerLink]="['/quote']">
-          <img
-            [src]="moto"
-            class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
-            alt="Commerce svg"
-          />
-          <p class="uppercase text-[0.85rem] font-bold text-center relative">
-            Moto
-          </p>
-        </a>
-      </div>
-
-      <div
-        class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl"
-      >
-        <a [routerLink]="['/quote']">
-          <img
-            [src]="condo"
-            class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
-            alt="Commerce svg"
-          />
-          <p class="uppercase text-[0.85rem] font-bold text-center relative">
-            Other Insurrance
-          </p>
-        </a>
+        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
+          <a [routerLink]="['/quote']">
+            <img
+              [src]="condo"
+              class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
+              alt="Condo svg"
+            />
+            <p class="uppercase text-[0.85rem] font-bold text-center relative">
+              {{ getTranslation('Condo') }}
+            </p>
+          </a>
+        </div>
+    
+        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
+          <a [routerLink]="['/quote']">
+            <img
+              [src]="commerce"
+              class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
+              alt="Commerce svg"
+            />
+            <p class="uppercase text-[0.85rem] font-bold text-center relative">
+              {{ getTranslation('Commerce') }}
+            </p>
+          </a>
+        </div>
+    
+        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
+          <a [routerLink]="['/quote']">
+            <img
+              [src]="moto"
+              class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
+              alt="Commerce svg"
+            />
+            <p class="uppercase text-[0.85rem] font-bold text-center relative">
+              {{ getTranslation('Moto') }}
+            </p>
+          </a>
+        </div>
+    
+        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
+          <a [routerLink]="['/quote']">
+            <img
+              [src]="condo"
+              class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
+              alt="Commerce svg"
+            />
+            <p class="uppercase text-[0.85rem] font-bold text-center relative">
+              {{ getTranslation('Other_Insurance') }}
+            </p>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
+    
 
   </div>
 </div>
@@ -258,19 +260,24 @@
   </video>
 
   <div class="flex flex-col justify-center items-center">
-    <h1 class="text-3xl font-medium mb-5">Submit a claim?</h1>
-    <p class="flex flex-col items-baseline">
-      We are available
-      <span> by phone at 1 (833) 361-1133 </span>
-      <span> or by mail at info@impactco.ca </span>
+    <h1 class="text-3xl font-medium mb-5">{{ getTranslation('Submit_A_Claim') }}</h1>
+    <button class="self-start bg-blue-500 text-white font-bold 
+          py-2 px-4 rounded-lg shadow-lg bg-orange transition duration-300 ease-in-out transform hover:-translate-y-1"
+            (click)="submitClaim()">
+            {{ getTranslation('Click_here') }}
+  </button>
+      <p class="flex flex-col items-baseline self-start" style="margin-top: 20px;">
+      {{ getTranslation('We_Are_Available') }}
+      <span>{{ getTranslation('Or_By_Phone') }}</span>
+      <span>{{ getTranslation('Or_By_Mail') }}</span>
     </p>
-  </div>
+</div>
 </div>
 
 
 <div class="mt-16">
     <h1 class="flex justify-center text-center text-3xl font-medium px-2 letter-sp">
-      <strong class="text-orange">Our</strong> <span class="text-mediumGray"> Partners </span>
+      <strong class="text-orange">{{ getTranslation('Our') }}</strong> <span class="text-mediumGray">{{ getTranslation('Partners') }}</span>
     </h1>
     <div class="flex justify-center w-full overflow-hidden mt-6 bg-lightBlue pt-10 pb-10">
       <swiper-container class="w-11/12 h-full overflow-hidden"
@@ -293,5 +300,3 @@
       </swiper-container>
     </div>
 </div>
-
-

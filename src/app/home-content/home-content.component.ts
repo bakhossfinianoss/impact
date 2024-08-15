@@ -4,6 +4,8 @@ import { environment } from 'src/environments/environment';
 import { register } from 'swiper/element/bundle';
 import { MatDialog } from '@angular/material/dialog';
 import { DynamicPopupComponent } from '../dynamic-popup/dynamic-popup.component';
+import { LanguageService } from '../layout/language/language.service';
+import { SubmitClaimComponent } from '../submit-claim/submit-claim.component';
 
 register();
 
@@ -20,8 +22,11 @@ export interface PeriodicElement {
   styleUrls: ['./home-content.component.css']
 })
 export class HomeContentComponent implements OnInit, AfterViewInit {
+  currentLanguage: string = 'en';
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, 
+    private languageService: LanguageService
+  ) {}
 
   faStar = faStar
   faStarHalfStroke = faStarHalfStroke;
@@ -57,6 +62,15 @@ export class HomeContentComponent implements OnInit, AfterViewInit {
     setInterval(() => {
       this.showNextCard();
     }, 3000);
+
+    this.languageService.currentLanguage$.subscribe(language => {
+      this.languageService.loadTranslations(language);
+      this.currentLanguage = language;
+    });
+  }
+
+  getTranslation(key: string): string {
+    return this.languageService.getTranslation(key);
   }
 
   ngAfterViewInit() {
@@ -76,12 +90,11 @@ export class HomeContentComponent implements OnInit, AfterViewInit {
 
   }
 
-
   cards = [
     {
       name: 'Isabella M',
       username: '@username',
-      review: 'Il est facile de trouver une protection qui corresponde à nos besoins, et le prix est très compétitif. Je suis satisfaite de mon expérience, donc et recommande Impact!'
+      review: 'It is easy to find coverage that meets our needs, and the price is very competitive. I am satisfied with my experience, so I recommend Impact!'
     },
     {
       name: 'Marcel Manoukian',
@@ -104,6 +117,34 @@ export class HomeContentComponent implements OnInit, AfterViewInit {
       review: 'A wonderful experience from start to finish. The team was very helpful and responsive.'
     }
   ];
+
+  cardsFr = [
+        {
+          name: 'Isabella M',
+          username: '@username',
+          review: 'Il est facile de trouver une protection qui corresponde à nos besoins, et le prix est très compétitif. Je suis satisfaite de mon expérience, donc je recommande Impact!'
+    },
+    {
+          name: 'Marcel Manoukian',
+          username: '★★★★☆',
+          review: "Je cherchais un nouveau plan d'assurance habitation et après avoir fait quelques recherches, j'ai découvert Impactco. Je les ai contactés et ils ont été très réactifs, ce qui est ce dont j'avais besoin dans une entreprise. Le prix qu'ils m'ont donné était également meilleur que celui de tous les autres que j'ai contactés."
+    },
+    {
+          name: 'Ferdynand',
+          username: '★★★★★',
+          review: "Je suis avec Impactco depuis quelques années maintenant. Je n'ai pas d'enfants ni rien, donc je pense que c'est peut-être pour cela que les tarifs sont meilleurs que dans la plupart des autres endroits que j'ai appelés. Mais le service client est vraiment excellent aussi, ils prennent vraiment soin de vous si vous avez des problèmes. Ils sont toujours prêts à m'aider aussi!"
+    },
+    {
+          name: 'John Doe',
+          username: '@johndoe',
+          review: "Service incroyable, je le recommande vivement à tous ceux qui recherchent un excellent support client et des prix compétitifs."
+    },
+    {
+          name: 'Jane Smith',
+          username: '@janesmith',
+          review: "Une expérience merveilleuse du début à la fin. L'équipe a été très serviable et réactive."
+    }
+  ]
 
   partners = [
     {
@@ -147,6 +188,16 @@ export class HomeContentComponent implements OnInit, AfterViewInit {
 
   myRenewal() {
     const dialogRef = this.dialog.open(DynamicPopupComponent, {
+      data: { /* data can be passed here */ }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  submitClaim() {
+    const dialogRef = this.dialog.open(SubmitClaimComponent, {
       data: { /* data can be passed here */ }
     });
 

@@ -39,7 +39,7 @@
 
       <div class="form-group">
         <label for="message">{{ getTranslation('Message') }}:</label>
-        <textarea id="message" name="message" class="form-control" rows="5" ngModel required></textarea>
+        <textarea id="message" name="message" class="form-control" rows="5" ngModel required style="resize: none;"></textarea>
       </div>
 
       <button type="submit" class="btn-submit" [disabled]="!contactForm.form.valid">

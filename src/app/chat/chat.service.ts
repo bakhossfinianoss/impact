@@ -8,7 +8,7 @@ export class ChatService {
   constructor() { }
 
   //below to check it with ronald and eddy
-  getAutoReplyMessage(message: string) {
+  getAutoReplyMessageeEn(message: string) {
     const lowerMessage = message.toLowerCase();
 
     if(lowerMessage.includes('hello')) {
@@ -22,4 +22,18 @@ export class ChatService {
     }
   }
 
+  getAutoReplyMessageFr(message: string) {
+    const lowerMessage = message.toLowerCase();
+
+    if(lowerMessage.includes('bonjour')) {
+      return 'Bonjour! Comment puis-je vous aider aujourd\'hui?';
+    } else if(lowerMessage.includes('prix')) {
+      return 'Nos prix varient en fonction du produit, veuillez envoyer un e-mail à info@impactco.ca et nous vous répondrons dès que possible.';
+    } else if(lowerMessage.includes('horaires')) {
+      return 'Nous sommes ouverts de 9h à 18h, du lundi au vendredi. Pour plus d\'informations, veuillez appeler le 1 (833) 361-1133.';
+    } else {
+      return 'Je suis désolé, je n\'ai pas compris cela. Pouvez-vous reformuler ? Ou vous pouvez nous contacter en appelant le 1 (833) 361-1133 ou en envoyant un e-mail à info@impactco.ca';
+    }
+}
+ 
 }

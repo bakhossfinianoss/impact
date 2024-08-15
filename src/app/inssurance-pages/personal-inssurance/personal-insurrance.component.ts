@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LanguageService } from 'src/app/layout/language/language.service';
 
 @Component({
   selector: 'app-personal-insurrance',
@@ -8,8 +9,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PersonalInsurranceComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) {}
-  
+  constructor(private route: ActivatedRoute,
+    private languageService: LanguageService
+  ) {}
+  currentLanguage: string = 'en';
   currentContent: string = 'CAR';
   selected: string = '';
   openAccordions: { [key: string]: boolean } = {};
@@ -21,6 +24,15 @@ export class PersonalInsurranceComponent implements OnInit {
           this.showContent(tag);
         }
     });
+
+    this.languageService.currentLanguage$.subscribe(language => {
+      this.languageService.loadTranslations(language);
+      this.currentLanguage = language;
+    });
+  }
+
+  getTranslation(key: string): string {
+    return this.languageService.getTranslation(key);
   }
   
   showContent(contentId: string) {
