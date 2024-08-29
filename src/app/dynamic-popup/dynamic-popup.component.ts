@@ -13,7 +13,7 @@ export class DynamicPopupComponent {
   constructor(public dialogRef: MatDialogRef<DynamicPopupComponent>,
                  private languageService: LanguageService
   ){}
-  
+
   ngOnInit() {
     this.languageService.currentLanguage$.subscribe(language => {
       this.languageService.loadTranslations(language);

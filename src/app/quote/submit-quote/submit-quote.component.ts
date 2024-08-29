@@ -34,5 +34,5 @@ export class SubmitQuoteComponent implements OnInit {
   getTranslation(key: string): string {
     return this.languageService.getTranslation(key);
   }
-  
+
 }

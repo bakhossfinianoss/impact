@@ -2,150 +2,95 @@
     <!-- Sidebar -->
     <div class="w-full mt-4 md:w-1/4 bg-white p-4 shadow-lg mb-4 md:mb-0">
       <div class="flex flex-col space-y-4">
-        <a (click)="showContent('CAR')" [class.selected]="selected === 'CAR'" 
+        <a (click)="showContent('CAR')" [class.selected]="selected === 'CAR'"
           class="flex items-center space-x-2 hover:bg-blue-100 p-2 rounded">
           <span class="text-sm md:text-base">{{ getTranslation('Auto_Moto_RV_Insurance') }}</span>
         </a>
-        <a (click)="showContent('HOUSE')" [class.selected]="selected === 'HOUSE'" 
+        <a (click)="showContent('HOUSE')" [class.selected]="selected === 'HOUSE'"
           class="flex items-center space-x-2 hover:bg-blue-100 p-2 rounded">
           <span class="text-sm md:text-base">{{ getTranslation('Home_Insurance') }}</span>
         </a>
-        <a (click)="showContent('RECREATIONAL')" [class.selected]="selected === 'RECREATIONAL'"  
+        <a (click)="showContent('RECREATIONAL')" [class.selected]="selected === 'RECREATIONAL'"
           class="flex items-center space-x-2 hover:bg-blue-100 p-2 rounded">
           <span class="text-sm md:text-base">{{ getTranslation('Replacement_Value') }}</span>
         </a>
-        <a (click)="showContent('HARD')" [class.selected]="selected === 'HARD'"  
+        <a (click)="showContent('HARD')" [class.selected]="selected === 'HARD'"
           class="flex items-center space-x-2 hover:bg-blue-100 p-2 rounded">
           <span class="text-sm md:text-base">{{ getTranslation('Hard_To_Find_Insurance') }}</span>
        </a>
-        <a (click)="showContent('HIGH')" [class.selected]="selected === 'HIGH'"  
+        <a (click)="showContent('HIGH')" [class.selected]="selected === 'HIGH'"
           class="flex items-center space-x-2 hover:bg-blue-100 p-2 rounded">
           <span class="text-sm md:text-base">{{ getTranslation('High_Value_Insurance') }}</span>
         </a>
-        <a (click)="showContent('TRAVEL')" [class.selected]="selected === 'TRAVEL'"   
+        <a (click)="showContent('TRAVEL')" [class.selected]="selected === 'TRAVEL'"
           class="flex items-center space-x-2 hover:bg-blue-100 p-2 rounded">
           <span class="text-sm md:text-base">{{ getTranslation('Travel_Insurance') }}</span>
         </a>
-        <a (click)="showContent('FAQ')" [class.selected]="selected === 'FAQ'"   
+        <a (click)="showContent('FAQ')" [class.selected]="selected === 'FAQ'"
           class="flex items-center space-x-2 hover:bg-blue-100 p-2 rounded">
           <span class="text-sm md:text-base">{{ getTranslation('FAQ') }}</span>
         </a>
       </div>
     </div>
-  
+
     <!-- Main Content -->
     <div class="w-full mt-4 md:w-3/4 bg-white p-6 md:p-8 shadow-lg">
-
-
       <div *ngIf="currentContent === 'CAR'" class="content">
-        <h1 class="text-xl md:text-2xl font-bold mb-4">
-            <span *ngIf="!isLoggedIn()">The great benefit to purchasing a business owner’s policy in Quebec...</span>
-            <app-back-office *ngIf="isLoggedIn()" [text]="'The great benefit to purchasing a business owner’s policy in Quebec...'"></app-back-office>
-        </h1>
-        <p class="mb-4 text-sm md:text-base">
-            <span *ngIf="!isLoggedIn()">The great benefit to purchasing a business owner’s policy in Quebec, as opposed to purchasing each coverage individually, is that a BOP is typically sold for less premium than the total cost of each individual coverage lumped together...</span>
-            <app-back-office *ngIf="isLoggedIn()" [text]="'The great benefit to purchasing a business owner’s policy in Quebec, as opposed to purchasing each coverage individually, is that a BOP is typically sold for less premium than the total cost of each individual coverage lumped together...'"></app-back-office>
-        </p>
-    
-        <!-- CAR Insurance Section -->
-        <h2 class="text-lg md:text-xl font-semibold mt-6">CAR Insurance</h2>
-        <p class="text-sm md:text-base mb-4">
-            Every automobile owner in Quebec must have at least liability insurance to cover damages caused by your fault to another person. This is often referred to as “one-side” insurance (Chapter A).
-            Optional private insurance (Chapter B) covers damages to your vehicle resulting from a collision for which you are responsible. It can also cover fire, theft, and vandalism.
-        </p>
-    
-        <!-- MOTORCYCLE Insurance Section -->
-        <h2 class="text-lg md:text-xl font-semibold mt-6">MOTORCYCLE Insurance</h2>
-        <p class="text-sm md:text-base mb-4">
-            Motorcycle insurance in Quebec is essential for motorcycle owners, offering protection against specific risks associated with riding motorcycles. Here are the key points to know:
-            <br><br>
-            <strong>Liability Insurance:</strong> Mandatory like for cars, it covers bodily injury and property damage caused to others in an accident for which you are responsible.
-            <br><br>
-            <strong>Collision Insurance:</strong> Also optional, it covers damages to your motorcycle resulting from a collision with another vehicle or a stationary object, regardless of who is at fault.
-            <br><br>
-            <strong>Uninsured or Underinsured Motorist Coverage:</strong> Protects against damages caused by drivers who are not adequately insured or not insured at all.
-        </p>
-    
-        <!-- RECREATIONAL VEHICLE Insurance Section -->
-        <h2 class="text-lg md:text-xl font-semibold mt-6">RECREATIONAL VEHICLE Insurance</h2>
-        <p class="text-sm md:text-base mb-4">
-            Recreational vehicle insurance is a type of insurance that protects owners of recreational vehicles from different risks and potential damages related to their use. It usually covers the following:
-            <br><br>
-            <strong>Protection against Damages:</strong>
-            <br>
-            <strong>Vehicle Damage:</strong> Covers repairs if the vehicle is damaged in an accident, collision, or by events like storms, floods, or fires.
-            <br>
-            <strong>Theft:</strong> Protects against the theft of the vehicle or its equipment.
-            <br><br>
-            <strong>Liability Coverage:</strong>
-            <br>
-            <strong>Damage to Others:</strong> Covers costs if you cause injury or damage to other people or their property while using the recreational vehicle.
-            <br>
-            <strong>Personal Liability:</strong> Protects you from legal action if you are held responsible for an accident.
-            <br><br>
-            <strong>Roadside Assistance:</strong>
-            <br>
-            <strong>Breakdown Help:</strong> Provides assistance if the vehicle breaks down, including towing or on-site repairs.
-            <br>
-            <strong>Lost Keys:</strong> Helps if you lose or have your keys stolen.
-            <br><br>
-            <strong>Equipment Insurance:</strong>
-            <br>
-            <strong>Equipment and Accessories:</strong> Covers internal equipment like appliances, entertainment systems, and furniture if they are damaged or stolen.
-            <br>
-            <strong>Personal Belongings:</strong> Protects personal items inside the vehicle.
-            <br><br>
-            <strong>Non-Usage Insurance:</strong>
-            <br>
-            <strong>Off-Season Coverage:</strong> Some policies offer protection even when the vehicle is not in use, covering risks like damage from storage.
-        </p>
-    
-        <button class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-200">Get a quote</button>
-    </div>
-    
 
-
-
-
+      </div>
 
       <div *ngIf="currentContent === 'HOUSE'" class="content">
-        <h1 class="text-xl md:text-2xl font-bold mb-4">
-          <span *ngIf="!isLoggedIn()">General Liability Insurance in Quebec...</span>
-          <app-back-office *ngIf="isLoggedIn()" [text]="'General Liability Insurance in Quebec...'"></app-back-office>
-        </h1>
-        <p class="mb-4 text-sm md:text-base">
-          <span *ngIf="!isLoggedIn()">General liability insurance (GLI) can help cover claims that your business caused bodily injury or property damage. It can help cover medical expenses and attorney fees resulting from bodily injuries and property damage for which your business may be legally responsible.</span>
-          <app-back-office *ngIf="isLoggedIn()" [text]="'General liability insurance (GLI) can help cover claims that your business caused bodily injury or property damage. It can help cover medical expenses and attorney fees resulting from bodily injuries and property damage for which your business may be legally responsible.'"></app-back-office>
-        </p>
-        <button class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-200">Get a quote</button>
-        <div class="mt-4 space-y-2">
-          <button (click)="toggleAccordion('generalLiabilityInsuranceDetails')" class="w-full bg-gray-200 py-2 px-4 rounded flex justify-between items-center hover:bg-gray-300 transition duration-200">
-            <span class="text-sm md:text-base">What Does General Liability Insurance Cover?</span>
-            <svg class="w-4 h-4 transform" [ngClass]="{'rotate-180': isOpen('generalLiabilityInsuranceDetails')}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div *ngIf="isOpen('generalLiabilityInsuranceDetails')" class="mt-2 p-4 bg-gray-100 rounded">
-            <p>Details about what General Liability Insurance covers...</p>
+          <ng-container *ngIf="content.header as head">
+            <h1 class="text-xl md:text-2xl font-bold mb-4" style="color: #0883a6;">
+              <span *ngIf="!isEditing">{{ head.title }}</span>
+              <input *ngIf="isEditing" [(ngModel)]="head.title" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+            </h1>
+
+            <p class="mb-4 text-md md:text-base">
+              <span *ngIf="!isEditing">{{ head.description }}</span>
+              <textarea *ngIf="isEditing" [(ngModel)]="head.description" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none h-32"></textarea>
+            </p>
+          </ng-container>
+
+          <ng-container *ngFor="let test of content.middleObj">
+              <h1 class="text-lg md:text-1xl font-bold mb-4" style="color: #0883a6;">
+                <span *ngIf="!isEditing">{{ test.title }}</span>
+                <input *ngIf="isEditing" [(ngModel)]="test.title" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+              </h1>
+              <p class="mb-4 text-sm md:text-base">
+                <span *ngIf="!isEditing">{{ test.description }}</span>
+                <textarea *ngIf="isEditing" [(ngModel)]="test.description" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none h-32"></textarea>
+              </p>
+          </ng-container>
+
+          <div class="flex space-x-4 mt-4 justify-end">
+            <button
+              *ngIf="isLoggedIn() && isEditing"
+              (click)="addNewObject()"
+              class="bg-white text-black font-semibold py-2 px-6 rounded-lg hover:bg-blue-600 transition duration-200 shadow-lg"
+            >
+              Add New Section
+            </button>
+
+            <button
+              *ngIf="isLoggedIn() && isEditing"
+              (click)="saveContent()"
+              class="bg-green-500 text-white font-semibold py-2 px-6 rounded-lg hover:bg-green-600 transition duration-200 shadow-lg"
+            >
+              Save
+            </button>
+
+            <button
+              *ngIf="isLoggedIn()"
+              (click)="toggleEdit()"
+              class="bg-red-500 text-white font-semibold py-2 px-6 rounded-lg hover:bg-red-600 transition duration-200 shadow-lg"
+            >
+                {{ cancelEdit }}
+            </button>
           </div>
-          <button (click)="toggleAccordion('generalLiabilityInsuranceCosts')" class="w-full bg-gray-200 py-2 px-4 rounded flex justify-between items-center hover:bg-gray-300 transition duration-200">
-            <span class="text-sm md:text-base">Costs & Calculations: How It Works?</span>
-            <svg class="w-4 h-4 transform" [ngClass]="{'rotate-180': isOpen('generalLiabilityInsuranceCosts')}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div *ngIf="isOpen('generalLiabilityInsuranceCosts')" class="mt-2 p-4 bg-gray-100 rounded">
-            <p>Details about the costs and calculations for General Liability Insurance...</p>
-          </div>
-        </div>
+
       </div>
-  
 
-
-
-
-
-      
       <div *ngIf="currentContent === 'RECREATIONAL'" class="content">
         <h1 class="text-xl md:text-2xl font-bold mb-4">
           <span *ngIf="!isLoggedIn()">Professional Liability Insurance in Quebec...</span>
@@ -177,7 +122,7 @@
           </div>
         </div>
       </div>
-  
+
       <div *ngIf="currentContent === 'HARD'" class="content">
         <h1 class="text-xl md:text-2xl font-bold mb-4">
           <span *ngIf="!isLoggedIn()">Professional Liability Insurance in Quebec...</span>
@@ -273,7 +218,7 @@
           </div>
         </div>
       </div>
-  
+
       <div *ngIf="currentContent === 'FAQ'" class="content">
         <h1 class="text-xl md:text-2xl font-bold mb-4">
           <span *ngIf="!isLoggedIn()">Homeowner Commercial Auto Insurance in Quebec...</span>
@@ -307,4 +252,3 @@
       </div>
     </div>
 </div>
-  

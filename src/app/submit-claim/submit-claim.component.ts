@@ -27,5 +27,5 @@ export class SubmitClaimComponent {
   closeDialog() {
     this.dialogRef.close();
   }
-  
+
 }

@@ -10,7 +10,8 @@ module.exports = {
         'darkGray': '#555454',
         'mediumGray': '#4b4f58',
         'lightGray': '#d3d3d361',
-        'orange': '#f37e2a'
+        'orange': '#f37e2a',
+        'gray': "#808080"
       },
         screens: {
           'md-sm': '650px',

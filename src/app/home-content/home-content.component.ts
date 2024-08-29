@@ -24,7 +24,7 @@ export interface PeriodicElement {
 export class HomeContentComponent implements OnInit, AfterViewInit {
   currentLanguage: string = 'en';
 
-  constructor(public dialog: MatDialog, 
+  constructor(public dialog: MatDialog,
     private languageService: LanguageService
   ) {}
 

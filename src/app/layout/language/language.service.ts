@@ -16,9 +16,9 @@ export class LanguageService {
   constructor(private http: HttpClient) {
     this.loadTranslations('en'); // Load default language
   }
-  
+
   loadTranslations(language: string) {
-    const url = `${this.lang}${language}.json`; 
+    const url = `${this.lang}${language}.json`;
     this.http.get(url).subscribe((translations: any) => {
       this.translations = translations;
     });

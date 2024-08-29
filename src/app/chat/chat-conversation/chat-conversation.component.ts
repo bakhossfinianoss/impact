@@ -22,6 +22,7 @@ export class ChatConversationComponent implements OnInit{
       this.languageService.loadTranslations(language);
       this.currentLanguage = language;
     });
+
   }
 
   sendMessage() {
