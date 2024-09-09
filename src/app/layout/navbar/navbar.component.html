@@ -3,34 +3,47 @@
   <div class="container mx-auto flex justify-between items-center">
 
       <div class="hidden md:flex space-x-4">
-        
+
         <div class="relative group">
-          <a routerLink="/" class="text-white hover:text-darkGray">{{ getTranslation('Individual') }}</a>
+          <a class="text-white hover:text-darkGray">{{ getTranslation('Individual') }}</a>
           <div class="absolute left-0 mt-2 w-48 hidden group-hover:block bg-white shadow-lg rounded-lg">
-              <a [routerLink]="['/personal-insurance', { tag: 'CAR' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">{{ getTranslation('Auto_Moto_RV_Insurance') }}</a>
-              <a [routerLink]="['/personal-insurance', { tag: 'HOUSE' }]" class="block px-4 py-2 text-black hover:bg-gray-200">{{ getTranslation('Home_Insurance') }}</a>
-              <a [routerLink]="['/personal-insurance', { tag: 'RECREATIONAL' }]" class="block px-4 py-2 text-black hover:bg-gray-200">{{ getTranslation('Replacement_Value') }}</a>
-              <a [routerLink]="['/personal-insurance', { tag: 'HARD' }]" class="block px-4 py-2 text-black hover:bg-gray-200">{{ getTranslation('Hard_To_Find_Insurance') }}</a>
-              <a [routerLink]="['/personal-insurance', { tag: 'HIGH' }]" class="block px-4 py-2 text-black hover:bg-gray-200">{{ getTranslation('High_Value_Insurance') }}</a>
-              <a [routerLink]="['/personal-insurance', { tag: 'TRAVEL' }]" class="block px-4 py-2 text-black hover:bg-gray-200">{{ getTranslation('Travel_Insurance') }}</a>
-              <a [routerLink]="['/personal-insurance', { tag: 'FAQ' }]" class="block px-4 py-2 text-black hover:bg-gray-200">{{ getTranslation('FAQ') }}</a>
+              <a [routerLink]="['/personal-insurance', { tag: 'car' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">{{ getTranslation('Auto_Moto_RV_Insurance') }}</a>
+              <a [routerLink]="['/personal-insurance', { tag: 'house' }]" class="block px-4 py-2 text-black hover:bg-gray-200">{{ getTranslation('Home_Insurance') }}</a>
+              <a [routerLink]="['/personal-insurance', { tag: 'replacement' }]" class="block px-4 py-2 text-black hover:bg-gray-200">{{ getTranslation('Replacement_Value') }}</a>
+              <a [routerLink]="['/personal-insurance', { tag: 'hard' }]" class="block px-4 py-2 text-black hover:bg-gray-200">{{ getTranslation('Hard_To_Find_Insurance') }}</a>
+              <a [routerLink]="['/personal-insurance', { tag: 'high' }]" class="block px-4 py-2 text-black hover:bg-gray-200">{{ getTranslation('High_Value_Insurance') }}</a>
+              <a [routerLink]="['/personal-insurance', { tag: 'travel' }]" class="block px-4 py-2 text-black hover:bg-gray-200">{{ getTranslation('Travel_Insurance') }}</a>
+              <a [routerLink]="['/personal-insurance', { tag: 'faq' }]" class="block px-4 py-2 text-black hover:bg-gray-200">{{ getTranslation('FAQ') }}</a>
           </div>
       </div>
 
         <div class="relative group">
-           <a routerLink="/" class="text-white hover:text-darkGray">Business</a>
+           <a class="text-white hover:text-darkGray">Business</a>
            <div class="absolute left-0 mt-2 w-48 hidden group-hover:block bg-white shadow-lg rounded-lg">
-            <a [routerLink]="['/business-insurance', { tag: 'General' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Commercial General Liability</a>
-            <a [routerLink]="['/business-insurance', { tag: 'Property' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Commercial Property Insurance</a>
-            <a [routerLink]="['/business-insurance', { tag: 'Shop' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Auto Shop Insurance</a>
-            <a [routerLink]="['/business-insurance', { tag: 'Administrator' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Administrator</a>
-            <a [routerLink]="['/business-insurance', { tag: 'Condominium' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Condominium Insurance</a>
-            <a [routerLink]="['/business-insurance', { tag: 'Cargo' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Cargo Insurance</a>
-            <a [routerLink]="['/business-insurance', { tag: 'Credit' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Credit Insurance</a>
-            <a [routerLink]="['/business-insurance', { tag: 'Entertainement' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">Entertainement Industry</a>
+            <a [routerLink]="['/business-insurance', { tag: 'general' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">{{ getTranslation('Commercial_General_Liability') }}</a>
+            <a [routerLink]="['/business-insurance', { tag: 'property' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">{{ getTranslation('Commercial_Property_Insurance') }}</a>
+            <a [routerLink]="['/business-insurance', { tag: 'shop' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">{{ getTranslation('Auto_Shop_Insurance') }}</a>
+            <a [routerLink]="['/business-insurance', { tag: 'administrator' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">{{ getTranslation('Administrator') }}</a>
+            <a [routerLink]="['/business-insurance', { tag: 'condominium' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">{{ getTranslation('Condominium_Insurance') }}</a>
+            <a [routerLink]="['/business-insurance', { tag: 'cargo' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">{{ getTranslation('Cargo_Insurance') }}</a>
+            <a [routerLink]="['/business-insurance', { tag: 'credit' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">{{ getTranslation('Credit_Insurance') }}</a>
+            <a [routerLink]="['/business-insurance', { tag: 'entertainement' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">{{ getTranslation('Entertainment_Industry') }}</a>
+          </div>
         </div>
+
+        <div class="relative group">
+            <a class="text-white hover:text-darkGray">Life&Financial</a>
+            <div class="absolute left-0 mt-2 w-48 hidden group-hover:block bg-white shadow-lg rounded-lg">
+              <a [routerLink]="['/life-insurance', { tag: 'life' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">{{ getTranslation('Life_Insurance') }}</a>
+              <a [routerLink]="['/life-insurance', { tag: 'universal' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">{{ getTranslation('Universal_life_insurance') }}</a>
+              <a [routerLink]="['/life-insurance', { tag: 'long' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">{{ getTranslation('Long_term_care_insurance') }}</a>
+              <a [routerLink]="['/life-insurance', { tag: 'disability' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">{{ getTranslation('Disability_insurance') }}</a>
+              <a [routerLink]="['/life-insurance', { tag: 'registered' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">{{ getTranslation('Registered_Retirement_Savings_Plan') }}</a>
+              <a [routerLink]="['/life-insurance', { tag: 'tax' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">{{ getTranslation('Tax_free_Saving_Account') }}</a>
+              <a [routerLink]="['/life-insurance', { tag: 'education' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">{{ getTranslation('Registered_Education_Savings_plan') }}</a>
+            </div>
         </div>
-        <a routerLink="/" class="text-white hover:text-darkGray">Life&Financial</a>
+
       </div>
 
       <button
@@ -111,9 +124,9 @@
 
       <!-- Language Switcher -->
       <div class="flex mt-2 px-2">
-        <button class="px-3 py-1 bg-lightGray text-mediumGray hover:bg-blue hover:text-white rounded-l-lg" 
+        <button class="px-3 py-1 bg-lightGray text-mediumGray hover:bg-blue hover:text-white rounded-l-lg"
               (click)="switchLanguage('en')">EN</button>
-        <button class="px-3 py-1 bg-lightGray text-mediumGray hover:bg-blue hover:text-white rounded-r-lg" 
+        <button class="px-3 py-1 bg-lightGray text-mediumGray hover:bg-blue hover:text-white rounded-r-lg"
               (click)="switchLanguage('fr')">FR</button>
       </div>
 

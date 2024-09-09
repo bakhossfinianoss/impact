@@ -1,3 +1,7 @@
+.shadow-custom {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15); /* Even shadow on all sides */
+}
+
 a:hover {
     cursor: pointer;
     background-color: #0883a6;
@@ -15,7 +19,15 @@ a:hover {
 
 .custom-textarea {
   width: 100%;
-  height: 80vh
+  height: 100vh
+}
+
+.formatted-text {
+  white-space: pre-wrap;
+}
+
+.add-margin {
+  margin-left: 20px;
 }
 
 .stylish-button {

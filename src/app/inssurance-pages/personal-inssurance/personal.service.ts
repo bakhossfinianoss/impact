@@ -15,12 +15,12 @@ export class PersonalService {
     return this.http.get(`${this.apiUrl}/content/${language}/${category}`);
  }
 
- updatePersonalContent(language: string, category: string, subCategory: string, updatedContent: any): Observable<any> {
+ updatePersonalContent(language: string, category: string, subCategory: string, text: any) {
   return this.http.put(`${this.apiUrl}/content`, {
     language,
     category,
     subCategory,
-    ...updatedContent
+    text
   });
 }
 }

@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
-import { map } from 'rxjs';
 import { Content } from '../inssurance-class';
 import { ActivatedRoute } from '@angular/router';
-import { PersonalService } from '../personal-inssurance/personal.service';
 import { LanguageService } from 'src/app/layout/language/language.service';
+import { PersonalService } from '../personal-inssurance/personal.service';
+import { map } from 'rxjs';
 
 @Component({
-  selector: 'app-business-inssurance',
-  templateUrl: './business-inssurance.component.html',
-  styleUrls: ['./business-inssurance.component.css']
+  selector: 'app-life',
+  templateUrl: './life.component.html',
+  styleUrls: ['./life.component.css']
 })
-export class BusinessInssuranceComponent {
+export class LifeComponent {
 
   constructor(private route: ActivatedRoute,
     private languageService: LanguageService,
@@ -45,7 +45,7 @@ export class BusinessInssuranceComponent {
       this.languageService.loadTranslations(language);
       this.currentLanguage = language;
 
-      this.personalService.getPersonalContent(this.currentLanguage, 'business')
+      this.personalService.getPersonalContent(this.currentLanguage, 'life-financial')
       .pipe(
         map((res: any) => {
           return res.map((item:any) => {
@@ -158,7 +158,7 @@ export class BusinessInssuranceComponent {
 
     let cContentToStr = JSON.stringify(dataItem.text);
 
-    this.personalService.updatePersonalContent(this.currentLanguage, 'business', subCategory, cContentToStr)
+    this.personalService.updatePersonalContent(this.currentLanguage, 'life-financial', subCategory, cContentToStr)
       .subscribe(response => {
         this.isLoading = false;
         console.log('Update successful for item:', response);

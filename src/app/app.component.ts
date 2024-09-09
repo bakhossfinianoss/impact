@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { LoginService } from './back-office/login/login.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { LoginService } from './back-office/login/login.service';
 export class AppComponent implements OnInit {
   chatVisible = false;
   setChatVisibleFromLogin = false;
+  isLoading!: Observable<boolean>;
 
   constructor(private router: Router, private loginService: LoginService) {}
 

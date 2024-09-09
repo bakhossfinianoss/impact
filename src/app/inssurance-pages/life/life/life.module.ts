@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BusinessInsurranceRoutingModule } from './business-inssurance-routing.module';
-import { BusinessInssuranceComponent } from './business-inssurance.component';
 import { FormsModule } from '@angular/forms';
 import { BackOfficeModule } from 'src/app/back-office/back-office/back-office.module';
+import { LifeComponent } from '../life.component';
+import { LifeInsurranceRoutingModule } from '../life-inssurance-routing.module';
 import { LoadingModule } from 'src/app/layout/loading/loading/loading.module';
 
 
 @NgModule({
-  declarations: [BusinessInssuranceComponent],
+  declarations: [LifeComponent],
   imports: [
     CommonModule,
-    BusinessInsurranceRoutingModule,
+    LifeInsurranceRoutingModule,
     FormsModule,
     BackOfficeModule,
     LoadingModule
   ],
-  exports: [BusinessInssuranceComponent]
+  exports: [LifeComponent]
 })
-export class BusinessInsurranceModule { }
+export class LifeModule { }

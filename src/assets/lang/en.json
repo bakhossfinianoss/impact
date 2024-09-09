@@ -65,7 +65,6 @@
     "High_Value_Insurance": "High-Value Insurance",
     "Travel_Insurance": "Travel Insurance",
     "FAQ": "FAQ",
-
     "Business": "Business",
     "Commercial_General_Liability": "Commercial General Liability",
     "Commercial_Property_Insurance": "Commercial Property Insurance",
@@ -75,8 +74,12 @@
     "Cargo_Insurance": "Cargo Insurance",
     "Credit_Insurance": "Credit Insurance",
     "Entertainment_Industry": "Entertainment Industry",
-
-    
+    "Universal_life_insurance": "Universal life insurance",
+    "Long_term_care_insurance": "Long term care insurance",
+    "Disability_insurance": "Disability insurance",
+    "Registered_Retirement_Savings_Plan": "Registered Retirement Savings Plan",
+    "Tax_free_Saving_Account": "Tax free Saving Account",
+    "Registered_Education_Savings_plan": "Registered Education Savings plan",
     "Universal_Life_Insurance": "Universal Life Insurance",
     "Long_Term_Care_Insurance": "Long Term Care Insurance",
     "Disability_Insurance": "Disability Insurance",

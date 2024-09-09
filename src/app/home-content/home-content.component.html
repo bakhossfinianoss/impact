@@ -1,5 +1,5 @@
 <div class="relative w-full h-screen mt-16">
-  <video class="absolute top-0 left-0 w-full h-full object-cover" #videoPlayer autoplay muted loop playsinline>
+  <video loading="lazy" class="absolute top-0 left-0 w-full h-full object-cover" #videoPlayer autoplay muted loop playsinline>
     <source src="assets/video.mp4" type="video/mp4" />
   </video>
 
@@ -127,7 +127,7 @@
 
 <div class="mt-16">
   <h1 class="text-center text-4xl font-medium leading-snug">
-    <span class="text-orange">{{ getTranslation('Our_Services') }}</span> 
+    <span class="text-orange">{{ getTranslation('Our_Services') }}</span>
   </h1>
 
   <h5 class="flex justify-center text-center text-2xl font-medium mb-6 letter-sp">
@@ -150,7 +150,7 @@
             </p>
           </a>
         </div>
-    
+
         <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
           <a [routerLink]="['/quote']">
             <img
@@ -163,7 +163,7 @@
             </p>
           </a>
         </div>
-    
+
         <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
           <a [routerLink]="['/quote']">
             <img
@@ -176,7 +176,7 @@
             </p>
           </a>
         </div>
-    
+
         <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
           <a [routerLink]="['/quote']">
             <img
@@ -191,7 +191,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="flex flex-row justify-center gap-16 mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
         <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
@@ -206,7 +206,7 @@
             </p>
           </a>
         </div>
-    
+
         <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
           <a [routerLink]="['/quote']">
             <img
@@ -219,7 +219,7 @@
             </p>
           </a>
         </div>
-    
+
         <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
           <a [routerLink]="['/quote']">
             <img
@@ -232,7 +232,7 @@
             </p>
           </a>
         </div>
-    
+
         <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
           <a [routerLink]="['/quote']">
             <img
@@ -247,7 +247,7 @@
         </div>
       </div>
     </div>
-    
+
 
   </div>
 </div>
@@ -260,7 +260,7 @@
 
   <div class="flex flex-col justify-center items-center">
     <h1 class="text-3xl font-medium mb-5">{{ getTranslation('Submit_A_Claim') }}</h1>
-    <button class="click-here bg-blue-500 text-white font-bold 
+    <button class="click-here bg-blue-500 text-white font-bold
           py-2 px-4 rounded-lg shadow-lg bg-orange transition duration-300 ease-in-out transform hover:-translate-y-1"
             (click)="submitClaim()">
             {{ getTranslation('Click_here') }}
@@ -288,7 +288,7 @@
               <h5 class="font-medium text-mediumGray">{{ p.name }}</h5>
             </div>
             <div class="card-body">
-              <img [src]="p.logo" [class] width="45%" height="45%" 
+              <img [src]="p.logo" [class] width="45%" height="45%"
               [ngStyle]="{
                 'margin-top': p.name === 'Industrielle Alliance' ? '-15px' : 'initial',
                 'width': p.name === 'Industrielle Alliance' ? '42%' : '45%',
