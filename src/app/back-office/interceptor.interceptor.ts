@@ -13,16 +13,19 @@ import { Router } from '@angular/router';
 @Injectable()
 export class InterceptorInterceptor implements HttpInterceptor {
 
-  constructor(private login: LoginService, private router: Router) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const addToken = this.login.getToken();
+  intercept(
+    request: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
+    const token = this.loginService.getToken();
 
-    if (addToken) {
+    if (token) {
       request = request.clone({
         setHeaders: {
-          authorization: `Bearer ${addToken}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
     }
 
@@ -30,17 +33,17 @@ export class InterceptorInterceptor implements HttpInterceptor {
       tap(
         (event: HttpEvent<any>) => {
           if (event instanceof HttpResponse) {
-              if(event.status === 200 && event.body && event.body.token) {
-                  this.login.setToken(event.body.token);
-                  this.router.navigate(['/back-office'])
-                  return 'Success!';
-              }
+            if(event.status === 200 && event.body && event.body.token) {
+              this.router.navigate(['/home'])
+           }
           }
-
-          return;
         },
         (error) => {
-          console.error('Error in HTTP request', error);
+          console.error('HTTP error:', error);
+          if (error.status === 401) {
+            this.loginService.logout();
+            this.router.navigate(['/login-dashboard']);
+          }
         }
       )
     );

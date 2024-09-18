@@ -14,6 +14,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorInterceptor } from './back-office/interceptor.interceptor';
 import { DynamicPopupModule } from './dynamic-popup/dynamic-popup.module';
 import { SubmitClaimModule } from './submit-claim/submit-claim.module';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { FormsModule } from '@angular/forms';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -27,6 +29,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     PersonalComponent,
   ],
   imports: [
+    FormsModule,
+    EditorModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

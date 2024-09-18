@@ -11,18 +11,19 @@ export class MemberAuthGuard implements CanActivate {
 
   constructor(private loginService: LoginService, private router: Router) {}
 
-  canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot)
-                 :Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean | UrlTree {
+    const isLoggedIn = this.loginService.isLoggedIn();
 
-      const hasAccess = this.loginService.getToken();
-      if(hasAccess)
-        {
-          return true;
-        } else {
-          this.router.navigate(['/login-dashboard']);
-          window.alert("You dont have access!!! Please connect to Administrator ");
-          return false;
-        }
+    if (isLoggedIn) {
+      return true;
+    } else {
+      this.router.navigate(['/login-dashboard']);
+      window.alert("You don't have access! Please log in.");
+      return false;
+    }
   }
 
 }

@@ -1,89 +1,106 @@
 <app-loading *ngIf="isLoading"></app-loading>
 
 <div class="flex flex-col md:flex-row md:space-x-4 mt-16 mx-3">
+  <!-- Sidebar -->
+  <div
+    class="w-full mt-4 md:w-1/4 bg-white p-4 shadow-custom mb-4 md:mb-0 rounded-lg"
+  >
+    <div class="flex flex-col space-y-4">
+      <a
+        (click)="showContent('life')"
+        [class.selected]="selected === 'life'"
+        class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
+      >
+        <span class="text-sm md:text-base">{{
+          getTranslation("Life_Insurance")
+        }}</span>
+      </a>
+      <hr class="border-gray-300" />
 
-<!-- Sidebar -->
-<div class="w-full mt-4 md:w-1/4 bg-white p-4 shadow-custom mb-4 md:mb-0 rounded-lg">
-  <div class="flex flex-col space-y-4">
-    <a (click)="showContent('life')" [class.selected]="selected === 'life'"
-      class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300">
-      <span class="text-sm md:text-base">{{ getTranslation('Life_Insurance') }}</span>
-    </a>
-    <hr class="border-gray-300">
+      <a
+        (click)="showContent('universal')"
+        [class.selected]="selected === 'universal'"
+        class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
+      >
+        <span class="text-sm md:text-base">{{
+          getTranslation("Universal_life_insurance")
+        }}</span>
+      </a>
+      <hr class="border-gray-300" />
 
-    <a (click)="showContent('universal')" [class.selected]="selected === 'universal'"
-      class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300">
-      <span class="text-sm md:text-base">{{ getTranslation('Universal_life_insurance') }}</span>
-    </a>
-    <hr class="border-gray-300">
+      <a
+        (click)="showContent('long')"
+        [class.selected]="selected === 'long'"
+        class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
+      >
+        <span class="text-sm md:text-base">{{
+          getTranslation("Long_term_care_insurance")
+        }}</span>
+      </a>
+      <hr class="border-gray-300" />
 
-    <a (click)="showContent('long')" [class.selected]="selected === 'long'"
-      class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300">
-      <span class="text-sm md:text-base">{{ getTranslation('Long_term_care_insurance') }}</span>
-    </a>
-    <hr class="border-gray-300">
+      <a
+        (click)="showContent('disability')"
+        [class.selected]="selected === 'disability'"
+        class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
+      >
+        <span class="text-sm md:text-base">{{
+          getTranslation("Disability_insurance")
+        }}</span>
+      </a>
+      <hr class="border-gray-300" />
 
-    <a (click)="showContent('disability')" [class.selected]="selected === 'disability'"
-      class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300">
-      <span class="text-sm md:text-base">{{ getTranslation('Disability_insurance') }}</span>
-    </a>
-    <hr class="border-gray-300">
+      <a
+        (click)="showContent('registered')"
+        [class.selected]="selected === 'registered'"
+        class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
+      >
+        <span class="text-sm md:text-base">{{
+          getTranslation("Registered_Retirement_Savings_Plan")
+        }}</span>
+      </a>
+      <hr class="border-gray-300" />
 
-    <a (click)="showContent('registered')" [class.selected]="selected === 'registered'"
-      class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300">
-      <span class="text-sm md:text-base">{{ getTranslation('Registered_Retirement_Savings_Plan') }}</span>
-    </a>
-    <hr class="border-gray-300">
+      <a
+        (click)="showContent('tax')"
+        [class.selected]="selected === 'tax'"
+        class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
+      >
+        <span class="text-sm md:text-base">{{
+          getTranslation("Tax_free_Saving_Account")
+        }}</span>
+      </a>
+      <hr class="border-gray-300" />
 
-    <a (click)="showContent('tax')" [class.selected]="selected === 'tax'"
-      class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300">
-      <span class="text-sm md:text-base">{{ getTranslation('Tax_free_Saving_Account') }}</span>
-    </a>
-    <hr class="border-gray-300">
-
-    <a (click)="showContent('education')" [class.selected]="selected === 'education'"
-      class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300">
-      <span class="text-sm md:text-base">{{ getTranslation('Registered_Education_Savings_plan') }}</span>
-    </a>
+      <a
+        (click)="showContent('education')"
+        [class.selected]="selected === 'education'"
+        class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
+      >
+        <span class="text-sm md:text-base">{{
+          getTranslation("Registered_Education_Savings_plan")
+        }}</span>
+      </a>
+    </div>
   </div>
-</div>
 
-  <!-- Main Content -->
   <div class="w-full mt-4 md:w-3/4 bg-white p-6 md:p-8 shadow-custom">
     <ng-container *ngFor="let iData of individualData; let i = index">
       <div *ngIf="currentContent === iData.subCategory" class="content">
-        <ng-container *ngIf="iData.text.header as head">
-          <h1 class="text-lg md:text-1xl font-bold mb-4" style="color: #0883a6;">
-            <span *ngIf="!isEditing">{{ head.title }}</span>
-            <input *ngIf="isEditing" [(ngModel)]="head.title" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
-          </h1>
-
-          <p class="mb-4 text-md md:text-base">
-            <span *ngIf="!isEditing" [innerHTML]="formatText(head.description)"></span>
-            <textarea *ngIf="isEditing" [(ngModel)]="head.description" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none h-32"></textarea>
-          </p>
+        <ng-container *ngIf="!isEditing">
+          <div [innerHTML]="iData.text"></div>
         </ng-container>
 
-        <ng-container *ngFor="let middle of iData.text.middleObj">
-          <h1 class="text-lg md:text-1xl font-bold mb-4" style="color: #0883a6;">
-            <span *ngIf="!isEditing" [innerHTML]="formatText(middle.title)">{{ middle.title }}</span>
-            <input *ngIf="isEditing" [(ngModel)]="middle.title" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
-          </h1>
-          <p class="mb-4 text-sm md:text-base">
-            <span *ngIf="!isEditing" [innerHTML]="formatText(middle.description)"></span>
-            <textarea *ngIf="isEditing" [(ngModel)]="middle.description" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent h-72"></textarea>
-          </p>
+        <ng-container *ngIf="isEditing && iData && iData.originalText">
+          <editor
+            style="margin-top: 50px"
+            [(ngModel)]="iData.originalText"
+            apiKey="d0x7em9ik6bwtkgldgsn3n4h39p36rw346yxyr6jo9lwwk9o"
+            [init]="editorConfig"
+          ></editor>
         </ng-container>
 
         <div class="flex space-x-4 mt-4 justify-end">
-          <button
-            *ngIf="isLoggedIn() && isEditing"
-            (click)="addNewObject()"
-            class="bg-white text-black font-semibold py-2 px-6 rounded-lg hover:bg-blue-600 transition duration-200 shadow-lg"
-          >
-            Add New Section
-          </button>
-
           <button
             *ngIf="isLoggedIn() && isEditing"
             (click)="saveContent(iData.subCategory, i)"
@@ -103,5 +120,4 @@
       </div>
     </ng-container>
   </div>
-
 </div>

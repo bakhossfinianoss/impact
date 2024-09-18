@@ -32,7 +32,7 @@
         </div>
 
         <div class="relative group">
-            <a class="text-white hover:text-darkGray">Life&Financial</a>
+            <a class="text-white hover:text-darkGray">Life & Financial</a>
             <div class="absolute left-0 mt-2 w-48 hidden group-hover:block bg-white shadow-lg rounded-lg">
               <a [routerLink]="['/life-insurance', { tag: 'life' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">{{ getTranslation('Life_Insurance') }}</a>
               <a [routerLink]="['/life-insurance', { tag: 'universal' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">{{ getTranslation('Universal_life_insurance') }}</a>
@@ -71,7 +71,11 @@
       </a>
     <div class="flex !justify-end space-x-2">
       <div class="button-container">
-        <button id="quoteButton" class="button-primary" [routerLink]="'/quote'">{{ getTranslation('Quote') }}</button>
+        <button class="button-primary" [routerLink]="'/quote'">{{ getTranslation('Quote') }}</button>
+      </div>
+
+      <div class="button-container" *ngIf="isLoggedIn()">
+        <button class="button-primary" (click)="logout()">{{ getTranslation('Logout') }}</button>
       </div>
 
       <div class="button-container !hidden md:!block">

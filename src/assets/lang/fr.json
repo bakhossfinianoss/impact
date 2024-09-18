@@ -85,5 +85,6 @@
     "Disability_Insurance": "Assurance invalidité",
     "RRSP": "Régime enregistré d’épargne-retraite",
     "TFSA": "Compte d’épargne libre d’impôt",
-    "RESP": "Régime enregistré d’épargne-études"
+    "RESP": "Régime enregistré d’épargne-études",
+    "Logout": "Déconnexion"
 }

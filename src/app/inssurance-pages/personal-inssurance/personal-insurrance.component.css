@@ -30,23 +30,61 @@ a:hover {
   margin-left: 20px;
 }
 
-.stylish-button {
-  margin-top: 20px; /* Adds margin at the top */
-  padding: 10px 20px; /* Adds some padding for a better look */
-  font-size: 16px; /* Adjusts the font size */
-  font-weight: bold; /* Makes the text bold */
-  color: #fff; /* White text color */
-  background-color: #007bff; /* Blue background color */
-  border: none; /* Removes the default border */
-  border-radius: 5px; /* Adds rounded corners */
-  cursor: pointer; /* Changes cursor to pointer on hover */
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+
+button {
+  cursor: pointer;
 }
 
 .stylish-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3;
 }
 
 .stylish-button:active {
-  background-color: #004494; /* Even darker blue when active */
+  background-color: #004494;
+}
+
+ol {
+  margin-left: 20px;
+  padding-left: 20px;
+  list-style-type: decimal;
+}
+
+ul {
+  margin-left: 20px;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.17em;
+  font-weight: bold;
+}
+
+h4 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+h5 {
+  font-size: 0.83em;
+  font-weight: bold;
+}
+
+h6 {
+  font-size: 0.67em;
+  font-weight: bold;
 }

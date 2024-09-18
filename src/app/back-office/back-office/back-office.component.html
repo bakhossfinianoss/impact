@@ -1,5 +1,0 @@
-<div class="editable-container" (dblclick)="toggleEdit()">
-  <span *ngIf="!editing" class="editable-span">{{ text }}</span>
-  <textarea style="resize: none;" *ngIf="editing" [value]="text" (blur)="saveEdit($event)" 
-        (keyup.enter)="saveEdit($event)" class="editable-textarea" #textareaElement></textarea>
-</div>

@@ -1,33 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Content } from '../inssurance-class';
 import { ActivatedRoute } from '@angular/router';
 import { LanguageService } from 'src/app/layout/language/language.service';
 import { PersonalService } from '../personal-inssurance/personal.service';
-import { map } from 'rxjs';
+import { Subscription } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
+import { LoginService } from 'src/app/back-office/login/login.service';
 
 @Component({
   selector: 'app-life',
   templateUrl: './life.component.html',
-  styleUrls: ['./life.component.css']
+  styleUrls: ['./life.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
-export class LifeComponent {
+export class LifeComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
     private languageService: LanguageService,
-    private personalService: PersonalService
+    private personalService: PersonalService,
+    private sanitizer: DomSanitizer,
+    private loginService: LoginService
   ) {}
 
   currentLanguage: string = 'en';
   currentContent: string = 'car';
   selected: string = '';
-  openAccordions: { [key: string]: boolean } = {};
   individualData: any;
   isEditing: boolean = false;
   cancelEdit: string = 'Edit';
   isEditable: boolean = false;
-  addedObjectIndices: number[] = [];
   content!: Content;
   isLoading = false;
+  editorConfig: any;
+  private subscriptions: Subscription = new Subscription();
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -37,38 +42,54 @@ export class LifeComponent {
         }
     });
     this.getLangAndData();
+
+    this.editorConfig = {
+      plugins: 'lists link image paste wordcount table textcolor color searchreplace',
+      toolbar: 'undo redo | blocks | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | searchreplace',
+      height: 800,
+      menubar: false,
+      color_map: [
+        "0883a6", "Blue",
+        "cee8f2", "Light Blue",
+        "555454", "Dark Gray",
+        "4b4f58", "Medium Gray",
+        "d3d3d3", "Light Gray",
+        "f37e2a", "Orange",
+        "808080", "Gray",
+        "000000", "Black"
+      ]
+    };
   }
 
   getLangAndData() {
     this.isLoading = true;
-    this.languageService.currentLanguage$.subscribe(language => {
+    const lang = this.languageService.currentLanguage$.subscribe(language => {
       this.languageService.loadTranslations(language);
       this.currentLanguage = language;
 
-      this.personalService.getPersonalContent(this.currentLanguage, 'life-financial')
-      .pipe(
-        map((res: any) => {
-          return res.map((item:any) => {
-            if (item && item.text) {
-              try {
-                item.text = JSON.parse(item.text);
-              } catch (error) {
-                console.error('Error parsing text for item:', item, error);
-              }
-            }
-            return item;
-          });
-        })
-      )
+      const getData = this.personalService.getPersonalContent(this.currentLanguage, 'life-financial')
       .subscribe(
-        res => {
+        (res: any) => {
           this.isLoading = false;
-          this.individualData = res;
+          if (Array.isArray(res) && res.length > 0) {
+                this.individualData = res.map(item => {
+                  return {
+                    ...item,
+                    originalText: item.text,
+                    text: this.sanitizer.bypassSecurityTrustHtml(item.text)
+                  };
+                });
+            }
+        },
+        error => {
+          this.isLoading = false;
+          console.error('Error fetching data', error);
         }
       );
 
-
+      this.subscriptions.add(getData);
     });
+      this.subscriptions.add(lang)
   }
 
   getTranslation(key: string): string {
@@ -80,50 +101,15 @@ export class LifeComponent {
     this.currentContent = contentId;
   }
 
-  toggleAccordion(accordionId: string) {
-    this.openAccordions[accordionId] = !this.openAccordions[accordionId];
-  }
-
-  isOpen(accordionId: string): boolean {
-    return this.openAccordions[accordionId];
-  }
-
-  isLoggedIn() {
+  isLoggedIn(): boolean {
+    const token = this.loginService.getToken();
+    if (token) {
+      return true;
+    }
     return false;
   }
 
-  addNewObject() {
-    this.individualData.middleObj.push({
-      title: 'New Title',
-      description: 'New Description'
-    });
-    this.addedObjectIndices.push(this.individualData.middleObj.length - 1);  // Track the index of the new object
-    this.isEditing = true;
-    this.cancelEdit = 'Cancel';
-    this.isEditable = true;
-  }
-
-  formatText(text: string): string {
-    text = text.replace(/([a-zA-ZÀ-ÿ\s-]+:)/g, (match) => {
-      if (match.includes('-')) {
-        return '<strong>' + match + '</strong>';
-      }else if (match.includes(`'`)) {
-        return '<strong>' + match + '</strong>';
-      }
-      return match;
-    });
-
-    return text.replace(/([a-zA-ZÀ-ÿ\s]+:)/g, '<strong>$1</strong>');
-  }
-
   toggleEdit() {
-    if (this.isEditing) {
-      this.individualData = JSON.parse(JSON.stringify(this.individualData));
-      this.addedObjectIndices = [];
-    } else {
-      this.individualData = JSON.parse(JSON.stringify(this.individualData));
-    }
-
     this.isEditing = !this.isEditing;
     this.cancelEdit = this.isEditing ? 'Cancel' : 'Edit';
     this.isEditable = this.isEditing;
@@ -138,33 +124,21 @@ export class LifeComponent {
       return;
     }
 
-    dataItem.text.middleObj = dataItem.text.middleObj.filter((item: any) => {
-      const isNotEmpty = item.title.trim() !== '' || item.description.trim() !== '';
-      return isNotEmpty;
-    });
-
-    dataItem.text.header.description = dataItem.text.header.description.replace(/\n/g, '<br>');
-
-    dataItem.text.middleObj.forEach((item: any) => {
-      item.description = item.description.replace(/\n/g, '<br>');
-      item.title = item.title.replace(/\n/g, '<br>');
-    });
-
-    this.addedObjectIndices = [];
-
     this.isEditing = false;
     this.cancelEdit = 'Edit';
     this.isEditable = false;
 
-    let cContentToStr = JSON.stringify(dataItem.text);
-
-    this.personalService.updatePersonalContent(this.currentLanguage, 'life-financial', subCategory, cContentToStr)
-      .subscribe(response => {
-        this.isLoading = false;
-        console.log('Update successful for item:', response);
+    const addData = this.personalService.updatePersonalContent(this.currentLanguage, 'life-financial', subCategory, dataItem.originalText)
+      .subscribe( () => {
+        this.getLangAndData();
       }, error => {
         console.error('Error updating content for item:', error);
       });
+
+      this.subscriptions.add(addData);
   }
 
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
 }

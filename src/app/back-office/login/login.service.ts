@@ -7,39 +7,52 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 })
 export class LoginService {
 
-  private apiUrl = 'http://localhost:5000/api/auth'; // Your backend URL
+  private apiUrl = 'http://localhost:5000/api';
   private token: string | null = null;
   private showComponentsSubject = new BehaviorSubject<boolean>(true);
   showComponent$ = this.showComponentsSubject.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  login(username: string, password: string) {
-     return this.http.post<any>(`${this.apiUrl}/login`, { username, password }).subscribe();
-  }
-
-  register(username: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/register`, { username, password });
-  }
-
-  setToken(token: string): void {
-    this.token = token;
-    localStorage.setItem('token', this.token);
-  }
-
-  getToken(): string | null {
-    if (!this.token) {
-      this.token = localStorage.getItem('token');
+    login(username: string, password: string): Observable<any> {
+      return this.http.post<any>(`${this.apiUrl}/login`, { username, password }).pipe(
+        tap((response) => {
+          if (response && response.token) {
+            this.setToken(response.token);
+          }
+        })
+      );
     }
-    return this.token;
-  }
 
-  logout() {
-    localStorage.removeItem('token');
-  }
+    logout(): void {
+      this.clearToken();
+      window.location.reload();
+    }
 
-  setShowComponent(show: boolean) {
-    this.showComponentsSubject.next(show);
-  }
+    setToken(token: string): void {
+      this.token = token;
+      localStorage.setItem('token', token);
+    }
+
+    getToken(): string | null {
+      if (!this.token) {
+        this.token = localStorage.getItem('token');
+      }
+      return this.token;
+    }
+
+    clearToken(): void {
+      this.token = null;
+      localStorage.removeItem('token');
+    }
+
+    isLoggedIn(): boolean {
+      const token = this.getToken();
+      return !!token;
+    }
+
+    setShowComponent(show: boolean) {
+      this.showComponentsSubject.next(show);
+    }
 
 }

@@ -24,6 +24,8 @@ export class NavbarComponent implements OnInit {
       this.showComponent = res;
     })
 
+
+
     this.languageService.currentLanguage$.subscribe(language => {
       this.languageService.loadTranslations(language);
       this.currentLanguage = language;
@@ -62,6 +64,19 @@ export class NavbarComponent implements OnInit {
 
   getTranslation(key: string): string {
     return this.languageService.getTranslation(key);
+  }
+
+  isLoggedIn(): boolean {
+    const token = this.loginService.getToken();
+    if (token) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  logout() {
+    this.loginService.logout();
   }
 }
 

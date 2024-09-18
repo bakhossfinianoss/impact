@@ -3,9 +3,8 @@ import { CommonModule } from '@angular/common';
 import { BusinessInsurranceRoutingModule } from './business-inssurance-routing.module';
 import { BusinessInssuranceComponent } from './business-inssurance.component';
 import { FormsModule } from '@angular/forms';
-import { BackOfficeModule } from 'src/app/back-office/back-office/back-office.module';
 import { LoadingModule } from 'src/app/layout/loading/loading/loading.module';
-
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [BusinessInssuranceComponent],
@@ -13,8 +12,8 @@ import { LoadingModule } from 'src/app/layout/loading/loading/loading.module';
     CommonModule,
     BusinessInsurranceRoutingModule,
     FormsModule,
-    BackOfficeModule,
-    LoadingModule
+    LoadingModule,
+    EditorModule
   ],
   exports: [BusinessInssuranceComponent]
 })
