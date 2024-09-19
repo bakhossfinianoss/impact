@@ -88,14 +88,3 @@ h6 {
   font-size: 0.67em;
   font-weight: bold;
 }
-
-@media (min-width: 768px) {
-  .sticky-sidebar {
-    position: sticky;
-    top: 80px;
-    overflow-y: auto;
-    z-index: 10;
-    height: auto;
-    max-height: 65vh;
-  }
-}

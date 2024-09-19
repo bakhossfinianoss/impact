@@ -1,87 +1,64 @@
 <app-loading *ngIf="isLoading"></app-loading>
 <div class="flex flex-col md:flex-row md:space-x-4 mt-16 mx-3">
   <!-- Sidebar -->
-  <div
-    class="w-full mt-4 md:w-1/4 bg-white p-4 shadow-custom mb-4 md:mb-0 rounded-lg sticky-sidebar"
-  >
+  <div class="w-full mt-4 md:w-1/4 bg-white p-4 shadow-custom mb-4 md:mb-0">
     <div class="flex flex-col space-y-4">
       <a
-        (click)="showContent('car')"
-        [class.selected]="selected === 'car'"
+        (click)="showContent('auto')"
+        [class.selected]="selected === 'auto'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
         <span class="text-sm md:text-base">{{
-          getTranslation("Auto_Moto_RV_Insurance")
+          getTranslation("AUTO_INSURANCE_FAQ")
         }}</span>
       </a>
       <hr class="border-gray-300" />
 
       <a
-        (click)="showContent('house')"
-        [class.selected]="selected === 'house'"
+        (click)="showContent('home')"
+        [class.selected]="selected === 'home'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
         <span class="text-sm md:text-base">{{
-          getTranslation("Home_Insurance")
+          getTranslation("HOME_INDURANCE_FAQ")
         }}</span>
       </a>
       <hr class="border-gray-300" />
 
       <a
-        (click)="showContent('replacement')"
-        [class.selected]="selected === 'replacement'"
+        (click)="showContent('condo')"
+        [class.selected]="selected === 'condo'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
         <span class="text-sm md:text-base">{{
-          getTranslation("Replacement_Value")
+          getTranslation("CONDO_INSURANCE_FAQ")
         }}</span>
       </a>
       <hr class="border-gray-300" />
 
       <a
-        (click)="showContent('hard')"
-        [class.selected]="selected === 'hard'"
+        (click)="showContent('tenant')"
+        [class.selected]="selected === 'tenant'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
         <span class="text-sm md:text-base">{{
-          getTranslation("Hard_To_Find_Insurance")
+          getTranslation("TENANT_INSURANCE_FAQ")
         }}</span>
       </a>
       <hr class="border-gray-300" />
 
       <a
-        (click)="showContent('high')"
-        [class.selected]="selected === 'high'"
+        (click)="showContent('claims')"
+        [class.selected]="selected === 'claims'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
         <span class="text-sm md:text-base">{{
-          getTranslation("High_Value_Insurance")
+          getTranslation("CLAIMS_FAQ")
         }}</span>
-      </a>
-      <hr class="border-gray-300" />
-
-      <a
-        (click)="showContent('travel')"
-        [class.selected]="selected === 'travel'"
-        class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
-      >
-        <span class="text-sm md:text-base">{{
-          getTranslation("Travel_Insurance")
-        }}</span>
-      </a>
-      <hr class="border-gray-300" />
-
-      <a
-        (click)="showContent('faq')"
-        [class.selected]="selected === 'faq'"
-        class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
-      >
-        <span class="text-sm md:text-base">{{ getTranslation("FAQ") }}</span>
       </a>
     </div>
   </div>
 
-  <!-- Right content -->
   <div class="w-full mt-4 md:w-3/4 bg-white p-6 md:p-8 shadow-custom">
     <ng-container *ngFor="let iData of individualData; let i = index">
       <div *ngIf="currentContent === iData.subCategory" class="content">
@@ -106,6 +83,7 @@
           >
             Save
           </button>
+
           <button
             *ngIf="isLoggedIn()"
             (click)="toggleEdit()"

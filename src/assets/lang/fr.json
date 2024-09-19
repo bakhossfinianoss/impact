@@ -57,7 +57,7 @@
     "Submit_Claim": "Soumettre une réclamation",
     "Last_Name": "Nom de famille",
     "Type_your_message": "Tapez votre message",
-    "Individual": "Particulier",
+    "Individual": "Personal",
     "Auto_Moto_RV_Insurance": "Assurance Auto-Moto-VR",
     "Home_Insurance": "Assurance Habitation",
     "Replacement_Value": "Valeur de remplacement",
@@ -86,5 +86,14 @@
     "RRSP": "Régime enregistré d’épargne-retraite",
     "TFSA": "Compte d’épargne libre d’impôt",
     "RESP": "Régime enregistré d’épargne-études",
-    "Logout": "Déconnexion"
+    "Logout": "Déconnexion",
+    "Terms_Conditions": "Termes et conditions",
+    "Privacy_Policy": "politique de confidentialité",
+    "Complaint_Policy": "Politique de réclamation",
+    "Life_Financial": "Vie et finance",
+    "AUTO_INSURANCE_FAQ": "FAQ Assurance Auto",
+    "HOME_INDURANCE_FAQ": "FAQ Assurance Habitation",
+    "CONDO_INSURANCE_FAQ": "FAQ Assurance Condo",
+    "TENANT_INSURANCE_FAQ": "FAQ Assurance Locataire",
+    "CLAIMS_FAQ": "FAQ Réclamations"
 }

@@ -6,31 +6,35 @@
     </div>
 
     <div class="flex flex-col items-start" style="margin-top: 6px !important;">
+      <a routerLink="/" class="text-white hover:text-darkGray">{{ getTranslation('Home') }}</a>
       <a routerLink="/about-us" class="text-white hover:text-darkGray">{{ getTranslation('About_Us') }}</a>
-      <a routerLink="/" class="text-white hover:text-darkGray">{{ getTranslation('Blog') }}</a>
+      <a href="https://blog.impactco.ca" target="_blank" class="text-white hover:text-darkGray">{{ getTranslation('Blog') }}</a>
       <a routerLink="/" class="text-white hover:text-darkGray">{{ getTranslation('Career') }}</a>
       <a routerLink="/contact-us" class="text-white hover:text-darkGray">{{ getTranslation('Contact_Us') }}</a>
+      <a routerLink="/" class="text-white hover:text-darkGray">{{ getTranslation('Terms_Conditions') }}</a>
+      <a routerLink="/" class="text-white hover:text-darkGray">{{ getTranslation('Privacy_Policy') }}</a>
+      <a routerLink="/" class="text-white hover:text-darkGray">{{ getTranslation('Complaint_Policy') }}</a>
+      <a routerLink="/faq" class="text-white hover:text-darkGray">{{ getTranslation('FAQ') }}</a>
     </div>
 
     <div class="flex flex-col items-start">
       <p class="text-white font-semibold text-lg mb-4"> <span class="text-orange">{{ getTranslation('Get_In_Touch') }}</span></p>
       <div class="text-lightBlue text-sm space-y-2">
         <p><i class="fas fa-map-marker-alt"></i> {{ getTranslation('Address') }}</p>
-        <p><i class="fas fa-phone"></i> {{ getTranslation('Phone') }}: 1 (833) 361-1133</p>
-        <p><i class="fas fa-envelope"></i> <a href="mailto:info@impactco.ca" class="underline">info@impactco.ca</a></p>
+        <p><i class="fas fa-phone transform rotate-90"></i> {{ getTranslation('Phone') }}: 1 (833) 361-1133</p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:info@impactco.ca" class="underline" style="margin-left: 4px;">info@impactco.ca</a></p>
       </div>
     </div>
 
     <div class="flex flex-col items-start">
       <p class="text-white font-semibold text-lg mb-4"> <span class="text-orange">{{ getTranslation('Claim_Call_Us') }}</span></p>
       <div class="text-lightBlue text-sm space-y-2">
-        <p><i class="fas fa-phone"></i> {{ getTranslation('Toll_Free') }}: 1 (833) 361-1133</p>
-        <p><i class="fas fa-phone"></i> {{ getTranslation('Montreal') }}: 1 (514) 461-1133</p>
+        <p><i class="fas fa-phone transform rotate-90"></i> {{ getTranslation('Toll_Free') }}: 1 (833) 361-1133</p>
+        <p><i class="fas fa-phone transform rotate-90"></i> {{ getTranslation('Montreal') }}: 1 (514) 461-1133</p>
         <div class="flex space-x-4 mt-4">
-          <a href="#"><i class="fab fa-twitter text-white text-xl"></i></a>
-          <a href="#"><i class="fab fa-facebook-f text-white text-xl"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in text-white text-xl"></i></a>
-          <a href="#"><i class="fab fa-instagram text-white text-xl"></i></a>
+          <a href="https://www.facebook.com/impactassurances/" target="_blank"><i class="fab fa-facebook-f text-white text-xl"></i></a>
+          <a href="https://ca.linkedin.com/company/impactassurances" target="_blank"><i class="fab fa-linkedin-in text-white text-xl"></i></a>
+          <a href="https://www.instagram.com/impactassurances/" target="_blank"><i class="fab fa-instagram text-white text-xl"></i></a>
         </div>
       </div>
     </div>

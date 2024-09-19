@@ -11,14 +11,15 @@
       class="w-[350px] h-[125px] mt-4 hidden md:block"
     />
 
+    <br><br>
     <!-- Get A Quote -->
-    <div class="flex flex-col items-center gap-5">
+    <div class="flex flex-col items-center gap-2">
       <h1 class="text-blue text-4xl font-bold get-quote">{{ getTranslation('Get_A_Quote') }}</h1>
       <h2 class="text-mediumGray text-4xl font-normal text-center">{{ getTranslation('Compare_Choose_Save') }}</h2>
     </div>
 
     <!-- SVG icons in a grid -->
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-11 mt-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-11 !mt-5">
       <div class="flex flex-col items-center">
         <a [routerLink]="['/quote']">
           <img
@@ -90,7 +91,7 @@
   <div class="flex justify-center w-full overflow-hidden mt-6" *ngIf="currentLanguage === 'en'">
     <swiper-container class="w-11/12 h-full overflow-hidden"
         [spaceBetween]="10" [breakpoints]="cardBreakpoints"
-        autoplay-delay="3500" autoplay-disable-on-interaction="false">
+        autoplay-delay="3500" autoplay-disable-on-interaction="false" loop="true">
           <swiper-slide *ngFor="let card of cards">
             <div class="card px-4">
                 <div class="card-header">
@@ -134,12 +135,12 @@
     {{ getTranslation('Discover_Our_Coverage') }}
   </h5>
 
-  <div class="bg-lightBlue pt-3 pb-12">
+  <div class="pt-3 pb-12">
 
     <div class="flex flex-row justify-center gap-16 mt-10 mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
-        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
-          <a [routerLink]="['/quote']">
+        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-lg shadow-2xl">
+          <a [routerLink]="['/personal-insurance', { tag: 'car' }]">
             <img
               [src]="automobile"
               class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
@@ -151,8 +152,8 @@
           </a>
         </div>
 
-        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
-          <a [routerLink]="['/quote']">
+        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-lg shadow-2xl">
+          <a [routerLink]="['/personal-insurance', { tag: 'house' }]">
             <img
               [src]="home"
               class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
@@ -164,8 +165,8 @@
           </a>
         </div>
 
-        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
-          <a [routerLink]="['/quote']">
+        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-lg shadow-2xl">
+          <a [routerLink]="['/business-insurance', { tag: 'general' }]" >
             <img
               [src]="commercialAuto"
               class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
@@ -177,8 +178,8 @@
           </a>
         </div>
 
-        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
-          <a [routerLink]="['/quote']">
+        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-lg shadow-2xl">
+          <a [routerLink]="['/life-insurance', { tag: 'life' }]">
             <img
               [src]="lifeInsurrance"
               class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
@@ -194,8 +195,8 @@
 
     <div class="flex flex-row justify-center gap-16 mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
-        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
-          <a [routerLink]="['/quote']">
+        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-lg shadow-2xl">
+          <a [routerLink]="['/business-insurance', { tag: 'condominium' }]">
             <img
               [src]="condo"
               class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
@@ -207,8 +208,8 @@
           </a>
         </div>
 
-        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
-          <a [routerLink]="['/quote']">
+        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-lg shadow-2xl">
+          <a [routerLink]="['/business-insurance', { tag: 'property' }]">
             <img
               [src]="commerce"
               class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
@@ -220,8 +221,8 @@
           </a>
         </div>
 
-        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
-          <a [routerLink]="['/quote']">
+        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-lg shadow-2xl">
+          <a [routerLink]="['/personal-insurance', { tag: 'car' }]">
             <img
               [src]="moto"
               class="w-[82px] h-[78px] relative -top-[6px] mx-auto"
@@ -233,8 +234,8 @@
           </a>
         </div>
 
-        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-2xl shadow-2xl">
-          <a [routerLink]="['/quote']">
+        <div class="bg-white m-2 p-2 lg:w-60 md:w-60 sm:w-40 h-28 flex justify-center rounded-lg shadow-2xl">
+          <a [routerLink]="['/personal-insurance', { tag: 'faq' }]">
             <img
               [src]="condo"
               class="w-[82px] h-[78px] relative -top-[6px] mx-auto"

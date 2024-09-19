@@ -86,5 +86,14 @@
     "RRSP": "Registered Retirement Savings Plan",
     "TFSA": "Tax Free Saving Account",
     "RESP": "Registered Education Savings Plan",
-    "Logout": "Logout"
+    "Logout": "Logout",
+    "Terms_Conditions": "Terms and Conditions",
+    "Privacy_Policy": "Privacy Policy",
+    "Complaint_Policy": "Complaint Policy",
+    "Life_Financial": "Life & Financial",
+    "AUTO_INSURANCE_FAQ": "Auto Insurance FAQ",
+    "HOME_INDURANCE_FAQ": "Home Insurance FAQ",
+    "CONDO_INSURANCE_FAQ": "Condo Insurance FAQ",
+    "TENANT_INSURANCE_FAQ": "Tenant Insurance FAQ",
+    "CLAIMS_FAQ": "Claims FAQ"
 }

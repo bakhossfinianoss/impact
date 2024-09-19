@@ -93,6 +93,16 @@ nav .relative.group .absolute a {
 }
 
 nav .relative.group .absolute a:hover {
-  background-color: #f0f0f0; /* Light gray background on hover */
-  color: #333; /* Slightly darker text on hover */
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+@media (min-width: 1024px) { /* For desktop screens */
+  .logo-img {
+    height: 35px; /* Adjust this value as needed for desktop */
+  }
+}
+
+.border-nav {
+  border-radius: 0px !important;
 }

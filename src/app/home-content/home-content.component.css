@@ -48,7 +48,7 @@
 
 .card {
   background: #fff;
-  border-radius: 15px;
+  border-radius: 5px;
   box-shadow: 4px 4px 4px rgb(206 232 242);
   width: 99%;
   max-width: 600px;
@@ -111,7 +111,7 @@ h1 {
   font-size: 16px;
 }
 
-.letter-sp { 
+.letter-sp {
   letter-spacing: 5px;
 }
 
