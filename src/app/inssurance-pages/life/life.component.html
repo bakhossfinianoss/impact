@@ -1,9 +1,18 @@
 <app-loading *ngIf="isLoading"></app-loading>
 
+<header class="impact-header mt-16 desktop-menu-container">
+  <img src="assets/ImpactInsurance_Logo4-300x110.png" alt="Impact Logo" class="impact-logo" />
+
+  <div class="impact-hero">
+    <img src="assets/top-image.png" alt="Top Image" class="impact-top-image" />
+  </div>
+</header>
+
 <div class="flex flex-col md:flex-row md:space-x-4 mt-16 mx-3">
-  <!-- Sidebar -->
+  <!-- Left Desktop Menu -->
   <div
-    class="w-full mt-4 md:w-1/4 bg-white p-4 shadow-custom mb-4 md:mb-0 rounded-lg"
+    class="desktop-menu-container w-full mt-4 md:w-1/4 bg-white p-4 shadow-custom mb-4 md:mb-0 rounded-lg sticky-sidebar overflow-y-auto"
+    style="max-height: calc(100vh - 50px); position: sticky; top: 50px;"
   >
     <div class="flex flex-col space-y-4">
       <a
@@ -11,9 +20,7 @@
         [class.selected]="selected === 'life'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
-        <span class="text-sm md:text-base">{{
-          getTranslation("Life_Insurance")
-        }}</span>
+        <span class="text-sm md:text-base">{{ getTranslation('Life_Insurance') }}</span>
       </a>
       <hr class="border-gray-300" />
 
@@ -22,9 +29,7 @@
         [class.selected]="selected === 'universal'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
-        <span class="text-sm md:text-base">{{
-          getTranslation("Universal_life_insurance")
-        }}</span>
+        <span class="text-sm md:text-base">{{ getTranslation('Universal_life_insurance') }}</span>
       </a>
       <hr class="border-gray-300" />
 
@@ -33,9 +38,7 @@
         [class.selected]="selected === 'long'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
-        <span class="text-sm md:text-base">{{
-          getTranslation("Long_term_care_insurance")
-        }}</span>
+        <span class="text-sm md:text-base">{{ getTranslation('Long_term_care_insurance') }}</span>
       </a>
       <hr class="border-gray-300" />
 
@@ -44,9 +47,7 @@
         [class.selected]="selected === 'disability'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
-        <span class="text-sm md:text-base">{{
-          getTranslation("Disability_insurance")
-        }}</span>
+        <span class="text-sm md:text-base">{{ getTranslation('Disability_insurance') }}</span>
       </a>
       <hr class="border-gray-300" />
 
@@ -55,9 +56,7 @@
         [class.selected]="selected === 'registered'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
-        <span class="text-sm md:text-base">{{
-          getTranslation("Registered_Retirement_Savings_Plan")
-        }}</span>
+        <span class="text-sm md:text-base">{{ getTranslation('Registered_Retirement_Savings_Plan') }}</span>
       </a>
       <hr class="border-gray-300" />
 
@@ -66,9 +65,7 @@
         [class.selected]="selected === 'tax'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
-        <span class="text-sm md:text-base">{{
-          getTranslation("Tax_free_Saving_Account")
-        }}</span>
+        <span class="text-sm md:text-base">{{ getTranslation('Tax_free_Saving_Account') }}</span>
       </a>
       <hr class="border-gray-300" />
 
@@ -77,14 +74,77 @@
         [class.selected]="selected === 'education'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
-        <span class="text-sm md:text-base">{{
-          getTranslation("Registered_Education_Savings_plan")
-        }}</span>
+        <span class="text-sm md:text-base">{{ getTranslation('Registered_Education_Savings_plan') }}</span>
       </a>
     </div>
   </div>
 
-  <div class="w-full mt-4 md:w-3/4 bg-white p-6 md:p-8 shadow-custom">
+  <!-- Left Mobile Menu -->
+  <div class="mobile-menu-container">
+  <button class="menu-toggle" (click)="toggleMenu()">
+    {{ getTranslation(selectedLabel) }}
+  </button>
+  <ul class="mobile-menu" *ngIf="isMenuOpen">
+    <li>
+      <a
+        (click)="showContentMobile('life', 'Life_Insurance')"
+        [class.selected]="selected === 'life'"
+      >
+        <span class="text-sm md:text-base">{{ getTranslation('Life_Insurance') }}</span>
+      </a>
+    </li>
+    <li>
+      <a
+        (click)="showContentMobile('universal', 'Universal_life_insurance')"
+        [class.selected]="selected === 'universal'"
+      >
+        <span class="text-sm md:text-base">{{ getTranslation('Universal_life_insurance') }}</span>
+      </a>
+    </li>
+    <li>
+      <a
+        (click)="showContentMobile('long', 'Long_term_care_insurance')"
+        [class.selected]="selected === 'long'"
+      >
+        <span class="text-sm md:text-base">{{ getTranslation('Long_term_care_insurance') }}</span>
+      </a>
+    </li>
+    <li>
+      <a
+        (click)="showContentMobile('disability', 'Disability_insurance')"
+        [class.selected]="selected === 'disability'"
+      >
+        <span class="text-sm md:text-base">{{ getTranslation('Disability_insurance') }}</span>
+      </a>
+    </li>
+    <li>
+      <a
+        (click)="showContentMobile('registered', 'Registered_Retirement_Savings_Plan')"
+        [class.selected]="selected === 'registered'"
+      >
+        <span class="text-sm md:text-base">{{ getTranslation('Registered_Retirement_Savings_Plan') }}</span>
+      </a>
+    </li>
+    <li>
+      <a
+        (click)="showContentMobile('tax', 'Tax_free_Saving_Account')"
+        [class.selected]="selected === 'tax'"
+      >
+        <span class="text-sm md:text-base">{{ getTranslation('Tax_free_Saving_Account') }}</span>
+      </a>
+    </li>
+    <li>
+      <a
+        (click)="showContentMobile('education', 'Registered_Education_Savings_plan')"
+        [class.selected]="selected === 'education'"
+      >
+        <span class="text-sm md:text-base">{{ getTranslation('Registered_Education_Savings_plan') }}</span>
+      </a>
+    </li>
+  </ul>
+  </div>
+
+  <div class="w-full mt-4 md:w-3/4 bg-white p-6 md:p-8 shadow-custom mt-mobile">
     <ng-container *ngFor="let iData of individualData; let i = index">
       <div *ngIf="currentContent === iData.subCategory" class="content">
         <ng-container *ngIf="!isEditing">

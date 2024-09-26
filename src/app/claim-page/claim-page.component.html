@@ -1,0 +1,174 @@
+<ng-container *ngIf="currentLanguage === 'en'">
+  <section class="claims-section" style="margin-top: 50px;">
+    <h1 class="title">Need to File an Insurance Claim?</h1>
+    <p class="subtitle">Filing a claim is simpler than you might think.</p>
+    <p class="instruction">Follow these steps to make the process as smooth as possible</p>
+    <div class="info-container">
+      <div class="info-image">
+        <img src="assets/one.png" alt="Icon" />
+      </div>
+
+      <div class="info-text">
+        <h2 class="info-title">Gather Your Information</h2>
+        <p>Before reaching out, have the following details on hand:</p>
+        <ul>
+          <li>- Your insurance policy number</li>
+          <li>- A concise account of the incident</li>
+          <li>- The date and time when it occurred</li>
+          <li>- Any pertinent documents, such as police reports, if available</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="insurance-provider-box insurance-margin">
+    <div class="insurance-provider-container">
+      <div class="insurance-provider-text">
+        <h3>Contact Your Insurance Provider</h3>
+        <p>
+          Impact Assurances is your insurance broker, but you will need to submit your claim directly to your insurance company. You can find your insurer’s contact details on your policy. Ensure you have all the required information ready to avoid delays.
+        </p>
+      </div>
+      <div class="insurance-provider-image">
+        <img src="assets/two.png" alt="Insurance Icon" />
+      </div>
+    </div>
+  </section>
+
+  <app-emergency-contact-information></app-emergency-contact-information>
+
+  <!-- Assistance Section -->
+  <div class="assistance-left assistance-margin">
+      <section class="assistance-box">
+        <div class="assistance-container">
+          <!-- Image on the left -->
+          <div class="assistance-image">
+            <img src="assets/three.png" alt="Assistance Icon" />
+          </div>
+
+          <!-- Text on the right -->
+          <div class="assistance-text">
+            <h3>Let Us Know If You Need Assistance</h3>
+            <p>We’re here to help. If you encounter any difficulties during the claims process, please reach out to us. As your broker, we’re committed to assisting you and resolving any issues that may arise.</p>
+          </div>
+        </div>
+      </section>
+  </div>
+
+  <!-- Claims FAQ -->
+  <div class="claims-faq-section">
+    <h2 class="section-title">Questions About Claims?</h2>
+    <div class="faq-box">
+      <div class="faq-item" *ngFor="let faq of faqsEn">
+        <div class="faq-question">
+          <button (click)="toggleAnswer(faq)">{{ faq.question }}</button>
+        </div>
+        <div class="faq-answer" [ngStyle]="{ 'display': faq.open ? 'block' : 'none' }">
+          <p>{{ faq.answer }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+
+
+<!-- French Header -->
+ <ng-container *ngIf="currentLanguage === 'fr'">
+  <section class="claims-section" style="margin-top: 50px;">
+    <h1 class="title">Vous devez déposer une réclamation d'assurance ?</h1>
+    <p class="subtitle">Faire une réclamation est plus simple que vous ne le pensez.</p>
+    <p class="instruction">Suivez ces étapes pour rendre le processus aussi fluide que possible</p>
+
+    <!-- Gather Information Section -->
+    <div class="info-container">
+      <div class="info-image">
+        <img src="assets/one.png" alt="Icon" />
+      </div>
+      <div class="info-text">
+        <h2 class="info-title">Rassemblez les Informations Nécessaires</h2>
+        <p>Avant de contacter votre assureur, assurez-vous de préparer les informations suivantes :</p>
+        <ul>
+          <li>- Votre numéro de police d'assurance</li>
+          <li>- Un résumé concis de l'incident</li>
+          <li>- La date et l'heure de l'incident</li>
+          <li>- Tout document pertinent, tel que les rapports de police, si disponible</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="insurance-provider-box insurance-margin">
+    <div class="insurance-provider-container">
+      <div class="insurance-provider-text">
+        <h3>Contactez Directement Votre Compagnie d'Assurance</h3>
+        <p>
+          Impact Assurances est votre courtier en assurance, mais vous devrez soumettre votre réclamation directement à votre compagnie d'assurance. Vous pouvez trouver les coordonnées de votre assureur sur votre police. Assurez-vous d'avoir toutes les informations requises prêtes pour éviter les retards.
+        </p>
+      </div>
+      <div class="insurance-provider-image">
+        <img src="assets/two.png" alt="Insurance Icon" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Emergency Contact -->
+  <app-emergency-contact-information></app-emergency-contact-information>
+
+  <!-- Assistance Section -->
+  <div class="assistance-left assistance-margin">
+    <section class="assistance-box">
+      <div class="assistance-container">
+        <div class="assistance-image">
+          <img src="assets/three.png" alt="Assistance Icon" />
+        </div>
+        <div class="assistance-text">
+          <h3>Faites-nous Savoir Si Vous Avez Besoin d’Aide</h3>
+          <p>Nous sommes là pour vous aider. Si vous rencontrez des difficultés pendant le processus de réclamation, n'hésitez pas à nous contacter. En tant que votre courtier, nous nous engageons à vous assister et à résoudre tout problème éventuel.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Claims FAQ Section -->
+  <div class="claims-faq-section">
+    <h2 class="section-title">Questions à propos des réclamations?</h2>
+    <div class="faq-box">
+      <div class="faq-item" *ngFor="let faq of faqsFr">
+        <div class="faq-question">
+          <button (click)="toggleAnswer(faq)">{{ faq.question }}</button>
+        </div>
+        <div class="faq-answer" [ngStyle]="{ 'display': faq.open ? 'block' : 'none' }">
+          <p>{{ faq.answer }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+ </ng-container>
+
+
+<div class="mt-16">
+  <h1 class="flex justify-center text-center text-3xl font-medium px-2 letter-sp">
+    <strong class="text-orange">{{ getTranslation('Our') }}</strong> <span class="text-mediumGray">{{ getTranslation('Partners') }}</span>
+  </h1>
+  <div class="flex justify-center w-full overflow-hidden mt-6 bg-[#ecf0f1] pt-10 pb-10">
+    <swiper-container class="w-11/12 h-full overflow-hidden"
+      [spaceBetween]="20" [breakpoints]="breakpoints"
+      autoplay-delay="3500" autoplay-disable-on-interaction="false">
+      <swiper-slide *ngFor="let p of partners">
+      <div class="partners-card px-4">
+          <div class="card-header">
+            <h5 class="font-medium text-mediumGray"> <i class="fas fa-phone transform rotate-90"></i> {{ p.number }}</h5>
+          </div>
+          <div class="card-body">
+            <img [src]="p.logo" [class] width="45%" height="45%"
+            [ngStyle]="{
+              'margin-top': p.number === 'Industrielle Alliance' ? '-15px' : 'initial',
+              'width': p.number === 'Industrielle Alliance' ? '42%' : '45%',
+              'margin-left': '60px'}"/>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+</div>

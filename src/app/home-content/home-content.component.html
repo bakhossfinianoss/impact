@@ -7,21 +7,21 @@
     <!-- logo at the top -->
     <img
       src="assets/ImpactInsurance_Logo4-300x110.png"
-      alt="Overlay Image"
-      class="w-[350px] h-[125px] mt-4 hidden md:block"
+      alt="Big Logo"
+      class="big-logo"
     />
 
     <br><br>
     <!-- Get A Quote -->
     <div class="flex flex-col items-center gap-2">
-      <h1 class="text-blue text-4xl font-bold get-quote">{{ getTranslation('Get_A_Quote') }}</h1>
-      <h2 class="text-mediumGray text-4xl font-normal text-center">{{ getTranslation('Compare_Choose_Save') }}</h2>
+      <h1 class="text-blue text-[2rem] font-bold get-quote" #bigLogo>{{ getTranslation('Get_A_Quote') }}</h1>
+      <h2 class="text-mediumGray text-[2rem] font-normal text-center" #bigLogo>{{ getTranslation('Compare_Choose_Save') }}</h2>
     </div>
 
     <!-- SVG icons in a grid -->
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-11 !mt-5">
       <div class="flex flex-col items-center">
-        <a [routerLink]="['/quote']">
+        <a [routerLink]="['/personal-insurance', { tag: 'car' }]">
           <img
             [src]="automobile"
             class="w-[82px] h-[78px] relative top-[0.9rem]"
@@ -32,7 +32,7 @@
       </div>
 
       <div class="flex flex-col items-center">
-        <a [routerLink]="['/quote']">
+        <a [routerLink]="['/business-insurance', { tag: 'condominium' }]">
           <img
             [src]="condo"
             class="w-[82px] h-[78px]"
@@ -43,7 +43,7 @@
       </div>
 
       <div class="flex flex-col items-center">
-        <a [routerLink]="['/quote']">
+        <a [routerLink]="['/personal-insurance', { tag: 'house' }]">
           <img
             [src]="home"
             class="w-[90px] h-[83px] relative top-[4px]"
@@ -54,7 +54,7 @@
       </div>
 
       <div class="flex flex-col items-center">
-        <a [routerLink]="['/quote']">
+        <a [routerLink]="['/business-insurance', { tag: 'property' }]">
           <img
             [src]="tenant"
             class="w-[82px] h-[78px] relative -top-[4px]"
@@ -89,20 +89,20 @@
     <span class="text-mediumGray">{{ getTranslation('Your_Satisfaction') }}</span>
   </h3>
   <div class="flex justify-center w-full overflow-hidden mt-6" *ngIf="currentLanguage === 'en'">
-    <swiper-container class="w-11/12 h-full overflow-hidden"
-        [spaceBetween]="10" [breakpoints]="cardBreakpoints"
-        autoplay-delay="3500" autoplay-disable-on-interaction="false" loop="true">
-          <swiper-slide *ngFor="let card of cards">
-            <div class="card px-4">
-                <div class="card-header">
-                  <h5 class="font-medium">{{ card.name }}</h5>
-                  <p class="username">{{ card.username }}</p>
-                </div>
-                <div class="card-body">
-                  <p>{{ card.review }}</p>
-                </div>
-              </div>
-            </swiper-slide>
+    <swiper-container class="w-11/12 max-w-[95%] xl:max-w-[80%] mx-auto"
+      [spaceBetween]="10" [breakpoints]="cardBreakpoints"
+      autoplay-delay="3500" autoplay-disable-on-interaction="false" loop="true" autoHeight="true">
+        <swiper-slide *ngFor="let card of cards" class="swiper-slide-auto">
+          <div class="card px-4 h-auto"> <!-- Ensure h-auto allows dynamic height -->
+            <div class="card-header">
+              <h5 class="font-medium">{{ card.name }}</h5>
+              <p class="username">{{ card.username }}</p>
+            </div>
+            <div class="card-body">
+              <p>{{ card.review }}</p>
+            </div>
+          </div>
+        </swiper-slide>
     </swiper-container>
   </div>
 
@@ -262,8 +262,7 @@
   <div class="flex flex-col justify-center items-center">
     <h1 class="text-3xl font-medium mb-5">{{ getTranslation('Submit_A_Claim') }}</h1>
     <button class="click-here bg-blue-500 text-white font-bold
-          py-2 px-4 rounded-lg shadow-lg bg-orange transition duration-300 ease-in-out transform hover:-translate-y-1"
-            (click)="submitClaim()">
+          py-2 px-4 rounded-lg shadow-lg bg-orange transition duration-300 ease-in-out transform hover:-translate-y-1"  [routerLink]="['/claim']">
             {{ getTranslation('Click_here') }}
   </button>
       <p class="flex flex-col items-baseline submit-claim" style="margin-top: 20px;">
@@ -274,29 +273,31 @@
 </div>
 </div>
 
-
-<div class="mt-16">
-    <h1 class="flex justify-center text-center text-3xl font-medium px-2 letter-sp">
-      <strong class="text-orange">{{ getTranslation('Our') }}</strong> <span class="text-mediumGray">{{ getTranslation('Partners') }}</span>
-    </h1>
-    <div class="flex justify-center w-full overflow-hidden mt-6 bg-lightBlue pt-10 pb-10">
-      <swiper-container class="w-11/12 h-full overflow-hidden"
-        [spaceBetween]="20" [breakpoints]="breakpoints"
-        autoplay-delay="3500" autoplay-disable-on-interaction="false">
-        <swiper-slide *ngFor="let p of partners">
-        <div class="partners-card px-4">
-            <div class="card-header">
-              <h5 class="font-medium text-mediumGray">{{ p.name }}</h5>
-            </div>
-            <div class="card-body">
-              <img [src]="p.logo" [class] width="45%" height="45%"
-              [ngStyle]="{
-                'margin-top': p.name === 'Industrielle Alliance' ? '-15px' : 'initial',
-                'width': p.name === 'Industrielle Alliance' ? '42%' : '45%',
-                'margin-left': '60px'}"/>
-            </div>
-          </div>
-        </swiper-slide>
-      </swiper-container>
+<div class="claims-faq-section" *ngIf="currentLanguage === 'en'">
+  <h2 class="section-title">Questions About Automobile Insurance in Quebec?</h2>
+  <div class="faq-box">
+    <div class="faq-item" *ngFor="let faq of faqsAutomobileEn">
+      <div class="faq-question">
+        <button (click)="toggleAnswer(faq)">{{ faq.question }}</button>
+      </div>
+      <div class="faq-answer" [ngStyle]="{ 'display': faq.open ? 'block' : 'none' }">
+        <p>{{ faq.answer }}</p>
+      </div>
     </div>
+  </div>
 </div>
+
+<div class="claims-faq-section" *ngIf="currentLanguage === 'fr'">
+  <h2 class="section-title">Questions About Automobile Insurance in Quebec?</h2>
+  <div class="faq-box">
+    <div class="faq-item" *ngFor="let faq of faqsAutomobileFr">
+      <div class="faq-question">
+        <button (click)="toggleAnswer(faq)">{{ faq.question }}</button>
+      </div>
+      <div class="faq-answer" [ngStyle]="{ 'display': faq.open ? 'block' : 'none' }">
+        <p>{{ faq.answer }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+

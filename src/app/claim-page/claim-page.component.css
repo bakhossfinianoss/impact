@@ -1,0 +1,365 @@
+/* Main container for the section */
+.claims-section {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Main Title Styling */
+.title {
+  font-size: 2rem;
+  color: #000; /* Keep original black color */
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Subtitle */
+.subtitle {
+  font-size: 1rem;
+  color: #333; /* Keep original color */
+  margin-bottom: 20px;
+}
+
+/* Instruction */
+.instruction {
+  font-size: 1rem;
+  color: #333; /* Keep original color */
+  margin-bottom: 20px;
+}
+
+/* Information section */
+.info-container {
+  display: grid;
+  grid-template-columns: 150px auto;
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Image styling */
+.info-image img {
+  width: 100px;
+  height: auto;
+}
+
+/* Info text section */
+.info-text {
+  text-align: left;
+}
+
+.info-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.info-text p {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Keep dashes for the list */
+.info-text ul {
+  list-style-type: none; /* Remove default bullets */
+  padding-left: 0;
+}
+
+.info-text ul li {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Add a dash before each list item */
+.info-text ul li::before {
+  font-weight: bold;
+  color: #333; /* Keep text color the same */
+}
+
+/* Center the specific section */
+.insurance-provider-box {
+  display: flex;
+  justify-content: right;
+  align-items: right;
+  background-color: white; /* White background for the section */
+}
+
+/* Inside container with grid layout */
+.insurance-provider-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Ensures space between text and image */
+  align-items: center;
+  flex-wrap: wrap; /* Allows the text and image to wrap on smaller screens */
+  max-width: 800px; /* Limit the width of the box */
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #ddd; /* Border around the content */
+}
+
+/* Text styling */
+.insurance-provider-text {
+  flex: 1;
+  margin-right: 20px;
+  max-width: 70%; /* Restrict width to avoid overflow */
+}
+
+.insurance-provider-text h3 {
+  font-size: 1.5rem;
+  color: #000;
+  font-weight: bold;
+}
+
+.insurance-provider-text p {
+  font-size: 1rem;
+  color: #333;
+  text-align: left;
+}
+
+/* Image styling */
+.insurance-provider-image img {
+  max-width: 100px;
+  height: auto;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .info-title {
+    font-size: 1.4rem;
+  }
+
+  .subtitle, .instruction{
+    font-size: 0.8rem;
+  }
+
+  .info-text p {
+    font-size: 0.9rem;
+  }
+
+  .info-text ul li {
+    font-size: 0.9rem;
+  }
+
+  .insurance-margin {
+    margin-bottom: 50px;
+  }
+
+  .assistance-margin {
+    margin-bottom: 200px;
+  }
+
+  .insurance-provider-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .insurance-provider-text {
+    max-width: 100%; /* Allow full width for text on mobile */
+    margin-right: 0;
+  }
+
+  .insurance-provider-image img {
+    margin-top: 20px; /* Add space between text and image on mobile */
+  }
+}
+
+@media (min-width: 768px) {
+  .insurance-margin {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.assistance-section {
+  text-align: center;
+  margin: 40px 0;
+  padding: 20px;
+  background-color: #ecf0f1;
+  border-radius: 8px;
+}
+
+.claims-faq-section {
+  margin: 40px auto;
+  width: 80%;
+}
+
+.faq-box {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.faq-item {
+  margin-bottom: 10px;
+}
+
+.faq-question button {
+  width: 100%;
+  text-align: left;
+  background: #f0f0f0;
+  color: black;
+  border: none;
+  padding: 15px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.faq-answer {
+  display: none;
+  padding: 10px 15px;
+  background-color: #ecf0f1;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.faq-question button:hover {
+  background-color: #2980b9;
+}
+
+.assistance-left {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+}
+
+/* Assistance Box: Vertically and Horizontally centered */
+.assistance-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%; /* Responsive width */
+}
+
+/* Assistance Container Layout */
+.assistance-container {
+  display: grid;
+  grid-template-columns: 100px auto;
+  gap: 20px;
+  align-items: center;
+  text-align: center; /* Center text horizontally */
+}
+
+/* Image Section */
+.assistance-image img {
+  width: 80px;
+  height: auto;
+}
+
+/* Text Section */
+.assistance-text h3 {
+  font-size: 1.5rem;
+  color: #000;
+  font-weight: bold;
+  text-align: left; /* Align header text to the left */
+}
+
+.assistance-text p {
+  font-size: 1rem;
+  color: #333;
+  text-align: left; /* Align body text to the left */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .assistance-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .assistance-image {
+    margin-bottom: 10px;
+  }
+
+  .assistance-text h3, .assistance-text p {
+    text-align: center; /* Center text for smaller screens */
+  }
+}
+
+.swiper-wrapper-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden; /* Prevent horizontal scrolling */
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  transition: transform 0.3s ease-in-out;
+  padding: 0; /* Ensure no padding */
+}
+
+.swiper-slide:hover {
+  transform: scale(1.05);
+}
+
+.partners-card {
+  background: #fff;
+  border-radius: 65px;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  text-align: left;
+  transition: all 0.3s ease-in-out;
+  height: 8.5rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 4px 4px 4px rgb(206 232 242);
+  width: 99%;
+  max-width: 600px;
+  padding: 20px;
+  text-align: left;
+  transition: all 0.3s ease-in-out;
+  height: 14rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.card-header {
+  margin-bottom: 15px;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1em;
+  color: #333;
+}
+
+.card-header .username {
+  margin: 0;
+  color: #0883a6;
+  font-style: italic;
+}
+
+.card-body {
+  color: #555;
+  line-height: 1.6;
+}
+
+.card-body p {
+  font-size: 0.8em;
+}

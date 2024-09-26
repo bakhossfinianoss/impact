@@ -22,7 +22,7 @@ export class FaqComponent {
   ) {}
 
   currentLanguage: string = 'en';
-  currentContent: string = 'car';
+  currentContent: string = 'auto';
   selected: string = '';
   individualData: any;
   isEditing: boolean = false;
@@ -31,6 +31,9 @@ export class FaqComponent {
   content!: Content;
   isLoading = false;
   editorConfig: any;
+  isMenuOpen: boolean = false;
+  selectedLabel: string = 'AUTO_INSURANCE_FAQ';
+
   private subscriptions: Subscription = new Subscription();
 
   ngOnInit() {
@@ -38,6 +41,8 @@ export class FaqComponent {
         const tag = params.get('tag');
         if(tag) {
           this.showContent(tag);
+          this.selected = tag;
+          this.getSelected();
         }
     });
     this.getLangAndData();
@@ -58,6 +63,23 @@ export class FaqComponent {
         "000000", "Black"
       ]
     };
+  }
+
+  getSelected() {
+    const contentMapping: Record<string, string> = {
+      'auto': 'AUTO_INSURANCE_FAQ',
+      'home': 'HOME_INDURANCE_FAQ',
+      'condo': 'CONDO_INSURANCE_FAQ',
+      'tenant': 'TENANT_INSURANCE_FAQ',
+      'claims': 'CLAIMS_FAQ'
+    };
+
+    const selected = this.selected;
+    const selectedLabel = Object.keys(contentMapping).find(key => key === selected);
+    if (selectedLabel) {
+      const value = contentMapping[selectedLabel];
+      this.selectedLabel = value;
+    }
   }
 
   getLangAndData() {
@@ -101,7 +123,6 @@ export class FaqComponent {
   }
 
   isLoggedIn(): boolean {
-    return true;
     const token = this.loginService.getToken();
     if (token) {
       return true;
@@ -136,6 +157,17 @@ export class FaqComponent {
       });
 
       this.subscriptions.add(addData);
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  showContentMobile(contentId: string, label: string) {
+    this.selected = contentId;
+    this.currentContent = contentId;
+    this.selectedLabel = label;
+    this.isMenuOpen = false;
   }
 
   ngOnDestroy(): void {

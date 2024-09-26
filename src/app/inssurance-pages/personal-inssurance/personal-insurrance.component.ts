@@ -31,6 +31,9 @@ export class PersonalInsurranceComponent implements OnInit, OnDestroy  {
     content!: Content;
     isLoading = false;
     editorConfig: any;
+    isMenuOpen = false;
+    selectedLabel: string = 'Auto_Moto_RV_Insurance';
+
     private subscriptions: Subscription = new Subscription();
 
     ngOnInit() {
@@ -38,6 +41,8 @@ export class PersonalInsurranceComponent implements OnInit, OnDestroy  {
           const tag = params.get('tag');
           if(tag) {
             this.showContent(tag);
+            this.selected = tag;
+            this.getSelected();
           }
       });
       this.getLangAndData();
@@ -58,6 +63,25 @@ export class PersonalInsurranceComponent implements OnInit, OnDestroy  {
           "000000", "Black"
         ]
       };
+    }
+
+    getSelected() {
+      const contentMapping: Record<string, string> = {
+        'car': 'Auto_Moto_RV_Insurance',
+        'house': 'Home_Insurance',
+        'replacement': 'Replacement_Value',
+        'hard': 'Hard_To_Find_Insurance',
+        'high': 'High_Value_Insurance',
+        'travel': 'Travel_Insurance',
+        'faq': 'FAQ'
+      };
+
+      const selected = this.selected;
+      const selectedLabel = Object.keys(contentMapping).find(key => key === selected);
+      if (selectedLabel) {
+        const value = contentMapping[selectedLabel];
+        this.selectedLabel = value;
+      }
     }
 
     getLangAndData() {
@@ -95,11 +119,6 @@ export class PersonalInsurranceComponent implements OnInit, OnDestroy  {
       return this.languageService.getTranslation(key);
     }
 
-    showContent(contentId: string) {
-      this.selected = contentId;
-      this.currentContent = contentId;
-    }
-
     isLoggedIn(): boolean {
       const token = this.loginService.getToken();
       if (token) {
@@ -135,6 +154,23 @@ export class PersonalInsurranceComponent implements OnInit, OnDestroy  {
         });
 
         this.subscriptions.add(saveSub);
+    }
+
+
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
+    }
+
+    showContent(contentId: string) {
+      this.selected = contentId;
+      this.currentContent = contentId;
+    }
+
+    showContentMobile(contentId: string, label: string) {
+      this.selected = contentId;
+      this.currentContent = contentId;
+      this.selectedLabel = label;
+      this.isMenuOpen = false;
     }
 
     ngOnDestroy() {

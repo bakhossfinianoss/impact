@@ -1,0 +1,33 @@
+.privacy-policy-container {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  color: #333;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 5px;
+}
+
+.content-text {
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.content-list {
+  font-size: 16px;
+  margin-left: 20px;
+  list-style-type: disc;
+}
+
+.content-list li {
+  margin-bottom: 10px;
+}

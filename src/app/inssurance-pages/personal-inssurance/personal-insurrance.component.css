@@ -1,5 +1,86 @@
+/* Styling for the header */
+.impact-header {
+  position: relative;
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+}
+
+/* Logo Styling */
+.impact-logo {
+  width: 300px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Hero Section Styling */
+.impact-hero {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Top Image Styling */
+.impact-top-image {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+}
+
+/* Driving Image Styling */
+.impact-driving-image {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  margin-top: -20px; /* Slight overlap for effect */
+}
+
+/* Headline Styling */
+.impact-headline {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #007bff;
+  font-family: Arial, sans-serif;
+}
+
+.impact-headline h1 {
+  font-size: 2.5rem;
+  margin: 10px 0;
+}
+
+.impact-headline h3 {
+  font-size: 1.5rem;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .impact-logo {
+    display: none;
+  }
+
+  .impact-headline h1 {
+    font-size: 1.8rem;
+  }
+
+  .impact-headline h3 {
+    font-size: 1.2rem;
+  }
+
+  .impact-top-image {
+    max-height: 600px;
+    width: 100%;
+    height: 15vh;
+  }
+
+  .impact-driving-image {
+    max-height: 150px;
+  }
+}
+
 .shadow-custom {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15); /* Even shadow on all sides */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
 }
 
 a:hover {
@@ -99,3 +180,85 @@ h6 {
     max-height: 65vh;
   }
 }
+
+/* Basic styles for the mobile menu */
+.mobile-menu-container {
+  position: fixed;
+  top: calc(73px); /* Adjust dynamically */
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 0 12px;
+}
+
+.menu-toggle {
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+
+.menu-toggle:after {
+  content: '\25BC'; /* Down arrow */
+  float: right;
+}
+
+.mobile-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  display: none;
+}
+
+.mobile-menu li {
+  border-bottom: 1px solid #eee;
+}
+
+.mobile-menu li:last-child {
+  border-bottom: none;
+}
+
+.mobile-menu a {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: #333;
+  text-decoration: none;
+}
+
+.mobile-menu a img {
+  margin-right: 10px;
+  width: 24px;
+}
+
+.mobile-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Only display the mobile menu on screens smaller than 768px */
+@media (max-width: 768px) {
+  .mobile-menu {
+    display: block;
+  }
+
+  .mt-mobile {
+    margin-top: 8.2rem
+  }
+
+ .desktop-menu-container {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-menu-container {
+    display: none;
+  }
+}
+

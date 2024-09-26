@@ -1,16 +1,26 @@
 <app-loading *ngIf="isLoading"></app-loading>
+
+<header class="impact-header mt-16 desktop-menu-container">
+  <img src="assets/ImpactInsurance_Logo4-300x110.png" alt="Impact Logo" class="impact-logo" />
+
+  <div class="impact-hero">
+    <img src="assets/top-image.png" alt="Top Image" class="impact-top-image" />
+  </div>
+</header>
+
 <div class="flex flex-col md:flex-row md:space-x-4 mt-16 mx-3">
-  <!-- Sidebar -->
-  <div class="w-full mt-4 md:w-1/4 bg-white p-4 shadow-custom mb-4 md:mb-0">
+  <!-- Left Desktop Menu for FAQ -->
+  <div
+    class="desktop-menu-container w-full mt-4 md:w-1/4 bg-white p-4 shadow-custom mb-4 md:mb-0 rounded-lg sticky-sidebar overflow-y-auto"
+    style="max-height: calc(100vh - 50px); position: sticky; top: 50px;"
+  >
     <div class="flex flex-col space-y-4">
       <a
         (click)="showContent('auto')"
         [class.selected]="selected === 'auto'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
-        <span class="text-sm md:text-base">{{
-          getTranslation("AUTO_INSURANCE_FAQ")
-        }}</span>
+        <span class="text-sm md:text-base">{{ getTranslation('AUTO_INSURANCE_FAQ') }}</span>
       </a>
       <hr class="border-gray-300" />
 
@@ -19,9 +29,7 @@
         [class.selected]="selected === 'home'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
-        <span class="text-sm md:text-base">{{
-          getTranslation("HOME_INDURANCE_FAQ")
-        }}</span>
+        <span class="text-sm md:text-base">{{ getTranslation('HOME_INDURANCE_FAQ') }}</span>
       </a>
       <hr class="border-gray-300" />
 
@@ -30,9 +38,7 @@
         [class.selected]="selected === 'condo'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
-        <span class="text-sm md:text-base">{{
-          getTranslation("CONDO_INSURANCE_FAQ")
-        }}</span>
+        <span class="text-sm md:text-base">{{ getTranslation('CONDO_INSURANCE_FAQ') }}</span>
       </a>
       <hr class="border-gray-300" />
 
@@ -41,9 +47,7 @@
         [class.selected]="selected === 'tenant'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
-        <span class="text-sm md:text-base">{{
-          getTranslation("TENANT_INSURANCE_FAQ")
-        }}</span>
+        <span class="text-sm md:text-base">{{ getTranslation('TENANT_INSURANCE_FAQ') }}</span>
       </a>
       <hr class="border-gray-300" />
 
@@ -52,14 +56,61 @@
         [class.selected]="selected === 'claims'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
-        <span class="text-sm md:text-base">{{
-          getTranslation("CLAIMS_FAQ")
-        }}</span>
+        <span class="text-sm md:text-base">{{ getTranslation('CLAIMS_FAQ') }}</span>
       </a>
     </div>
   </div>
 
-  <div class="w-full mt-4 md:w-3/4 bg-white p-6 md:p-8 shadow-custom">
+  <!-- Left Mobile Menu for FAQ -->
+  <div class="mobile-menu-container">
+    <button class="menu-toggle" (click)="toggleMenu()">
+      {{ getTranslation(selectedLabel) }}
+    </button>
+    <ul class="mobile-menu" *ngIf="isMenuOpen">
+      <li>
+        <a
+          (click)="showContentMobile('auto', 'AUTO_INSURANCE_FAQ')"
+          [class.selected]="selected === 'auto'"
+        >
+          <span class="text-sm md:text-base">{{ getTranslation('AUTO_INSURANCE_FAQ') }}</span>
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="showContentMobile('home', 'HOME_INDURANCE_FAQ')"
+          [class.selected]="selected === 'home'"
+        >
+          <span class="text-sm md:text-base">{{ getTranslation('HOME_INDURANCE_FAQ') }}</span>
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="showContentMobile('condo', 'CONDO_INSURANCE_FAQ')"
+          [class.selected]="selected === 'condo'"
+        >
+          <span class="text-sm md:text-base">{{ getTranslation('CONDO_INSURANCE_FAQ') }}</span>
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="showContentMobile('tenant', 'TENANT_INSURANCE_FAQ')"
+          [class.selected]="selected === 'tenant'"
+        >
+          <span class="text-sm md:text-base">{{ getTranslation('TENANT_INSURANCE_FAQ') }}</span>
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="showContentMobile('claims', 'CLAIMS_FAQ')"
+          [class.selected]="selected === 'claims'"
+        >
+          <span class="text-sm md:text-base">{{ getTranslation('CLAIMS_FAQ') }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="w-full mt-4 md:w-3/4 bg-white p-6 md:p-8 shadow-custom mt-mobile">
     <ng-container *ngFor="let iData of individualData; let i = index">
       <div *ngIf="currentContent === iData.subCategory" class="content">
         <ng-container *ngIf="!isEditing">

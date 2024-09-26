@@ -32,6 +32,9 @@ export class LifeComponent implements OnInit, OnDestroy {
   content!: Content;
   isLoading = false;
   editorConfig: any;
+  isMenuOpen: boolean = false;
+  selectedLabel: string = 'Life_Insurance';
+
   private subscriptions: Subscription = new Subscription();
 
   ngOnInit() {
@@ -39,6 +42,8 @@ export class LifeComponent implements OnInit, OnDestroy {
         const tag = params.get('tag');
         if(tag) {
           this.showContent(tag);
+          this.selected = tag;
+          this.getSelected();
         }
     });
     this.getLangAndData();
@@ -59,6 +64,25 @@ export class LifeComponent implements OnInit, OnDestroy {
         "000000", "Black"
       ]
     };
+  }
+
+  getSelected() {
+    const contentMapping: Record<string, string> = {
+      'life': 'Life_Insurance',
+      'universal': 'Universal_life_insurance',
+      'long': 'Long_term_care_insurance',
+      'disability': 'Disability_insurance',
+      'registered': 'Registered_Retirement_Savings_Plan',
+      'tax': 'Tax_free_Saving_Account',
+      'education': 'Registered_Education_Savings_plan'
+    };
+
+    const selected = this.selected;
+    const selectedLabel = Object.keys(contentMapping).find(key => key === selected);
+    if (selectedLabel) {
+      const value = contentMapping[selectedLabel];
+      this.selectedLabel = value;
+    }
   }
 
   getLangAndData() {
@@ -136,6 +160,17 @@ export class LifeComponent implements OnInit, OnDestroy {
       });
 
       this.subscriptions.add(addData);
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  showContentMobile(contentId: string, label: string) {
+    this.selected = contentId;
+    this.currentContent = contentId;
+    this.selectedLabel = label;
+    this.isMenuOpen = false;
   }
 
   ngOnDestroy(): void {

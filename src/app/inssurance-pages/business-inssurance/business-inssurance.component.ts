@@ -33,6 +33,9 @@ export class BusinessInssuranceComponent implements OnInit, OnDestroy {
   content!: Content;
   isLoading = false;
   editorConfig: any;
+  isMenuOpen: boolean = false;
+  selectedLabel: string = 'Commercial_General_Liability';
+
   private subscriptions: Subscription = new Subscription();
 
   ngOnInit() {
@@ -40,6 +43,8 @@ export class BusinessInssuranceComponent implements OnInit, OnDestroy {
         const tag = params.get('tag');
         if(tag) {
           this.showContent(tag);
+          this.selected = tag;
+          this.getSelected();
         }
     });
     this.getLangAndData();
@@ -60,6 +65,26 @@ export class BusinessInssuranceComponent implements OnInit, OnDestroy {
         "000000", "Black"
       ]
     };
+  }
+
+  getSelected() {
+    const contentMapping: Record<string, string> = {
+      'general': 'Commercial_General_Liability',
+      'property': 'Commercial_Property_Insurance',
+      'shop': 'Auto_Shop_Insurance',
+      'administrator': 'Administrator',
+      'condominium': 'Condominium_Insurance',
+      'cargo': 'Cargo_Insurance',
+      'credit': 'Credit_Insurance',
+      'entertainement': 'Entertainment_Industry'
+    };
+
+    const selected = this.selected;
+    const selectedLabel = Object.keys(contentMapping).find(key => key === selected);
+    if (selectedLabel) {
+      const value = contentMapping[selectedLabel];
+      this.selectedLabel = value;
+    }
   }
 
   getLangAndData() {
@@ -137,6 +162,17 @@ export class BusinessInssuranceComponent implements OnInit, OnDestroy {
       });
 
       this.subscriptions.add(addData);
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  showContentMobile(contentId: string, label: string) {
+    this.selected = contentId;
+    this.currentContent = contentId;
+    this.selectedLabel = label;
+    this.isMenuOpen = false;
   }
 
   ngOnDestroy(): void {

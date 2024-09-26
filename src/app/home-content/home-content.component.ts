@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { faStar,faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
 import { register } from 'swiper/element/bundle';
@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DynamicPopupComponent } from '../dynamic-popup/dynamic-popup.component';
 import { LanguageService } from '../layout/language/language.service';
 import { SubmitClaimComponent } from '../submit-claim/submit-claim.component';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 register();
 
@@ -19,7 +20,22 @@ export interface PeriodicElement {
 @Component({
   selector: 'app-home-content',
   templateUrl: './home-content.component.html',
-  styleUrls: ['./home-content.component.css']
+  styleUrls: ['./home-content.component.css'],
+  animations: [
+    trigger('fadeScale', [
+      state('visible', style({
+        opacity: 1,
+        transform: 'scale(1)',
+      })),
+      state('hidden', style({
+        opacity: 0,
+        transform: 'scale(0.8)',
+      })),
+      transition('visible <=> hidden', [
+        animate('0.6s ease-in-out')
+      ])
+    ])
+  ]
 })
 export class HomeContentComponent implements OnInit, AfterViewInit {
   currentLanguage: string = 'en';
@@ -27,13 +43,16 @@ export class HomeContentComponent implements OnInit, AfterViewInit {
   constructor(public dialog: MatDialog,
     private languageService: LanguageService
   ) {}
-
+  showSmallLogo = false;
   faStar = faStar
   faStarHalfStroke = faStarHalfStroke;
   currentIndex = 0;
   transformStyle = `translateX(0%)`;
+  lastScrollTop = 0;
   @ViewChild('videoPlayer') videoPlayer!: ElementRef;
   @ViewChild('constructionVideoPlayer') constructionVideoPlayer!: ElementRef;
+  @ViewChild('bigLogo', { static: true }) bigLogo!: ElementRef;
+  isVisible = true; // Control the animation state
 
   automobile = `${environment.baseHref}assets/svg/automobile.svg`;
   condo = `${environment.baseHref}assets/svg/condo.svg`;
@@ -49,13 +68,6 @@ export class HomeContentComponent implements OnInit, AfterViewInit {
     640: { slidesPerView: 2 },  // Small screens (<= 640px)
     768: { slidesPerView: 2 },  // Medium screens (<= 768px)
     1024: { slidesPerView: 3 }  // Large screens (<= 1024px and above)
-  };
-
-  breakpoints = {
-    320: { slidesPerView: 1 },  // Extra small screens (<= 320px)
-    640: { slidesPerView: 2 },  // Small screens (<= 640px)
-    768: { slidesPerView: 3 },  // Medium screens (<= 768px)
-    1024: { slidesPerView: 4 }  // Large screens (<= 1024px and above)
   };
 
   ngOnInit(): void {
@@ -87,7 +99,6 @@ export class HomeContentComponent implements OnInit, AfterViewInit {
     constructionVideoPlayer.play().catch(error => {
       console.error('Error attempting to play video:', error);
     });
-
   }
 
   cards = [
@@ -146,40 +157,65 @@ export class HomeContentComponent implements OnInit, AfterViewInit {
     }
   ]
 
-  partners = [
+  faqsAutomobileEn = [
     {
-      logo: 'assets/partners-logo/SUM.jpg',
-      name: 'Sum assurance'
+      question: 'What is automobile insurance in Quebec?',
+      answer: 'Automobile insurance in Quebec is mandatory for all drivers. It includes basic coverage from the Société de l’assurance automobile du Québec (SAAQ) for personal injury and medical care, and additional options for property damage and liability, available through private insurers.',
+      open: false
     },
     {
-      logo: 'assets/partners-logo/SGL_TravelInsurance.svg',
-      name: 'Securiglobe'
+      question: 'How do I get the best home insurance in Quebec?',
+      answer: 'The “best” home insurance in Quebec is a subjective phrase, considering that everyone will have different needs. Getting better home insurance may mean enhancing your coverage to ensure everything you own is sufficiently protected from exposures. Consider endorsements like flood or earthquake insurance. If you’re looking for affordability, your best bet is to work with a brokerage like ImpactCo to find competitive rates that are unparalleled in the insurance sphere.',
+      open: false
     },
     {
-      logo: 'assets/partners-logo/IA_Financial_Group-Logo.wine.png',
-      name: 'Industrielle Alliance'
+      question: 'Is it required to have condo insurance in Quebec?',
+      answer: 'No, but there are some situations where a condo corporation may require you to possess condo insurance before they’ll allow you to sign any contract, or if you have a mortgage. Most of the time, condo insurance is only recommended.',
+      open: false
     },
     {
-      logo: 'assets/partners-logo/paflogo.svg',
-      name: 'PAFCO'
+      question: 'Why is it important to have tenant insurance in Quebec?',
+      answer: 'Because it will cover your personal property if disaster strikes. Too few people know how expensive their property can be cumulatively and if something happens, such as a fire or a storm event, they’d be left on the hook to pay the costs out-of-pocket. Tenant insurance saves you from that responsibility.',
+      open: false
     },
     {
-      logo: 'assets/partners-logo/logo-promutuel.png',
-      name: 'Promutuel assurance'
-    },
-    {
-      logo: 'assets/partners-logo/logo-fr.svg',
-      name: 'Intact insurance'
-    },
-    {
-      logo: 'assets/partners-logo/logo-april.svg',
-      name: 'April'
-    },
-    {
-      logo: 'assets/partners-logo/lunique-logo-en-2.svg',
-      name: `L'unique`
+      question: 'What is the process for filing an insurance claim?',
+      answer: 'To file an insurance claim, first, notify your insurance company about the incident as soon as possible. Fill out a claim form and provide necessary documentation, such as photos, repair estimates, and a detailed description of the loss or damage. Your insurer will then review the claim and may send an adjuster to assess the damage before making a decision.',
+      open: false
     }
-  ]
+  ];
+
+  faqsAutomobileFr = [
+    {
+      question: "Qu'est-ce que l'assurance automobile au Québec ?",
+      answer: "L'assurance automobile au Québec est une couverture obligatoire pour tous les conducteurs, qui inclut une assurance de base fournie par la Société de l'assurance automobile du Québec (SAAQ) pour les dommages corporels et les soins médicaux, ainsi que des options pour les dommages matériels et la responsabilité civile, disponible via des assureurs privés.",
+      open: false
+    },
+    {
+      question: 'Comment obtenir la meilleure assurance habitation au Québec ?',
+      answer: "La « meilleure » assurance habitation au Québec est une expression subjective, considérant que chacun aura des besoins différents. Obtenir une meilleure assurance habitation peut signifier améliorer votre couverture pour vous assurer que tout ce que vous possédez est suffisamment protégé contre les risques. Envisagez des avenants comme une assurance contre les inondations ou les tremblements de terre. Si vous recherchez un prix abordable, votre meilleur pari est de travailler avec une maison de courtage comme Impact Assurance pour trouver des tarifs compétitifs sans précédent dans le domaine de l'assurance.",
+      open: false
+    },
+    {
+      question: 'Est-il obligatoire d\'avoir une assurance condo au Québec ?',
+      answer: "Non, mais il existe certaines situations où une association de copropriétaires peut exiger que vous possédiez une assurance copropriété avant de vous permettre de signer un contrat, ou si vous avez une hypothèque. La plupart du temps, l'assurance copropriété est seulement recommandée.",
+      open: false
+    },
+    {
+      question: 'Pourquoi est-il important d\'avoir une assurance locataire au Québec ?',
+      answer: "Parce qu'il couvrira vos biens personnels en cas de catastrophe. Trop peu de gens savent à quel point leur propriété peut coûter de manière cumulative et si quelque chose se produit, comme un incendie ou une tempête, ils seraient obligés de payer les coûts de leur poche. L'assurance locataire vous évite cette responsabilité.",
+      open: false
+    },
+    {
+      question: 'Quel est le processus pour déposer une demande d\'indemnisation d\'assurance ?',
+      answer: "Pour déposer une demande d'indemnisation, commencez par informer votre compagnie d'assurance de l'incident dès que possible. Remplissez un formulaire de demande et fournissez les documents nécessaires, tels que des photos, des devis de réparation, et une description détaillée de la perte ou des dommages. Votre assureur examinera ensuite la demande et pourra envoyer un expert pour évaluer les dommages avant de prendre une décision.",
+      open: false
+    }
+  ];
+
+  toggleAnswer(faq: any) {
+    faq.open = !faq.open;
+  }
 
   showNextCard(): void {
     this.currentIndex = (this.currentIndex + 1) % this.cards.length;

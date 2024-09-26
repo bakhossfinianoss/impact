@@ -32,6 +32,22 @@ button {
   color: #4b4f58;
 }
 
+a.button-primary {
+  background-color: #cdeff7;
+  border-radius: 8px;
+  padding: 5px 15px;
+  text-decoration: none;
+  color: #333;
+  display: inline-block;
+  font-size: 16px; /* Adjust to match your button's font size */
+  text-align: center;
+  border: none; /* Remove any default anchor border */
+}
+
+.button-primary:hover {
+  background-color: #bde1f0; /* Example hover effect */
+}
+
 .button-secondary {
   background-color: #f37e2a; /* orange */
   color: white;
@@ -97,11 +113,9 @@ nav .relative.group .absolute a:hover {
   color: #333;
 }
 
-@media (min-width: 1024px) { /* For desktop screens */
   .logo-img {
     height: 35px; /* Adjust this value as needed for desktop */
   }
-}
 
 .border-nav {
   border-radius: 0px !important;

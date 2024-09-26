@@ -1,16 +1,26 @@
 <app-loading *ngIf="isLoading"></app-loading>
+
+<header class="impact-header mt-16 desktop-menu-container">
+  <img src="assets/ImpactInsurance_Logo4-300x110.png" alt="Impact Logo" class="impact-logo" />
+
+  <div class="impact-hero">
+    <img src="assets/top-image.png" alt="Top Image" class="impact-top-image" />
+  </div>
+</header>
+
 <div class="flex flex-col md:flex-row md:space-x-4 mt-16 mx-3">
-  <!-- Sidebar -->
-  <div class="w-full mt-4 md:w-1/4 bg-white p-4 shadow-custom mb-4 md:mb-0">
+  <!-- Desktop Menu for Commercial Insurance -->
+  <div
+    class="desktop-menu-container w-full mt-4 md:w-1/4 bg-white p-4 shadow-custom mb-4 md:mb-0 rounded-lg sticky-sidebar overflow-y-auto"
+    style="max-height: calc(100vh - 50px); position: sticky; top: 50px;"
+  >
     <div class="flex flex-col space-y-4">
       <a
         (click)="showContent('general')"
         [class.selected]="selected === 'general'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
-        <span class="text-sm md:text-base">{{
-          getTranslation("Commercial_General_Liability")
-        }}</span>
+        <span class="text-sm md:text-base">{{ getTranslation('Commercial_General_Liability') }}</span>
       </a>
       <hr class="border-gray-300" />
 
@@ -19,9 +29,7 @@
         [class.selected]="selected === 'property'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
-        <span class="text-sm md:text-base">{{
-          getTranslation("Commercial_Property_Insurance")
-        }}</span>
+        <span class="text-sm md:text-base">{{ getTranslation('Commercial_Property_Insurance') }}</span>
       </a>
       <hr class="border-gray-300" />
 
@@ -30,9 +38,7 @@
         [class.selected]="selected === 'shop'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
-        <span class="text-sm md:text-base">{{
-          getTranslation("Auto_Shop_Insurance")
-        }}</span>
+        <span class="text-sm md:text-base">{{ getTranslation('Auto_Shop_Insurance') }}</span>
       </a>
       <hr class="border-gray-300" />
 
@@ -41,9 +47,7 @@
         [class.selected]="selected === 'administrator'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
-        <span class="text-sm md:text-base">{{
-          getTranslation("Administrator")
-        }}</span>
+        <span class="text-sm md:text-base">{{ getTranslation('Administrator') }}</span>
       </a>
       <hr class="border-gray-300" />
 
@@ -52,9 +56,7 @@
         [class.selected]="selected === 'condominium'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
-        <span class="text-sm md:text-base">{{
-          getTranslation("Condominium_Insurance")
-        }}</span>
+        <span class="text-sm md:text-base">{{ getTranslation('Condominium_Insurance') }}</span>
       </a>
       <hr class="border-gray-300" />
 
@@ -63,9 +65,7 @@
         [class.selected]="selected === 'cargo'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
-        <span class="text-sm md:text-base">{{
-          getTranslation("Cargo_Insurance")
-        }}</span>
+        <span class="text-sm md:text-base">{{ getTranslation('Cargo_Insurance') }}</span>
       </a>
       <hr class="border-gray-300" />
 
@@ -74,9 +74,7 @@
         [class.selected]="selected === 'credit'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
-        <span class="text-sm md:text-base">{{
-          getTranslation("Credit_Insurance")
-        }}</span>
+        <span class="text-sm md:text-base">{{ getTranslation('Credit_Insurance') }}</span>
       </a>
       <hr class="border-gray-300" />
 
@@ -85,14 +83,85 @@
         [class.selected]="selected === 'entertainement'"
         class="flex items-center space-x-2 hover:bg-blue-100 p-3 rounded transition-colors duration-300"
       >
-        <span class="text-sm md:text-base">{{
-          getTranslation("Entertainment_Industry")
-        }}</span>
+        <span class="text-sm md:text-base">{{ getTranslation('Entertainment_Industry') }}</span>
       </a>
     </div>
   </div>
 
-  <div class="w-full mt-4 md:w-3/4 bg-white p-6 md:p-8 shadow-custom">
+  <!-- Mobile Menu for Commercial Insurance -->
+  <div class="mobile-menu-container">
+    <button class="menu-toggle" (click)="toggleMenu()">
+      {{ getTranslation(selectedLabel) }}
+    </button>
+    <ul class="mobile-menu" *ngIf="isMenuOpen">
+      <li>
+        <a
+          (click)="showContentMobile('general', 'Commercial_General_Liability')"
+          [class.selected]="selected === 'general'"
+        >
+          <span class="text-sm md:text-base">{{ getTranslation('Commercial_General_Liability') }}</span>
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="showContentMobile('property', 'Commercial_Property_Insurance')"
+          [class.selected]="selected === 'property'"
+        >
+          <span class="text-sm md:text-base">{{ getTranslation('Commercial_Property_Insurance') }}</span>
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="showContentMobile('shop', 'Auto_Shop_Insurance')"
+          [class.selected]="selected === 'shop'"
+        >
+          <span class="text-sm md:text-base">{{ getTranslation('Auto_Shop_Insurance') }}</span>
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="showContentMobile('administrator', 'Administrator')"
+          [class.selected]="selected === 'administrator'"
+        >
+          <span class="text-sm md:text-base">{{ getTranslation('Administrator') }}</span>
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="showContentMobile('condominium', 'Condominium_Insurance')"
+          [class.selected]="selected === 'condominium'"
+        >
+          <span class="text-sm md:text-base">{{ getTranslation('Condominium_Insurance') }}</span>
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="showContentMobile('cargo', 'Cargo_Insurance')"
+          [class.selected]="selected === 'cargo'"
+        >
+          <span class="text-sm md:text-base">{{ getTranslation('Cargo_Insurance') }}</span>
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="showContentMobile('credit', 'Credit_Insurance')"
+          [class.selected]="selected === 'credit'"
+        >
+          <span class="text-sm md:text-base">{{ getTranslation('Credit_Insurance') }}</span>
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="showContentMobile('entertainement', 'Entertainment_Industry')"
+          [class.selected]="selected === 'entertainement'"
+        >
+          <span class="text-sm md:text-base">{{ getTranslation('Entertainment_Industry') }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="w-full mt-4 md:w-3/4 bg-white p-6 md:p-8 shadow-custom mt-mobile">
     <ng-container *ngFor="let iData of individualData; let i = index">
       <div *ngIf="currentContent === iData.subCategory" class="content">
         <ng-container *ngIf="!isEditing">

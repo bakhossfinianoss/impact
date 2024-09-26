@@ -17,7 +17,9 @@ module.exports = {
           'md-sm': '650px',
           'md-md': '770px',
           'md-768': '768px',
-          'md-640': '640px'
+          'md-640': '640px',
+          'below-1030': { max: '1030px' },
+          'above-1030': '1030px'
         }
     },
   },
