@@ -116,25 +116,6 @@ h1 {
   letter-spacing: 5px;
 }
 
-@media (max-width: 640px) {
-  .get-quote {
-    margin-top: -35% !important;
-  }
-}
-
-@media (min-width: 767px) {
-    .click-here {
-      align-self: flex-start !important;
-    }
-}
-
-@media (max-width: 767px) {
-  .submit-claim {
-    align-items: center !important;
-
-  }
-}
-
 .claims-faq-section {
   margin-left: auto;
   margin-right: auto;
@@ -188,3 +169,26 @@ h1 {
 .faq-question button:focus {
   outline: none;
 }
+
+@media (max-width: 640px) {
+  .get-quote {
+    margin-top: -33% !important;
+  }
+}
+
+@media (min-width: 767px) {
+    .click-here {
+      align-self: flex-start !important;
+    }
+}
+
+@media (max-width: 767px) {
+  .submit-claim {
+    align-items: center !important;
+  }
+
+  .big-logo {
+    display: none !important;
+  }
+}
+

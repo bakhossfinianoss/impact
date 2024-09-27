@@ -113,10 +113,16 @@ nav .relative.group .absolute a:hover {
   color: #333;
 }
 
-  .logo-img {
-    height: 35px; /* Adjust this value as needed for desktop */
-  }
+.logo-img {
+  height: 35px; /* Adjust this value as needed for desktop */
+}
 
 .border-nav {
   border-radius: 0px !important;
+}
+
+@media (max-width: 1030px) {
+  .logo-img{
+    margin-left: 4%;
+  }
 }
