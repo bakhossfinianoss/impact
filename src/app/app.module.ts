@@ -16,7 +16,7 @@ import { DynamicPopupModule } from './dynamic-popup/dynamic-popup.module';
 import { SubmitClaimModule } from './submit-claim/submit-claim.module';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { FormsModule } from '@angular/forms';
-import { IntersectionObserverDirective } from './intersection-observer.directive';
+import { IntersectionObserverModule } from './intersection-observer.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -27,8 +27,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    PersonalComponent,
-    IntersectionObserverDirective
+    PersonalComponent
   ],
   imports: [
     FormsModule,
@@ -40,6 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ChatModule,
     DynamicPopupModule,
     SubmitClaimModule,
+    IntersectionObserverModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

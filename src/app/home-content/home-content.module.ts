@@ -5,6 +5,7 @@ import { MatTableModule } from '@angular/material/table';
 import { HomeContentRoutingModule } from './home-content-routing.module';
 import { CommonModule } from '@angular/common';
 import { EmergencyContactInformationModule } from './emergency-contact-information/emergency-contact-information.module';
+import { IntersectionObserverModule } from '../intersection-observer.module';
 
 @NgModule({
   declarations: [HomeContentComponent],
@@ -13,7 +14,8 @@ import { EmergencyContactInformationModule } from './emergency-contact-informati
     FontAwesomeModule,
     MatTableModule,
     HomeContentRoutingModule,
-    EmergencyContactInformationModule
+    EmergencyContactInformationModule,
+    IntersectionObserverModule
   ],
   exports: [HomeContentComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

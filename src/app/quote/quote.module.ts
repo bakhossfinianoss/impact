@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { SubmitQuoteComponent } from './submit-quote/submit-quote.component';
 import { QuoteRoutingModule } from './quote-routing.module';
 import { EmergencyContactInformationModule } from '../home-content/emergency-contact-information/emergency-contact-information.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { LoadingModule } from '../layout/loading/loading/loading.module';
 
 @NgModule({
   declarations: [SubmitQuoteComponent],
@@ -11,7 +13,9 @@ import { EmergencyContactInformationModule } from '../home-content/emergency-con
     CommonModule,
     FormsModule,
     QuoteRoutingModule,
-    EmergencyContactInformationModule
+    EmergencyContactInformationModule,
+    MatSnackBarModule,
+    LoadingModule
   ],
   exports: [SubmitQuoteComponent]
 })

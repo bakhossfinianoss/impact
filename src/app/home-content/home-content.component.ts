@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { faStar,faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
 import { register } from 'swiper/element/bundle';
@@ -7,6 +7,9 @@ import { DynamicPopupComponent } from '../dynamic-popup/dynamic-popup.component'
 import { LanguageService } from '../layout/language/language.service';
 import { SubmitClaimComponent } from '../submit-claim/submit-claim.component';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { IntersectionObserverService } from '../intersection-observer.service';
+import { ResizeService } from '../resize-service.service';
+import { Subscription, fromEvent, map, throttleTime } from 'rxjs';
 
 register();
 
@@ -16,33 +19,21 @@ export interface PeriodicElement {
   weight: number;
   symbol: string;
 }
-
 @Component({
   selector: 'app-home-content',
   templateUrl: './home-content.component.html',
-  styleUrls: ['./home-content.component.css'],
-  animations: [
-    trigger('fadeScale', [
-      state('visible', style({
-        opacity: 1,
-        transform: 'scale(1)',
-      })),
-      state('hidden', style({
-        opacity: 0,
-        transform: 'scale(0.8)',
-      })),
-      transition('visible <=> hidden', [
-        animate('0.6s ease-in-out')
-      ])
-    ])
-  ]
+  styleUrls: ['./home-content.component.css']
 })
-export class HomeContentComponent implements OnInit, AfterViewInit {
-  currentLanguage: string = 'en';
+
+export class HomeContentComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(public dialog: MatDialog,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private intersectionObserverService: IntersectionObserverService,
+    private resizeService: ResizeService
   ) {}
+
+  currentLanguage: string = 'en';
   showSmallLogo = false;
   faStar = faStar
   faStarHalfStroke = faStarHalfStroke;
@@ -53,6 +44,9 @@ export class HomeContentComponent implements OnInit, AfterViewInit {
   @ViewChild('constructionVideoPlayer') constructionVideoPlayer!: ElementRef;
   @ViewChild('bigLogo', { static: true }) bigLogo!: ElementRef;
   isVisible = true; // Control the animation state
+  isMobile: boolean = false;
+  scaleValue: number = 1;
+  scrollSubscription!: Subscription;
 
   automobile = `${environment.baseHref}assets/svg/automobile.svg`;
   condo = `${environment.baseHref}assets/svg/condo.svg`;
@@ -79,10 +73,43 @@ export class HomeContentComponent implements OnInit, AfterViewInit {
       this.languageService.loadTranslations(language);
       this.currentLanguage = language;
     });
+
+    this.getSize();
+    this.scrollZoomOut();
+  }
+
+  getSize() {
+    this.resizeService.isMobile$.subscribe((isMobile) => {
+      this.isMobile = isMobile;
+    });
+  }
+
+  scrollZoomOut() {
+       this.scrollSubscription = fromEvent(window, 'scroll')
+       .pipe(
+         throttleTime(50),  // Throttle to improve performance (adjust time as needed)
+         map(() => window.pageYOffset),  // Get the scroll position
+         map((scrollPosition) => {
+           // Calculate the new scale based on scroll position
+           let newScale = 1 - scrollPosition / 1000;  // Adjust the divisor for zoom rate
+           return newScale < 0.5 ? 0.5 : newScale;  // Limit the minimum zoom-out scale to 0.5
+         })
+       )
+       .subscribe((newScale) => {
+         this.scaleValue = newScale;  // Update the scale value based on scroll
+       });
   }
 
   getTranslation(key: string): string {
     return this.languageService.getTranslation(key);
+  }
+
+  onVisibilityChange(isVisible: boolean) {
+    if (isVisible) {
+      this.intersectionObserverService.notifyVisibilityChange(false);
+    } else {
+      this.intersectionObserverService.notifyVisibilityChange(true);
+    }
   }
 
   ngAfterViewInit() {
@@ -240,5 +267,11 @@ export class HomeContentComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.scrollSubscription) {
+      this.scrollSubscription.unsubscribe();
+    }
   }
 }

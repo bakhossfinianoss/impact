@@ -3,4 +3,26 @@
         min-width: 80vw;
       }
 }
-  
+
+::ng-deep .mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background-color: #66bb6a !important; /* Use a material color green */
+  color: white !important;
+  border-radius: 8px !important; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important; /* Add subtle shadow */
+}
+
+::ng-deep .mdc-snackbar__label {
+  font-size: 16px !important; /* Slightly larger text */
+  font-weight: 500; /* Make it a bit bolder */
+}
+
+::ng-deep .mdc-snackbar__action {
+  font-size: 14px !important; /* Close button font-size */
+  color: #ffffff !important; /* Ensure the close button is white */
+  padding-left: 10px; /* Space between the text and the button */
+}
+
+::ng-deep .mdc-snackbar__action button {
+  text-transform: uppercase !important; /* Capitalize 'Close' */
+  font-weight: bold !important; /* Make button text bold */
+}

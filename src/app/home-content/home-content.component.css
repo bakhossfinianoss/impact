@@ -192,3 +192,7 @@ h1 {
   }
 }
 
+.bigLogoZoomOut {
+  transition: transform 0.2s ease-out;
+  transform-origin: center top;
+}

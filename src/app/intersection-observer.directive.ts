@@ -1,28 +1,28 @@
-import { Directive, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, EventEmitter, OnDestroy, OnInit, Output, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[scrollUpRemove]'
 })
-export class IntersectionObserverDirective implements OnInit {
-  private lastScrollTop = 0;
-  private scrollHandler: any;  // Store the bound function
+export class IntersectionObserverDirective implements AfterViewInit, OnDestroy {
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+  @Output() visibilityChange: EventEmitter<boolean> = new EventEmitter();
+  private observer!: IntersectionObserver;
 
-  ngOnInit() {
-    this.scrollHandler = this.onScroll.bind(this);
-    window.addEventListener('scroll', this.scrollHandler);
-  }
+  constructor(private elementRef: ElementRef) {}
 
-  private onScroll() {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    if (scrollTop === 0 && scrollTop < this.lastScrollTop) {
-      this.renderer.setStyle(this.el.nativeElement, 'display', 'none');
-    }
-    this.lastScrollTop = scrollTop;
+  ngAfterViewInit() {
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        this.visibilityChange.emit(entry.isIntersecting);  // Emit true if visible, false if not
+      });
+    });
+
+    this.observer.observe(this.elementRef.nativeElement);  // Start observing the element
   }
 
   ngOnDestroy() {
-    window.removeEventListener('scroll', this.scrollHandler);
+    if (this.observer) {
+      this.observer.disconnect();  // Clean up the observer when directive is destroyed
+    }
   }
 }

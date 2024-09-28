@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/back-office/login/login.service';
 import { LanguageService } from '../language/language.service';
+import { IntersectionObserverService } from 'src/app/intersection-observer.service';
+import { ResizeService } from 'src/app/resize-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,9 +15,12 @@ export class NavbarComponent implements OnInit {
   menuOpen = false;
   showComponent = true;
   currentLanguage: string = 'en';
+  isElementVisible = true;
+  isMobile: boolean = false;
 
   constructor(private loginService: LoginService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private intersectionObserverService: IntersectionObserverService
   ) {}
 
   ngOnInit(): void {
@@ -26,6 +31,13 @@ export class NavbarComponent implements OnInit {
     this.languageService.currentLanguage$.subscribe(language => {
       this.languageService.loadTranslations(language);
       this.currentLanguage = language;
+    });
+
+    this.intersectionObserverService.visibilityChange$.subscribe((isVisible: boolean) => {
+      this.isElementVisible = isVisible;
+      if (!isVisible) {
+        console.log('Element in ComponentB is not visible');
+      }
     });
   }
 

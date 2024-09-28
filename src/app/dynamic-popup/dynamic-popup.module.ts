@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { DynamicPopupComponent } from './dynamic-popup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { LoadingModule } from '../layout/loading/loading/loading.module';
 
 
 @NgModule({
@@ -12,7 +14,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     CommonModule,
     FormsModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSnackBarModule,
+    LoadingModule
   ],
   exports:[DynamicPopupComponent]
 })

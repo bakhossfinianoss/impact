@@ -5,10 +5,11 @@
 
   <div class="flex flex-col items-center justify-center h-full relative z-10 p-8 space-y-16">
     <!-- logo at the top -->
-    <img
+    <img *ngIf="!isMobile"
       src="assets/ImpactInsurance_Logo4-300x110.png"
-      alt="Big Logo"
-    />
+      class="bigLogoZoomOut"
+      [ngStyle]="{'transform': 'scale(' + scaleValue + ')'}"
+      alt="Big Logo" scrollUpRemove (visibilityChange)="onVisibilityChange($event)"/>
 
     <br><br>
     <!-- Get A Quote -->

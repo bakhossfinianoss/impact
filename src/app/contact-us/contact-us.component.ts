@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LanguageService } from '../layout/language/language.service';
 import { ContactUsService } from './contact-us.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-contact-us',
@@ -9,9 +10,11 @@ import { ContactUsService } from './contact-us.service';
 })
 export class ContactUsComponent {
   currentLanguage: string = 'en';
+  isLoading = false;
 
   constructor(private languageService: LanguageService,
-                private contactUsService: ContactUsService
+                private contactUsService: ContactUsService,
+                private snackBar: MatSnackBar
   ) {}
   ngOnInit() {
     this.languageService.currentLanguage$.subscribe(language => {
@@ -24,20 +27,26 @@ export class ContactUsComponent {
   }
 
   onSubmit(form: any) {
-    if (form.valid) {
-      const { email, subject, message } = form.value;
-
-      this.contactUsService.sendEmail(email, subject, message).subscribe(
-        response => {
-          console.log('Email sent successfully', response);
+    this.isLoading = true;
+    form.value.subject = 'Contact us - ' + form.value.subject;
+    this.contactUsService.sendEmail(form.value)
+      .subscribe(
+        res => {
+          console.log(res);
+          this.isLoading = false;
+          this.showToast();
+          form.reset();
         },
-        error => {
-          console.error('Error sending email', error);
-        }
+        err => console.log(err)
       );
-    } else {
-      console.log('Form is invalid');
-    }
   }
 
+  showToast() {
+    this.snackBar.open('Email sent successfully!', 'Close', {
+      duration: 3000, // Duration in ms
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      panelClass: ['blue-snackbar']
+    });
+  }
 }
