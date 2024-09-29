@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageService } from '../layout/language/language.service';
 import { register } from 'swiper/element/bundle';
+import { environment } from 'src/environments/environment';
 
 register();
 
@@ -13,6 +14,9 @@ export class ClaimPageComponent implements OnInit {
 
   constructor(private languageService: LanguageService) {}
   currentLanguage: string = 'en';
+  one = `${environment.baseHref}assets/one.png`;
+  two = `${environment.baseHref}assets/two.png`;
+  three = `${environment.baseHref}assets/three.png`;
 
   ngOnInit() {
     this.languageService.currentLanguage$.subscribe(language => {
@@ -29,35 +33,35 @@ export class ClaimPageComponent implements OnInit {
 
   partners = [
     {
-      logo: 'assets/partners-logo/SUM.jpg',
+      logo: `${environment.baseHref}assets/partners-logo/SUM.jpg`,
       number: 'Sum assurance'
     },
     {
-      logo: 'assets/partners-logo/SGL_TravelInsurance.svg',
+      logo: `${environment.baseHref}assets/partners-logo/SGL_TravelInsurance.svg`,
       number: 'Securiglobe'
     },
     {
-      logo: 'assets/partners-logo/IA_Financial_Group-Logo.wine.png',
+      logo: `${environment.baseHref}assets/partners-logo/IA_Financial_Group-Logo.wine.png`,
       number: 'Industrielle Alliance'
     },
     {
-      logo: 'assets/partners-logo/paflogo.svg',
+      logo: `${environment.baseHref}assets/partners-logo/paflogo.svg`,
       number: '1-877-463-2727'
     },
     {
-      logo: 'assets/partners-logo/logo-promutuel.png',
+      logo: `${environment.baseHref}assets/partners-logo/logo-promutuel.png`,
       number: '1-888 888-1229'
     },
     {
-      logo: 'assets/partners-logo/logo-fr.svg',
+      logo: `${environment.baseHref}assets/partners-logo/logo-fr.svg`,
       number: '1-866-464-2424'
     },
     {
-      logo: 'assets/partners-logo/logo-april.svg',
+      logo: `${environment.baseHref}assets/partners-logo/logo-april.svg`,
       number: '1-855-745-1010'
     },
     {
-      logo: 'assets/partners-logo/lunique-logo-en-2.svg',
+      logo: `${environment.baseHref}assets/partners-logo/lunique-logo-en-2.svg`,
       number: `1-800 463-4800`
     }
   ]
