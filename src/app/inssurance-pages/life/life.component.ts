@@ -6,6 +6,7 @@ import { PersonalService } from '../personal-inssurance/personal.service';
 import { Subscription } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { LoginService } from 'src/app/back-office/login/login.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-life',
@@ -34,6 +35,8 @@ export class LifeComponent implements OnInit, OnDestroy {
   editorConfig: any;
   isMenuOpen: boolean = false;
   selectedLabel: string = 'Life_Insurance';
+  img = `${environment.baseHref}assets/ImpactInsurance_Logo4-300x110.png`;
+  topImg = `${environment.baseHref}assets/top-image.png`;
 
   private subscriptions: Subscription = new Subscription();
 

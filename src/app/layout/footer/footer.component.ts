@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/back-office/login/login.service';
 import { LanguageService } from '../language/language.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-footer',
@@ -9,6 +10,7 @@ import { LanguageService } from '../language/language.service';
 })
 export class FooterComponent implements OnInit {
   showComponent = true;
+  footerLogo = `${environment.baseHref}assets/footer-logo.png`;
 
   constructor(private loginService: LoginService,
                 private languageService: LanguageService

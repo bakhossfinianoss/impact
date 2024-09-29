@@ -44,7 +44,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "baseHref": "/impact/",
+              "baseHref": "/",
               "budgets": [
                 {
                   "type": "initial",

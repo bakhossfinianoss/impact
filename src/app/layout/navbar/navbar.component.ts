@@ -3,6 +3,7 @@ import { LoginService } from 'src/app/back-office/login/login.service';
 import { LanguageService } from '../language/language.service';
 import { IntersectionObserverService } from 'src/app/intersection-observer.service';
 import { ResizeService } from 'src/app/resize-service.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-navbar',
@@ -17,6 +18,7 @@ export class NavbarComponent implements OnInit {
   currentLanguage: string = 'en';
   isElementVisible = true;
   isMobile: boolean = false;
+  smallLogoImg = `${environment.baseHref}assets/footer-logo.png`;
 
   constructor(private loginService: LoginService,
     private languageService: LanguageService,

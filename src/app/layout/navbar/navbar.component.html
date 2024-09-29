@@ -76,7 +76,7 @@
       </button>
 
       <a [routerLink]="['/home']" *ngIf="isElementVisible">
-        <img src="assets/footer-logo.png" class="logo-img mobile-only" alt="Small Logo"/>
+        <img [src]="smallLogoImg" class="logo-img mobile-only" alt="Small Logo"/>
       </a>
 
     <div class="flex !justify-end space-x-2">

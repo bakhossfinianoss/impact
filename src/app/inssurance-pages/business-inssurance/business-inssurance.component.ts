@@ -6,6 +6,7 @@ import { PersonalService } from '../personal-inssurance/personal.service';
 import { LanguageService } from 'src/app/layout/language/language.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { LoginService } from 'src/app/back-office/login/login.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-business-inssurance',
@@ -35,6 +36,8 @@ export class BusinessInssuranceComponent implements OnInit, OnDestroy {
   editorConfig: any;
   isMenuOpen: boolean = false;
   selectedLabel: string = 'Commercial_General_Liability';
+  img = `${environment.baseHref}assets/ImpactInsurance_Logo4-300x110.png`;
+  topImg = `${environment.baseHref}assets/top-image.png`;
 
   private subscriptions: Subscription = new Subscription();
 

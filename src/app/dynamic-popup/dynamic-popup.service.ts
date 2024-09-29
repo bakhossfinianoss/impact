@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DynamicPopupService {
-  private apiUrl = 'http://localhost:5000/api/renewal-send-email'; // Your backend URL
+  private apiUrl = 'http://35.183.67.85:5000/api/renewal-send-email';
 
   constructor(private http : HttpClient) { }
 

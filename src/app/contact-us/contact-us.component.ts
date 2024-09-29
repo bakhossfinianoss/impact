@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LanguageService } from '../layout/language/language.service';
 import { ContactUsService } from './contact-us.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-contact-us',
@@ -11,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ContactUsComponent {
   currentLanguage: string = 'en';
   isLoading = false;
+  img = `${environment.baseHref}assets/ImpactInsurance_Logo4-300x110.png`;
 
   constructor(private languageService: LanguageService,
                 private contactUsService: ContactUsService,

@@ -6,6 +6,7 @@ import { Content } from '../inssurance-class';
 import { DomSanitizer } from '@angular/platform-browser';
 import { LoginService } from 'src/app/back-office/login/login.service';
 import { Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-personal-insurrance',
@@ -33,6 +34,8 @@ export class PersonalInsurranceComponent implements OnInit, OnDestroy  {
     editorConfig: any;
     isMenuOpen = false;
     selectedLabel: string = 'Auto_Moto_RV_Insurance';
+    img = `${environment.baseHref}assets/ImpactInsurance_Logo4-300x110.png`;
+    topImg = `${environment.baseHref}assets/top-image.png`;
 
     private subscriptions: Subscription = new Subscription();
 

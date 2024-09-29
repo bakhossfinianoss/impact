@@ -6,6 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { LoginService } from '../back-office/login/login.service';
 import { Content } from '../inssurance-pages/inssurance-class';
 import { Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-faq',
@@ -33,6 +34,8 @@ export class FaqComponent {
   editorConfig: any;
   isMenuOpen: boolean = false;
   selectedLabel: string = 'AUTO_INSURANCE_FAQ';
+  img = `${environment.baseHref}assets/ImpactInsurance_Logo4-300x110.png`;
+  topImg = `${environment.baseHref}assets/top-image.png`;
 
   private subscriptions: Subscription = new Subscription();
 

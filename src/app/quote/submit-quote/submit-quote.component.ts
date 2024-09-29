@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SubmitQuoteService } from '../submit-quote.service';
 import { LanguageService } from 'src/app/layout/language/language.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-submit-quote',
@@ -11,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class SubmitQuoteComponent implements OnInit {
   currentLanguage: string = 'en';
   isLoading = false;
+  img = `${environment.baseHref}assets/ImpactInsurance_Logo4-300x110.png`;
 
   constructor(private submitQuoteService : SubmitQuoteService,
     private languageService: LanguageService,
