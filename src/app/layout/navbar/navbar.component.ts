@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
   isElementVisible = true;
   isMobile: boolean = false;
   smallLogoImg = `${environment.baseHref}assets/footer-logo.png`;
+  isSubMenuOpen: boolean = false;
 
   constructor(private loginService: LoginService,
     private languageService: LanguageService,
@@ -49,6 +50,10 @@ export class NavbarComponent implements OnInit {
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
+  }
+
+  toggleSubMenu() {
+    this.isSubMenuOpen = !this.isSubMenuOpen;
   }
 
   switchLanguage(language: string) {

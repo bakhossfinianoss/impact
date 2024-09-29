@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +7,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   username: string = '';
   password: string = '';
 

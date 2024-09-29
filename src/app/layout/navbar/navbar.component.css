@@ -65,7 +65,7 @@ nav {
 
 nav .relative.group .absolute {
   padding: 10px; /* Add padding to the container */
-  margin-top: 0px; /* Add some margin to space it out from the link */
+  margin-top: 0px; /* Added more margin to avoid overlapping */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Add a soft shadow */
   border-radius: 12px; /* Add border-radius for rounded corners */
   transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition */
@@ -75,6 +75,10 @@ nav .relative.group .absolute {
   max-height: 70vh; /* Maximum height of 70% of the viewport height */
   overflow-y: auto; /* Enable vertical scrolling */
   scroll-behavior: smooth; /* Smooth scrolling */
+  z-index: 1000; /* Ensure dropdown appears on top */
+  position: absolute; /* Ensure correct positioning */
+  top: 100%; /* Align it under the nav item */
+  left: 0; /* Align to the left */
 }
 
 /* Custom scrollbar styles */
@@ -122,7 +126,7 @@ nav .relative.group .absolute a:hover {
 }
 
 @media (max-width: 1030px) {
-  .logo-img{
+  .logo-img {
     margin-left: 4%;
   }
 }
