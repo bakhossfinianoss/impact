@@ -11,6 +11,7 @@
   width: 300px;
   margin: 0 auto;
   display: block;
+  cursor: pointer;
 }
 
 /* Hero Section Styling */
@@ -83,7 +84,7 @@
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.15); /* Even shadow on all sides */
 }
 
-a:hover {
+.faq-hover a:hover {
     cursor: pointer;
     background-color: #0883a6;
     color: white;
@@ -258,6 +259,6 @@ h6 {
     overflow-y: auto;
     z-index: 10;
     height: auto;
-    max-height: 65vh;
+    max-height: clamp(460px, 60.2vh - 50px, 460px);
   }
 }

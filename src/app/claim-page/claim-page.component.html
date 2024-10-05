@@ -146,29 +146,3 @@
   </div>
  </ng-container>
 
-
-<div class="mt-16">
-  <h1 class="flex justify-center text-center text-3xl font-medium px-2 letter-sp">
-    <strong class="text-orange">{{ getTranslation('Our') }}</strong> <span class="text-mediumGray">{{ getTranslation('Partners') }}</span>
-  </h1>
-  <div class="flex justify-center w-full overflow-hidden mt-6 bg-[#ecf0f1] pt-10 pb-10">
-    <swiper-container class="w-11/12 h-full overflow-hidden"
-      [spaceBetween]="20" [breakpoints]="breakpoints"
-      autoplay-delay="3500" autoplay-disable-on-interaction="false">
-      <swiper-slide *ngFor="let p of partners">
-      <div class="partners-card px-4">
-          <div class="card-header">
-            <h5 class="font-medium text-mediumGray"> <i class="fas fa-phone transform rotate-90"></i> {{ p.number }}</h5>
-          </div>
-          <div class="card-body">
-            <img [src]="p.logo" [class] width="45%" height="45%"
-            [ngStyle]="{
-              'margin-top': p.number === 'Industrielle Alliance' ? '-15px' : 'initial',
-              'width': p.number === 'Industrielle Alliance' ? '42%' : '45%',
-              'margin-left': '60px'}"/>
-          </div>
-        </div>
-      </swiper-slide>
-    </swiper-container>
-  </div>
-</div>

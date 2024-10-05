@@ -11,6 +11,7 @@
   width: 300px;
   margin: 0 auto;
   display: block;
+  cursor: pointer;
 }
 
 /* Hero Section Styling */
@@ -83,7 +84,7 @@
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
 }
 
-a:hover {
+.personal-hover a:hover {
     cursor: pointer;
     background-color: #0883a6;
     color: white;
@@ -170,15 +171,14 @@ h6 {
   font-weight: bold;
 }
 
-@media (min-width: 768px) {
-  .sticky-sidebar {
-    position: sticky;
-    top: 80px;
-    overflow-y: auto;
-    z-index: 10;
-    height: auto;
-    max-height: 65vh;
-  }
+.sticky-sidebar {
+  position: sticky;
+  top: 80px;
+  overflow-y: auto;
+  z-index: 10;
+  height: auto;
+  /* Clamp syntax: clamp(minimum, preferred, maximum) */
+  max-height: clamp(410px, 60.2vh - 50px, 410px);
 }
 
 /* Basic styles for the mobile menu */

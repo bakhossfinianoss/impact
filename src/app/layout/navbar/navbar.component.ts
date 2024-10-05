@@ -58,6 +58,11 @@ export class NavbarComponent implements OnInit {
 
   switchLanguage(language: string) {
     this.languageService.setLanguage(language);
+    if (language === 'en') {
+      this.currentLanguage = 'en';
+    } else if (language === 'fr') {
+      this.currentLanguage = 'fr';
+    }
   }
 
   getTranslation(key: string): string {

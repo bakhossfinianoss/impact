@@ -80,16 +80,16 @@
       </a>
 
     <div class="flex !justify-end space-x-2">
-      <div class="button-container !hidden above-1030:!block">
-        <a class="button-primary" href="https://blog.impactco.ca" target="_blank">{{ getTranslation('Blog') }}</a>
+      <div class="!hidden above-1030:!block" style="margin-top: 0.2rem; margin-right: 0.4rem;">
+        <a href="https://blog.impactco.ca" target="_blank" class="text-white hover:text-darkGray whitespace-nowrap" style="cursor: pointer;">{{ getTranslation('Blog') }}</a>
       </div>
 
-      <div class="button-container !hidden above-1030:!block">
-        <a class="button-primary" routerLink="/about-us">{{ getTranslation('About_Us') }}</a>
+      <div class="!hidden above-1030:!block" style="margin-top: 0.2rem; margin-right: 0.4rem;">
+        <a class="text-white hover:text-darkGray whitespace-nowrap"style="cursor: pointer;" routerLink="/about-us">{{ getTranslation('About_Us') }}</a>
       </div>
 
-      <div class="button-container">
-        <button class="button-primary" [routerLink]="'/quote'">{{ getTranslation('Quote') }}</button>
+      <div style="margin-top: 0.2rem; margin-right: 0.4rem;">
+        <a class="text-white hover:text-darkGray whitespace-nowrap" style="cursor: pointer;" [routerLink]="'/quote'">{{ getTranslation('Quote') }}</a>
       </div>
 
       <div class="button-container" *ngIf="isLoggedIn()">
@@ -97,11 +97,27 @@
       </div>
 
       <div class="button-container !hidden above-1030:!block">
-        <button class="button-primary" (click)="switchLanguage('en')"> EN </button>
-        <button class="button-secondary" (click)="switchLanguage('fr')"> FR </button>
+        <!-- Button for English -->
+        <button
+          class="button-primary"
+          *ngIf="currentLanguage !== 'en'"
+          (click)="switchLanguage('en')"
+          [ngClass]="{'selected': currentLanguage === 'en'}"
+        >
+          EN
+        </button>
+
+        <!-- Button for French -->
+        <button
+          class="button-primary"
+          *ngIf="currentLanguage !== 'fr'"
+          (click)="switchLanguage('fr')"
+          [ngClass]="{'selected': currentLanguage === 'fr'}"
+        >
+          FR
+        </button>
       </div>
     </div>
-
     </div>
 
     <!-- Mobile Navigation -->
@@ -110,13 +126,13 @@
       <div class="relative group my-1">
         <a (click)="toggleSubMenu()" class="block text-white hover:text-darkGray px-2 py-1">{{ getTranslation('Individual') }}</a>
         <div *ngIf="isSubMenuOpen" class="absolute left-0 mt-2 w-auto bg-white shadow-lg border-nav">
-          <a [routerLink]="['/personal-insurance', { tag: 'car' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg">{{ getTranslation('Auto_Moto_RV_Insurance') }}</a>
-          <a [routerLink]="['/personal-insurance', { tag: 'house' }]" class="block px-4 py-2 text-black hover:bg-gray-200">{{ getTranslation('Home_Insurance') }}</a>
-          <a [routerLink]="['/personal-insurance', { tag: 'replacement' }]" class="block px-4 py-2 text-black hover:bg-gray-200">{{ getTranslation('Replacement_Value') }}</a>
-          <a [routerLink]="['/personal-insurance', { tag: 'hard' }]" class="block px-4 py-2 text-black hover:bg-gray-200">{{ getTranslation('Hard_To_Find_Insurance') }}</a>
-          <a [routerLink]="['/personal-insurance', { tag: 'high' }]" class="block px-4 py-2 text-black hover:bg-gray-200">{{ getTranslation('High_Value_Insurance') }}</a>
-          <a [routerLink]="['/personal-insurance', { tag: 'travel' }]" class="block px-4 py-2 text-black hover:bg-gray-200">{{ getTranslation('Travel_Insurance') }}</a>
-          <a [routerLink]="['/personal-insurance', { tag: 'faq' }]" class="block px-4 py-2 text-black hover:bg-gray-200">{{ getTranslation('FAQ') }}</a>
+          <a click="navigateAndClose()" [routerLink]="['/personal-insurance', { tag: 'car' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg" (click)="toggleMenu()">{{ getTranslation('Auto_Moto_RV_Insurance') }}</a>
+          <a [routerLink]="['/personal-insurance', { tag: 'house' }]" class="block px-4 py-2 text-black hover:bg-gray-200"  (click)="toggleMenu()">{{ getTranslation('Home_Insurance') }}</a>
+          <a [routerLink]="['/personal-insurance', { tag: 'replacement' }]" class="block px-4 py-2 text-black hover:bg-gray-200" (click)="toggleMenu()">{{ getTranslation('Replacement_Value') }}</a>
+          <a [routerLink]="['/personal-insurance', { tag: 'hard' }]" class="block px-4 py-2 text-black hover:bg-gray-200" (click)="toggleMenu()">{{ getTranslation('Hard_To_Find_Insurance') }}</a>
+          <a [routerLink]="['/personal-insurance', { tag: 'high' }]" class="block px-4 py-2 text-black hover:bg-gray-200" (click)="toggleMenu()">{{ getTranslation('High_Value_Insurance') }}</a>
+          <a [routerLink]="['/personal-insurance', { tag: 'travel' }]" class="block px-4 py-2 text-black hover:bg-gray-200" (click)="toggleMenu()">{{ getTranslation('Travel_Insurance') }}</a>
+          <a [routerLink]="['/personal-insurance', { tag: 'faq' }]" class="block px-4 py-2 text-black hover:bg-gray-200" (click)="toggleMenu()">{{ getTranslation('FAQ') }}</a>
         </div>
       </div>
 
@@ -124,54 +140,54 @@
       <div class="relative group my-1">
         <a (click)="toggleSubMenu()" class="block text-white hover:text-darkGray px-2 py-1">{{ getTranslation('Business') }}</a>
         <div *ngIf="isSubMenuOpen" class="absolute left-0 mt-2 w-auto hidden group-hover:block bg-white shadow-lg border-nav">
-          <a [routerLink]="['/business-insurance', { tag: 'general' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg whitespace-nowrap">{{ getTranslation('Commercial_General_Liability') }}</a>
-          <a [routerLink]="['/business-insurance', { tag: 'property' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap">{{ getTranslation('Commercial_Property_Insurance') }}</a>
-          <a [routerLink]="['/business-insurance', { tag: 'shop' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap">{{ getTranslation('Auto_Shop_Insurance') }}</a>
-          <a [routerLink]="['/business-insurance', { tag: 'administrator' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap">{{ getTranslation('Administrator') }}</a>
-          <a [routerLink]="['/business-insurance', { tag: 'condominium' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap">{{ getTranslation('Condominium_Insurance') }}</a>
-          <a [routerLink]="['/business-insurance', { tag: 'cargo' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap">{{ getTranslation('Cargo_Insurance') }}</a>
-          <a [routerLink]="['/business-insurance', { tag: 'credit' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap">{{ getTranslation('Credit_Insurance') }}</a>
-          <a [routerLink]="['/business-insurance', { tag: 'entertainement' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-b-lg whitespace-nowrap">{{ getTranslation('Entertainment_Industry') }}</a>
+          <a [routerLink]="['/business-insurance', { tag: 'general' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg whitespace-nowrap" (click)="toggleMenu()">{{ getTranslation('Commercial_General_Liability') }}</a>
+          <a [routerLink]="['/business-insurance', { tag: 'property' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap" (click)="toggleMenu()">{{ getTranslation('Commercial_Property_Insurance') }}</a>
+          <a [routerLink]="['/business-insurance', { tag: 'shop' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap" (click)="toggleMenu()">{{ getTranslation('Auto_Shop_Insurance') }}</a>
+          <a [routerLink]="['/business-insurance', { tag: 'administrator' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap" (click)="toggleMenu()">{{ getTranslation('Administrator') }}</a>
+          <a [routerLink]="['/business-insurance', { tag: 'condominium' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap" (click)="toggleMenu()">{{ getTranslation('Condominium_Insurance') }}</a>
+          <a [routerLink]="['/business-insurance', { tag: 'cargo' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap" (click)="toggleMenu()">{{ getTranslation('Cargo_Insurance') }}</a>
+          <a [routerLink]="['/business-insurance', { tag: 'credit' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap" (click)="toggleMenu()">{{ getTranslation('Credit_Insurance') }}</a>
+          <a [routerLink]="['/business-insurance', { tag: 'entertainement' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-b-lg whitespace-nowrap" (click)="toggleMenu()">{{ getTranslation('Entertainment_Industry') }}</a>
         </div>
       </div>
       <!-- Life & Financial Dropdown -->
       <div class="relative group my-1">
         <a (click)="toggleSubMenu()" class="block text-white hover:text-darkGray px-2 py-1">{{ getTranslation('Life_Financial') }}</a>
         <div *ngIf="isSubMenuOpen" class="absolute left-0 mt-2 w-auto hidden group-hover:block bg-white shadow-lg border-nav">
-          <a [routerLink]="['/life-insurance', { tag: 'life' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg whitespace-nowrap">{{ getTranslation('Life_Insurance') }}</a>
-          <a [routerLink]="['/life-insurance', { tag: 'universal' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap">{{ getTranslation('Universal_life_insurance') }}</a>
-          <a [routerLink]="['/life-insurance', { tag: 'long' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap">{{ getTranslation('Long_term_care_insurance') }}</a>
-          <a [routerLink]="['/life-insurance', { tag: 'disability' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap">{{ getTranslation('Disability_insurance') }}</a>
-          <a [routerLink]="['/life-insurance', { tag: 'registered' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap">{{ getTranslation('Registered_Retirement_Savings_Plan') }}</a>
-          <a [routerLink]="['/life-insurance', { tag: 'tax' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap">{{ getTranslation('Tax_free_Saving_Account') }}</a>
-          <a [routerLink]="['/life-insurance', { tag: 'education' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-b-lg whitespace-nowrap">{{ getTranslation('Registered_Education_Savings_plan') }}</a>
+          <a [routerLink]="['/life-insurance', { tag: 'life' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg whitespace-nowrap" (click)="toggleMenu()">{{ getTranslation('Life_Insurance') }}</a>
+          <a [routerLink]="['/life-insurance', { tag: 'universal' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap" (click)="toggleMenu()">{{ getTranslation('Universal_life_insurance') }}</a>
+          <a [routerLink]="['/life-insurance', { tag: 'long' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap" (click)="toggleMenu()">{{ getTranslation('Long_term_care_insurance') }}</a>
+          <a [routerLink]="['/life-insurance', { tag: 'disability' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap" (click)="toggleMenu()">{{ getTranslation('Disability_insurance') }}</a>
+          <a [routerLink]="['/life-insurance', { tag: 'registered' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap" (click)="toggleMenu()">{{ getTranslation('Registered_Retirement_Savings_Plan') }}</a>
+          <a [routerLink]="['/life-insurance', { tag: 'tax' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap" (click)="toggleMenu()">{{ getTranslation('Tax_free_Saving_Account') }}</a>
+          <a [routerLink]="['/life-insurance', { tag: 'education' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-b-lg whitespace-nowrap" (click)="toggleMenu()">{{ getTranslation('Registered_Education_Savings_plan') }}</a>
         </div>
       </div>
 
       <div class="relative group my-1">
         <a (click)="toggleSubMenu()" class="block text-white hover:text-darkGray px-2 py-1">{{ getTranslation('FAQ') }}</a>
         <div *ngIf="isSubMenuOpen" class="absolute left-0 mt-2 w-auto hidden group-hover:block bg-white shadow-lg border-nav">
-          <a [routerLink]="['/faq', { tag: 'auto' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg whitespace-nowrap">{{ getTranslation('AUTO_INSURANCE_FAQ') }}</a>
-          <a [routerLink]="['/faq', { tag: 'home' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap">{{ getTranslation('HOME_INDURANCE_FAQ') }}</a>
-          <a [routerLink]="['/faq', { tag: 'condo' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap">{{ getTranslation('CONDO_INSURANCE_FAQ') }}</a>
-          <a [routerLink]="['/faq', { tag: 'tenant' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap">{{ getTranslation('TENANT_INSURANCE_FAQ') }}</a>
-          <a [routerLink]="['/faq', { tag: 'claims' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap">{{ getTranslation('CLAIMS_FAQ') }}</a>
+          <a [routerLink]="['/faq', { tag: 'auto' }]" class="block px-4 py-2 text-black hover:bg-gray-200 rounded-t-lg whitespace-nowrap" (click)="toggleMenu()">{{ getTranslation('AUTO_INSURANCE_FAQ') }}</a>
+          <a [routerLink]="['/faq', { tag: 'home' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap" (click)="toggleMenu()">{{ getTranslation('HOME_INDURANCE_FAQ') }}</a>
+          <a [routerLink]="['/faq', { tag: 'condo' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap" (click)="toggleMenu()">{{ getTranslation('CONDO_INSURANCE_FAQ') }}</a>
+          <a [routerLink]="['/faq', { tag: 'tenant' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap" (click)="toggleMenu()">{{ getTranslation('TENANT_INSURANCE_FAQ') }}</a>
+          <a [routerLink]="['/faq', { tag: 'claims' }]" class="block px-4 py-2 text-black hover:bg-gray-200 whitespace-nowrap" (click)="toggleMenu()">{{ getTranslation('CLAIMS_FAQ') }}</a>
         </div>
       </div>
 
       <div class="relative group my-1">
-        <a href="https://blog.impactco.ca" target="_blank" class="block text-white hover:text-darkGray px-2 py-1">{{ getTranslation('Blog') }}</a>
+        <a href="https://blog.impactco.ca" target="_blank" class="block text-white hover:text-darkGray px-2 py-1" (click)="toggleMenu()">{{ getTranslation('Blog') }}</a>
       </div>
 
       <div class="relative group my-1">
-        <a routerLink="/about-us" class="block text-white hover:text-darkGray px-2 py-1">{{ getTranslation('About_Us') }}</a>
+        <a routerLink="/about-us" class="block text-white hover:text-darkGray px-2 py-1" (click)="toggleMenu()">{{ getTranslation('About_Us') }}</a>
       </div>
 
       <div class="flex mt-2 px-2">
         <button class="px-3 py-1 bg-lightGray text-mediumGray hover:bg-blue hover:text-white rounded-l-lg"
-              (click)="switchLanguage('en')">EN</button>
+              (click)="switchLanguage('en'); toggleMenu()">EN</button>
         <button class="px-3 py-1 bg-lightGray text-mediumGray hover:bg-blue hover:text-white rounded-r-lg"
-              (click)="switchLanguage('fr')">FR</button>
+              (click)="switchLanguage('fr'); toggleMenu()">FR</button>
       </div>
 
     </div>

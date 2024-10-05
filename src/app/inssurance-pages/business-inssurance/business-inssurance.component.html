@@ -1,7 +1,7 @@
 <app-loading *ngIf="isLoading"></app-loading>
 
 <header class="impact-header mt-16 desktop-menu-container">
-  <img [src]="img" alt="Impact Logo" class="impact-logo" />
+  <img [routerLink]="['/home']" [src]="img" alt="Impact Logo" class="impact-logo" />
 
   <div class="impact-hero">
     <img [src]="topImg" alt="Top Image" class="impact-top-image" />
@@ -11,10 +11,8 @@
 <div class="flex flex-col md:flex-row md:space-x-4 mt-16 mx-3">
   <!-- Desktop Menu for Commercial Insurance -->
   <div
-    class="desktop-menu-container w-full mt-4 md:w-1/4 bg-white p-4 shadow-custom mb-4 md:mb-0 rounded-lg sticky-sidebar overflow-y-auto"
-    style="max-height: calc(100vh - 50px); position: sticky; top: 50px;"
-  >
-    <div class="flex flex-col space-y-4">
+    class="desktop-menu-container w-full mt-4 md:w-1/4 bg-white p-2 shadow-custom mb-4 md:mb-0 rounded-lg sticky-sidebar overflow-y-auto">
+    <div class="flex flex-col space-y-1 business-hover">
       <a
         (click)="showContent('general')"
         [class.selected]="selected === 'general'"
