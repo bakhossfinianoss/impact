@@ -57,7 +57,7 @@ export class HomeContentComponent implements OnInit, AfterViewInit, OnDestroy {
   commerce = `${environment.baseHref}assets/svg/commerce.svg`;
   moto = `${environment.baseHref}assets/svg/moto.svg`;
   bigLogoImg = `${environment.baseHref}assets/ImpactInsurance_Logo4-300x110.png`;
-  mainVideo = `${environment.baseHref}assets/video.mp4`;
+  mainVideo = `${environment.baseHref}assets/home-video.mp4`;
   claimVideo = `${environment.baseHref}assets/Construction_Insurance.mp4`;
 
   cardBreakpoints = {
