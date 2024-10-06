@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DynamicPopupService {
-  private apiUrl = 'http://35.183.67.85:5000/api/renewal-send-email';
+  private apiUrl = 'https://www.impactco.ca:5000/api/renewal-send-email';
 
   constructor(private http : HttpClient) { }
 
