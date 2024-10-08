@@ -1,5 +1,5 @@
 <div class="relative w-full h-screen mt-16">
-  <video loading="lazy" class="absolute top-0 left-0 w-full h-full object-cover" #videoPlayer autoplay muted loop playsinline>
+  <video loading="lazy" class="absolute top-0 left-0 w-full h-full object-cover" #videoPlayer autoplay muted loop playsinline controls="false">
     <source [src]="mainVideo" type="video/mp4"/>
   </video>
 
@@ -253,13 +253,13 @@
 </div>
 
 <div class="flex flex-col md:flex-row lg:flex-row justify-center mt-6 mb-6 max-w-[70%] mx-auto space-y-5 md:space-y-0 md:space-x-5">
-    <video class="w-full md:w-1/2 lg:w-1/3" #constructionVideoPlayer autoplay loop muted playsinline>
+    <video class="w-full md:w-1/2 lg:w-1/3" #constructionVideoPlayer autoplay loop muted playsinline controls="false">
       <source [src]="claimVideo" type="video/mp4">
       Your browser does not support the video tag.
    </video>
 
   <div class="flex flex-col justify-center items-center">
-    <h1 class="text-3xl font-medium mb-5">{{ getTranslation('Submit_A_Claim') }}</h1>
+    <h1 class="text-3xl font-medium mb-5 submit-claim-mr">{{ getTranslation('Submit_A_Claim') }}</h1>
     <button class="click-here bg-blue-500 text-white font-bold
           py-2 px-4 rounded-lg shadow-lg bg-orange transition duration-300 ease-in-out transform hover:-translate-y-1"  [routerLink]="['/claim']">
             {{ getTranslation('Click_here') }}
@@ -277,7 +277,10 @@
   <div class="faq-box">
     <div class="faq-item" *ngFor="let faq of faqsAutomobileEn">
       <div class="faq-question">
-        <button (click)="toggleAnswer(faq)">{{ faq.question }}</button>
+        <button (click)="toggleAnswer(faq)">
+          <i class="fas" [ngClass]="faq.open ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+          {{ faq.question }}
+        </button>
       </div>
       <div class="faq-answer" [ngStyle]="{ 'display': faq.open ? 'block' : 'none' }">
         <p>{{ faq.answer }}</p>
@@ -287,11 +290,14 @@
 </div>
 
 <div class="claims-faq-section" *ngIf="currentLanguage === 'fr'">
-  <h2 class="section-title">Questions About Automobile Insurance in Quebec?</h2>
+  <h2 class="section-title">Des questions sur l’assurance automobile au Québec?</h2>
   <div class="faq-box">
     <div class="faq-item" *ngFor="let faq of faqsAutomobileFr">
       <div class="faq-question">
-        <button (click)="toggleAnswer(faq)">{{ faq.question }}</button>
+        <button (click)="toggleAnswer(faq)">
+          <i class="fas" [ngClass]="faq.open ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+          {{ faq.question }}
+        </button>
       </div>
       <div class="faq-answer" [ngStyle]="{ 'display': faq.open ? 'block' : 'none' }">
         <p>{{ faq.answer }}</p>

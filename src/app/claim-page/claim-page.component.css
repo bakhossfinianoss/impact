@@ -122,6 +122,11 @@
   height: auto;
 }
 
+.faq-question button i {
+  margin-right: 10px; /* Adjust spacing as needed */
+  transition: transform 0.3s; /* Optional for smooth transition */
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .title {

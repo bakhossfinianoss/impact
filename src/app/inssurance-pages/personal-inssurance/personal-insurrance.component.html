@@ -82,7 +82,8 @@
   <!--left mobile-->
   <div class="mobile-menu-container">
     <button class="menu-toggle" (click)="toggleMenu()">
-          {{ getTranslation(selectedLabel) }}
+      <i class="fas" style="margin-right: 5px;" [ngClass]="isMenuOpen ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+      {{ getTranslation(selectedLabel) }}
     </button>
     <ul class="mobile-menu" *ngIf="isMenuOpen">
       <li>

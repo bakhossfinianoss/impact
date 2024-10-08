@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class PersonalService {
 
   //private apiUrl = 'http://localhost:5000/api'; // Your backend URL
-  private apiUrl = 'http://35.183.67.85:5000/api';
+  private apiUrl = 'https://api.impactco.ca/api';
 
   constructor(private http: HttpClient) { }
 

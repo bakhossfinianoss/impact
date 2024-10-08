@@ -61,7 +61,10 @@
     <div class="faq-box">
       <div class="faq-item" *ngFor="let faq of faqsEn">
         <div class="faq-question">
-          <button (click)="toggleAnswer(faq)">{{ faq.question }}</button>
+          <button (click)="toggleAnswer(faq)">
+            <i class="fas" [ngClass]="faq.open ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+            {{ faq.question }}
+          </button>
         </div>
         <div class="faq-answer" [ngStyle]="{ 'display': faq.open ? 'block' : 'none' }">
           <p>{{ faq.answer }}</p>
@@ -136,7 +139,10 @@
     <div class="faq-box">
       <div class="faq-item" *ngFor="let faq of faqsFr">
         <div class="faq-question">
-          <button (click)="toggleAnswer(faq)">{{ faq.question }}</button>
+          <button (click)="toggleAnswer(faq)">
+            <i class="fas" [ngClass]="faq.open ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+            {{ faq.question }}
+          </button>
         </div>
         <div class="faq-answer" [ngStyle]="{ 'display': faq.open ? 'block' : 'none' }">
           <p>{{ faq.answer }}</p>

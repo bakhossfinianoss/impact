@@ -170,6 +170,15 @@ h1 {
   outline: none;
 }
 
+.faq-question button i {
+  margin-right: 10px; /* Adjust as needed */
+  transition: transform 0.3s; /* Optional for smooth rotation */
+}
+
+video::-webkit-media-controls {
+  display: none !important;
+}
+
 @media (max-width: 640px) {
   .get-quote {
     margin-top: -33% !important;
@@ -179,6 +188,10 @@ h1 {
 @media (min-width: 767px) {
     .click-here {
       align-self: flex-start !important;
+    }
+
+    .submit-claim-mr {
+        margin-right: 2.8rem;
     }
 }
 
