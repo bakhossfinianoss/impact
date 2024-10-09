@@ -140,12 +140,12 @@ export class HomeContentComponent implements OnInit, AfterViewInit, OnDestroy {
     {
       name: 'Marcel Manoukian',
       username: '★★★★☆',
-      review: 'I was looking for a new home insurance plan and after doing some research I found out about Impactco. I reached out to them and they were very responsive, which is what I needed in a business. The price they gave me was also better than anyone else I contacted.'
+      review: 'I was looking for a new home insurance plan and after doing some research I found out about Impactco. I reached out to them and they were very responsive, which is what I needed in a business.'
     },
     {
       name: 'Ferdynand',
       username: '★★★★★',
-      review: "I've been with Impactco for a few years now. I don't have kids or anything, so I feel like that might be why the rates are better than most other places I called. But the customer service is really great too, they really take care of you if you have any problems. They are always willing to help me out too!"
+      review: "I've been with Impactco for a few years now. I don't have kids or anything, so I feel like that might be why the rates are better than most other places I called. But the customer service is really great too, they really take care of you if you have any problems."
     },
     {
       name: 'John Doe',
@@ -168,12 +168,12 @@ export class HomeContentComponent implements OnInit, AfterViewInit, OnDestroy {
     {
           name: 'Marcel Manoukian',
           username: '★★★★☆',
-          review: "Je cherchais un nouveau plan d'assurance habitation et après avoir fait quelques recherches, j'ai découvert Impactco. Je les ai contactés et ils ont été très réactifs, ce qui est ce dont j'avais besoin dans une entreprise. Le prix qu'ils m'ont donné était également meilleur que celui de tous les autres que j'ai contactés."
+          review: "Je cherchais un nouveau plan d'assurance habitation et après avoir fait quelques recherches, j'ai découvert Impactco. Je les ai contactés et ils ont été très réactifs, ce qui est ce dont j'avais besoin dans une entreprise."
     },
     {
           name: 'Ferdynand',
           username: '★★★★★',
-          review: "Je suis avec Impactco depuis quelques années maintenant. Je n'ai pas d'enfants ni rien, donc je pense que c'est peut-être pour cela que les tarifs sont meilleurs que dans la plupart des autres endroits que j'ai appelés. Mais le service client est vraiment excellent aussi, ils prennent vraiment soin de vous si vous avez des problèmes. Ils sont toujours prêts à m'aider aussi!"
+          review: "Je suis avec Impactco depuis quelques années maintenant. Je n'ai pas d'enfants ni rien, donc je pense que c'est peut-être pour cela que les tarifs sont meilleurs que dans la plupart des autres endroits que j'ai appelés. Mais le service client est vraiment excellent aussi, ils prennent vraiment soin de vous si vous avez des problèmes."
     },
     {
           name: 'John Doe',
