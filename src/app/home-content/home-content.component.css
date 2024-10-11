@@ -176,7 +176,27 @@ h1 {
 }
 
 video::-webkit-media-controls {
+  display: none !important; /* WebKit browsers (Chrome, Safari) */
+}
+
+video::-webkit-media-controls-play-button,
+video::-webkit-media-controls-overlay-play-button,
+video::-webkit-media-controls-start-playback-button {
   display: none !important;
+}
+
+video::-moz-media-controls,
+video::-moz-media-controls-play-button,
+video::-moz-media-controls-overlay-play-button {
+  display: none !important; /* Firefox */
+}
+
+video::-ms-media-controls {
+  display: none !important; /* IE and Edge (legacy) */
+}
+
+video::-webkit-media-controls-enclosure {
+  display: none !important; /* Additional for Safari iOS */
 }
 
 @media (max-width: 640px) {
