@@ -17,6 +17,7 @@ import { SubmitClaimModule } from './submit-claim/submit-claim.module';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { FormsModule } from '@angular/forms';
 import { IntersectionObserverModule } from './intersection-observer.module';
+import { PopupErrorMessageComponent } from './popup-error-message/popup-error-message.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -27,7 +28,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    PersonalComponent
+    PersonalComponent,
+    PopupErrorMessageComponent
   ],
   imports: [
     FormsModule,

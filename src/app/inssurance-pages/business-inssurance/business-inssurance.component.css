@@ -171,6 +171,9 @@ h6 {
   font-weight: bold;
 }
 
+p {
+  font-size: 1rem;
+}
 
 /* Basic styles for the mobile menu */
 .mobile-menu-container {
